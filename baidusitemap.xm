@@ -5,7 +5,7 @@
     
   <url>
     <loc>//litten.me/2017/04/18/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%9D%A2%E8%AF%95/</loc>
-    <lastmod>2017-05-01T13:36:38.500Z</lastmod>
+    <lastmod>2017-05-01T13:38:54.404Z</lastmod>
     <data>
         <display>
         <title></title>
