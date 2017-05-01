@@ -15,7 +15,7 @@
 <meta property="og:url" content="//litten.me/2017/04/18/JAVA多线程面试/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
 <meta property="og:description" content="Java多线程面试问题 1 . 进程和线程之间有什么不同？  一个进程是一个独立(self contained)的运行环境，它可以被看作一个程序或者一个应用。而线程是在进程中执行的一个任务。Java运行环境是一个包含了不同的类和程序的单一进程。线程可以被称为轻量级进程。线程需要较少的资源来创建和驻留在进程中，并且可以共享进程中的资源。  2 . 多线程编程的好处是什么？  在多线程程序中，多个线程">
-<meta property="og:updated_time" content="2017-05-01T13:38:54.404Z">
+<meta property="og:updated_time" content="2017-05-01T13:41:43.662Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Coolcat的博客">
 <meta name="twitter:description" content="Java多线程面试问题 1 . 进程和线程之间有什么不同？  一个进程是一个独立(self contained)的运行环境，它可以被看作一个程序或者一个应用。而线程是在进程中执行的一个任务。Java运行环境是一个包含了不同的类和程序的单一进程。线程可以被称为轻量级进程。线程需要较少的资源来创建和驻留在进程中，并且可以共享进程中的资源。  2 . 多线程编程的好处是什么？  在多线程程序中，多个线程">
@@ -248,8 +248,8 @@
 <p>21 . 什么是Thread Group？为什么建议使用它？</p>
 </blockquote>
 <p>ThreadGroup是一个类，它的目的是提供关于线程组的信息。</p>
-<p>ThreadGroup API比较薄弱，它并没有比Thread提供了更多的功能。它有两个主要的功能：一是获取线程组中处于活跃状态线程的列表；二是设置为线程设置未捕获异常处理器(ncaught exception handler)。但在Java 1.5中Thread类也添加了setUncaughtExceptionHandler(UncaughtExceptionHandler eh) 方法，所以ThreadGroup是已经过时的，不建议继续使用。</p>
-<p>Java<br><code><pre><br>t1.setUncaughtExceptionHandler(new UncaughtExceptionHandler(){</pre></code></p>
+<p>ThreadGroup API比较薄弱，它并没有比Thread提供了更多的功能。它有两个主要的功能：一是获取线程组中处于活跃状态线程的列表；二是设置为线程设置未捕获异常处理器(ncaught exception handler)。但在Java 1.5中Thread类也添加了setUncaughtExceptionHandler(UncaughtExceptionHandler eh) 方法，所以ThreadGroup是已经过时的，不建议继续使用。<br><code><pre><br>Java</pre></code></p>
+<p>t1.setUncaughtExceptionHandler(new UncaughtExceptionHandler(){</p>
 <p>@Override<br>public void uncaughtException(Thread t, Throwable e) {<br>System.out.println(“exception occured:”+e.getMessage());<br>}</p>
 <p>});<br>1 2 3 4 5 6 7 8<br>t1.setUncaughtExceptionHandler(new UncaughtExceptionHandler(){</p>
 <p>@Override<br>public void uncaughtException(Thread t, Throwable e) {<br>System.out.println(“exception occured:”+e.getMessage());<br>}</p>
@@ -441,6 +441,11 @@ Executors可以用于方便的创建线程池。
       </div>
     </a>
   
+  
+    <a href="/2017/05/01/五一周记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 

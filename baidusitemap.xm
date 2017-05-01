@@ -4,8 +4,23 @@
 
     
   <url>
+    <loc>//litten.me/2017/05/01/%E4%BA%94%E4%B8%80%E5%91%A8%E8%AE%B0/</loc>
+    <lastmod>2017-05-01T14:01:38.154Z</lastmod>
+    <data>
+        <display>
+        <title></title>
+        <pubTime>2017-05-01T13:43:04.422Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>//litten.me/2017/04/18/JAVA%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%9D%A2%E8%AF%95/</loc>
-    <lastmod>2017-05-01T13:38:54.404Z</lastmod>
+    <lastmod>2017-05-01T13:41:43.662Z</lastmod>
     <data>
         <display>
         <title></title>
