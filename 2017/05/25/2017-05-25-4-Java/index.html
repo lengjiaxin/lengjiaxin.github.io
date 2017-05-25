@@ -6,24 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>Coolcat的博客</title>
+  <title>Java 字符串操作 | Coolcat的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Java 6以后就不再需要StringBuilder拼接字符串            Java基础篇一    在Java中，字符串对象是不可变的，意思是它一旦创建，你就无法再改变它。所以在我们拼接字符串的时候，创建了一个新的字符串，旧的被垃圾回收器所标记。如果我们处理上百万的字符串，然后，我们就会生成百万的额外字符串被垃圾回收器处理。  虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点">
-<meta name="keywords">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Coolcat的博客">
-<meta property="og:url" content="//litten.me/2017/05/10/2017-05-25-4-Java/index.html">
+<meta property="og:title" content="Java 字符串操作">
+<meta property="og:url" content="//litten.me/2017/05/25/2017-05-25-4-Java/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
 <meta property="og:description" content="Java 6以后就不再需要StringBuilder拼接字符串            Java基础篇一    在Java中，字符串对象是不可变的，意思是它一旦创建，你就无法再改变它。所以在我们拼接字符串的时候，创建了一个新的字符串，旧的被垃圾回收器所标记。如果我们处理上百万的字符串，然后，我们就会生成百万的额外字符串被垃圾回收器处理。  虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点">
-<meta property="og:updated_time" content="2017-05-25T05:40:16.019Z">
+<meta property="og:updated_time" content="2017-05-25T14:13:20.026Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Coolcat的博客">
+<meta name="twitter:title" content="Java 字符串操作">
 <meta name="twitter:description" content="Java 6以后就不再需要StringBuilder拼接字符串            Java基础篇一    在Java中，字符串对象是不可变的，意思是它一旦创建，你就无法再改变它。所以在我们拼接字符串的时候，创建了一个新的字符串，旧的被垃圾回收器所标记。如果我们处理上百万的字符串，然后，我们就会生成百万的额外字符串被垃圾回收器处理。  虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点">
   
     <link rel="alternative" href="/atom.xml" title="Coolcat的博客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/images/avatar.jpg">
   
   <link rel="stylesheet" type="text/css" href="/./main.05aabf.css">
   <style type="text/css">
@@ -149,6 +149,21 @@
             <article id="post-2017-05-25-4-Java" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java 字符串操作
+    </h1>
+  
+
+        
+        <a href="/2017/05/25/2017-05-25-4-Java/" class="archive-article-date">
+  	<time datetime="2017-05-25T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Java-6以后就不再需要StringBuilder拼接字符串"><a href="#Java-6以后就不再需要StringBuilder拼接字符串" class="headerlink" title="Java 6以后就不再需要StringBuilder拼接字符串"></a>Java 6以后就不再需要StringBuilder拼接字符串</h1><p><table><br>    <tr><br>        <td style="color:red;">Java基础篇一</td><br>    </tr><br></table><br>在Java中，字符串对象是不可变的，意思是它一旦创建，你就无法再改变它。所以在我们拼接字符串的时候，创建了一个新的字符串，旧的被垃圾回收器所标记。<br><br>如果我们处理上百万的字符串，然后，我们就会生成百万的额外字符串被垃圾回收器处理。</p>
@@ -167,6 +182,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -217,7 +243,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2017/05/10/2017-05-25-4-Java/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2017/05/25/2017-05-25-4-Java/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -231,11 +257,15 @@
   
 <nav id="article-nav">
   
-  
-    <a href="/2017/05/14/2017-05-14-1-HelloWorld/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
+    <a href="/2017/05/14/2017-05-14-2-Java/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java多线程面试问题
+        
+      </div>
     </a>
+  
   
 </nav>
 
@@ -333,11 +363,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
             
             <div class="clearfix"></div>
