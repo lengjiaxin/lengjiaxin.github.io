@@ -511,6 +511,45 @@ Executors可以用于方便的创建线程池。
 
 
   
+    <article id="post-2017-05-25-4-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java-6以后就不再需要StringBuilder拼接字符串"><a href="#Java-6以后就不再需要StringBuilder拼接字符串" class="headerlink" title="Java 6以后就不再需要StringBuilder拼接字符串"></a>Java 6以后就不再需要StringBuilder拼接字符串</h1><p><table><br>    <tr><br>        <td style="color:red;">Java基础篇一</td><br>    </tr><br></table><br>在Java中，字符串对象是不可变的，意思是它一旦创建，你就无法再改变它。所以在我们拼接字符串的时候，创建了一个新的字符串，旧的被垃圾回收器所标记。<br><br>如果我们处理上百万的字符串，然后，我们就会生成百万的额外字符串被垃圾回收器处理。</p>
+<blockquote>
+<h2 id="虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点操作-dot-operator-就是String-concat-String-操作"><a href="#虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点操作-dot-operator-就是String-concat-String-操作" class="headerlink" title="虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点操作(dot operator)就是String#concat(String)操作"></a>虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点操作(dot operator)就是String#concat(String)操作</h2><p> public String concat(String str) {<br>   int otherLen = str.length();<br>   if (otherLen == 0) {<br>       return this;<br>   }<br>   int len = value.length;<br>   char buf[] = Arrays.copyOf(value, len + otherLen);<br>   str.getChars(buf, len);<br>   return new String(buf, true);<br>}<br>public static char[] copyOf(char[] original, int newLength) {<br>   char[] copy = new char[newLength];<br>   System.arraycopy(original, 0, copy, 0,<br>                    Math.min(original.length, newLength));<br>   return copy;<br>}<br>void getChars(char dst[], int dstBegin) {<br>   System.arraycopy(value, 0, dst, dstBegin, value.length);<br>} </p>
+</blockquote>
+<p><table><br>    <tr><br>        <td style="color:#F99999;">Sevlet绑定Spring bean</td><br>    </tr><br></table><br><code>SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,cfg.getServletContext());//初始化Spring</code>  </p>
+<blockquote>
+<p>public static void processInjectionBasedOnServletContext(Object target, ServletContext servletContext)<br>   {<br> Assert.notNull(target, “Target object must not be null”);<br> WebApplicationContext cc = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext);<br> AutowiredAnnotationBeanPostProcessor bpp = new AutowiredAnnotationBeanPostProcessor();<br> bpp.setBeanFactory(cc.getAutowireCapableBeanFactory());<br>bpp.processInjection(target);<br>}</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
   
 
 
