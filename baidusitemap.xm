@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>//litten.me/2017/05/25/2017-06-15-5-Java/</loc>
+    <lastmod>2017-06-15T07:41:46.017Z</lastmod>
+    <data>
+        <display>
+        <title>Mybatis 执行速度监听</title>
+        <pubTime>2017-05-25T15:23:00.000Z</pubTime>
+        
+        <tag>Mybatis</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>//litten.me/2017/05/25/2017-05-25-4-Java/</loc>
     <lastmod>2017-05-25T14:13:20.026Z</lastmod>
     <data>
