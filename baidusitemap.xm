@@ -5,7 +5,7 @@
     
   <url>
     <loc>//litten.me/2017/06/25/2017-06-25-5-blog/</loc>
-    <lastmod>2017-06-25T15:28:48.181Z</lastmod>
+    <lastmod>2017-06-25T15:52:22.604Z</lastmod>
     <data>
         <display>
         <title>GitHubBlog绑定域名</title>
