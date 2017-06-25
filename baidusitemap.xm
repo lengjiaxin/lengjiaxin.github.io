@@ -4,14 +4,14 @@
 
     
   <url>
-    <loc>//litten.me/2017/06/25/2017-06-25-5-Java/</loc>
-    <lastmod>2017-06-25T15:22:41.386Z</lastmod>
+    <loc>//litten.me/2017/06/25/2017-06-25-5-blog/</loc>
+    <lastmod>2017-06-25T15:28:48.181Z</lastmod>
     <data>
         <display>
-        <title>JAVA GC 简单总结</title>
-        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
+        <title>GitHubBlog绑定域名</title>
+        <pubTime>2017-06-25T15:20:00.000Z</pubTime>
         
-        <tag>java</tag>
+        <tag>github</tag>
          
          
            
@@ -21,14 +21,14 @@
 
     
   <url>
-    <loc>//litten.me/2017/06/25/2017-06-25-5-blog/</loc>
-    <lastmod>2017-06-25T15:16:46.207Z</lastmod>
+    <loc>//litten.me/2017/06/25/2017-06-25-5-Java/</loc>
+    <lastmod>2017-06-25T15:28:19.151Z</lastmod>
     <data>
         <display>
-        <title>Mybatis 执行速度监听</title>
-        <pubTime>2017-06-25T15:20:00.000Z</pubTime>
+        <title>JAVA GC 简单总结</title>
+        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
         
-        <tag>github</tag>
+        <tag>java</tag>
          
          
            
