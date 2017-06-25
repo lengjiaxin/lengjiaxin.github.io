@@ -8,17 +8,21 @@
   <link rel="dns-prefetch" href="//litten.me">
   <title>Mybatis 执行速度监听 | Coolcat的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Mybatis 添加执行sql时间监控在Mybatis配置文件中添加执行监控    &amp;lt;!-- 数据库会话工厂 --&amp;gt; &amp;lt;bean id=&amp;quot;sqlSessionFactoryDefault&amp;quot; class=&amp;quot;org.mybatis.spring.SqlSessionFactoryBean&amp;quot;&amp;gt;     &amp;lt;property name=&amp;">
-<meta name="keywords" content="Mybatis">
+  <meta name="description" content="GitHub Blog 绑定域名1、ping你的http://github.io域名，得到一个IP； 2、修改你的域名解析记录，添加一个A记录，用得到的IP； 3、登录http://github.com&amp;gt;进入项目&amp;gt;Settings&amp;gt;Custom domain&amp;gt;输入你的域名&amp;gt;Save。">
+<meta name="keywords" content="github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mybatis 执行速度监听">
-<meta property="og:url" content="//litten.me/2017/06/15/2017-06-15-5-Java/index.html">
+<meta property="og:url" content="//litten.me/2017/06/25/2017-06-25-5-blog/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
-<meta property="og:description" content="Mybatis 添加执行sql时间监控在Mybatis配置文件中添加执行监控    &amp;lt;!-- 数据库会话工厂 --&amp;gt; &amp;lt;bean id=&amp;quot;sqlSessionFactoryDefault&amp;quot; class=&amp;quot;org.mybatis.spring.SqlSessionFactoryBean&amp;quot;&amp;gt;     &amp;lt;property name=&amp;">
-<meta property="og:updated_time" content="2017-06-15T07:45:43.721Z">
+<meta property="og:description" content="GitHub Blog 绑定域名1、ping你的http://github.io域名，得到一个IP； 2、修改你的域名解析记录，添加一个A记录，用得到的IP； 3、登录http://github.com&amp;gt;进入项目&amp;gt;Settings&amp;gt;Custom domain&amp;gt;输入你的域名&amp;gt;Save。">
+<meta property="og:image" content="http://lengjiaxin.github.io/github/images/blog_001.jpg">
+<meta property="og:image" content="http://lengjiaxin.github.io/github/images/blog_002.jpg">
+<meta property="og:image" content="http://lengjiaxin.github.io/github/images/blog_003.jpg">
+<meta property="og:updated_time" content="2017-06-25T15:16:46.207Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mybatis 执行速度监听">
-<meta name="twitter:description" content="Mybatis 添加执行sql时间监控在Mybatis配置文件中添加执行监控    &amp;lt;!-- 数据库会话工厂 --&amp;gt; &amp;lt;bean id=&amp;quot;sqlSessionFactoryDefault&amp;quot; class=&amp;quot;org.mybatis.spring.SqlSessionFactoryBean&amp;quot;&amp;gt;     &amp;lt;property name=&amp;">
+<meta name="twitter:description" content="GitHub Blog 绑定域名1、ping你的http://github.io域名，得到一个IP； 2、修改你的域名解析记录，添加一个A记录，用得到的IP； 3、登录http://github.com&amp;gt;进入项目&amp;gt;Settings&amp;gt;Custom domain&amp;gt;输入你的域名&amp;gt;Save。">
+<meta name="twitter:image" content="http://lengjiaxin.github.io/github/images/blog_001.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Coolcat的博客" type="application/atom+xml">
   
@@ -140,7 +144,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2017-06-15-5-Java" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2017-06-25-5-blog" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -152,72 +156,18 @@
   
 
         
-        <a href="/2017/06/15/2017-06-15-5-Java/" class="archive-article-date">
-  	<time datetime="2017-06-15T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-15</time>
+        <a href="/2017/06/25/2017-06-25-5-blog/" class="archive-article-date">
+  	<time datetime="2017-06-25T15:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Mybatis-添加执行sql时间监控"><a href="#Mybatis-添加执行sql时间监控" class="headerlink" title="Mybatis 添加执行sql时间监控"></a>Mybatis 添加执行sql时间监控</h1><p>在Mybatis配置文件中添加执行监控  </p>
-<blockquote>
-<pre><code>&lt;!-- 数据库会话工厂 --&gt;
-&lt;bean id=&quot;sqlSessionFactoryDefault&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
-    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSourceDefault&quot; /&gt;
-    &lt;property name=&quot;configLocation&quot; value=&quot;classpath:mybatis-config.xml&quot; /&gt;
-    &lt;property name=&quot;plugins&quot;&gt;
-        &lt;array&gt;
-            &lt;bean id=&quot;sqlStatementInterceptor&quot; class=&quot;com.lan.console.common.SqlStatementInterceptor&quot;/&gt;
-        &lt;/array&gt;
-    &lt;/property&gt;
-&lt;/bean&gt;
-</code></pre></blockquote>
-<p>创建监听类:&nbsp;<span style="color:red;">SqlStatementInterceptor</span></p>
-<pre><code>@Intercepts(value = { @Signature(type = Executor.class, method = &quot;update&quot;, args = { MappedStatement.class, Object.class }), 
-        @Signature(type = Executor.class, method = &quot;query&quot;, args = { MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class }),
-        @Signature(type = Executor.class, method = &quot;query&quot;, args = { MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class }) })
-public class SqlStatementInterceptor implements Interceptor {
+        <h1 id="GitHub-Blog-绑定域名"><a href="#GitHub-Blog-绑定域名" class="headerlink" title="GitHub Blog 绑定域名"></a>GitHub Blog 绑定域名</h1><h2 id="1、ping你的http-github-io域名，得到一个IP；"><a href="#1、ping你的http-github-io域名，得到一个IP；" class="headerlink" title="1、ping你的http://github.io域名，得到一个IP；"></a>1、ping你的<a href="http://github.io域名，得到一个IP；" target="_blank" rel="external">http://github.io域名，得到一个IP；</a></h2><p><img src="http://lengjiaxin.github.io/github/images/blog_001.jpg" alt=""></p>
+<h2 id="2、修改你的域名解析记录，添加一个A记录，用得到的IP；"><a href="#2、修改你的域名解析记录，添加一个A记录，用得到的IP；" class="headerlink" title="2、修改你的域名解析记录，添加一个A记录，用得到的IP；"></a>2、修改你的域名解析记录，添加一个A记录，用得到的IP；</h2><p><img src="http://lengjiaxin.github.io/github/images/blog_002.jpg" alt=""></p>
+<h2 id="3、登录http-github-com-gt-进入项目-gt-Settings-gt-Custom-domain-gt-输入你的域名-gt-Save。"><a href="#3、登录http-github-com-gt-进入项目-gt-Settings-gt-Custom-domain-gt-输入你的域名-gt-Save。" class="headerlink" title="3、登录http://github.com&gt;进入项目&gt;Settings&gt;Custom domain&gt;输入你的域名&gt;Save。"></a>3、登录<a href="http://github.com&gt;进入项目&gt;Settings&gt;Custom" target="_blank" rel="external">http://github.com&gt;进入项目&gt;Settings&gt;Custom</a> domain&gt;输入你的域名&gt;Save。</h2><p><img src="http://lengjiaxin.github.io/github/images/blog_003.jpg" alt=""></p>
 
-    private static Logger logger = LoggerFactory.getLogger(SqlStatementInterceptor.class);
-
-    @SuppressWarnings(&quot;unused&quot;)
-    private Properties properties;
-
-    @Override
-    public Object intercept(Invocation arg0) throws Throwable {
-        MappedStatement mappedStatement = (MappedStatement) arg0.getArgs()[0];
-        String sqlId = mappedStatement.getId();
-        Object returnValue;
-
-        long start = System.currentTimeMillis();
-        returnValue = arg0.proceed();
-        long end = System.currentTimeMillis();
-        long time = end - start;
-
-        StringBuilder str = new StringBuilder(100);
-        str.append(sqlId);
-        str.append(&quot;: &quot;);
-        str.append(&quot;cost time &quot;);
-        str.append(time);
-        str.append(&quot; ms.&quot;);
-        String sqlInfo = str.toString(); 
-        logger.debug(sqlInfo); 
-        return returnValue;
-    }
-
-    @Override
-    public Object plugin(Object arg0) {
-        return Plugin.wrap(arg0, this);
-    }
-
-    @Override
-    public void setProperties(Properties arg0) {
-        this.properties = arg0;
-    }
-
-}
-</code></pre>
       
 
       
@@ -230,7 +180,7 @@ public class SqlStatementInterceptor implements Interceptor {
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
         		</li>
       		
 		</ul>
@@ -286,7 +236,7 @@ public class SqlStatementInterceptor implements Interceptor {
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2017/06/15/2017-06-15-5-Java/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2017/06/25/2017-06-25-5-blog/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -300,20 +250,15 @@ public class SqlStatementInterceptor implements Interceptor {
   
 <nav id="article-nav">
   
-    <a href="/2017/05/25/2017-05-25-4-Java/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/25/2017-06-25-5-Java/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java 字符串操作
+          JAVA GC 简单总结
         
       </div>
     </a>
   
-  
-    <a href="/2017/06/25/2017-06-25-5-Java/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JAVA GC 简单总结</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 

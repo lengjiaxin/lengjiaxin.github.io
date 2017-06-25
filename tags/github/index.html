@@ -6,19 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>Mybatis 执行速度监听 | Coolcat的博客</title>
+  <title>Tag: github | Coolcat的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Mybatis 添加执行sql时间监控在Mybatis配置文件中添加执行监控    &amp;lt;!-- 数据库会话工厂 --&amp;gt; &amp;lt;bean id=&amp;quot;sqlSessionFactoryDefault&amp;quot; class=&amp;quot;org.mybatis.spring.SqlSessionFactoryBean&amp;quot;&amp;gt;     &amp;lt;property name=&amp;">
-<meta name="keywords" content="Mybatis">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Mybatis 执行速度监听">
-<meta property="og:url" content="//litten.me/2017/05/25/2017-06-15-5-Java/index.html">
+  <meta name="description" content="重庆科技学院12级，就职于二流科技公司。擅长各项前端技能，深入研究JAVA后端技术。此为博客一枚。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coolcat的博客">
+<meta property="og:url" content="//litten.me/tags/github/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
-<meta property="og:description" content="Mybatis 添加执行sql时间监控在Mybatis配置文件中添加执行监控    &amp;lt;!-- 数据库会话工厂 --&amp;gt; &amp;lt;bean id=&amp;quot;sqlSessionFactoryDefault&amp;quot; class=&amp;quot;org.mybatis.spring.SqlSessionFactoryBean&amp;quot;&amp;gt;     &amp;lt;property name=&amp;">
-<meta property="og:updated_time" content="2017-06-15T07:41:46.017Z">
+<meta property="og:description" content="重庆科技学院12级，就职于二流科技公司。擅长各项前端技能，深入研究JAVA后端技术。此为博客一枚。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mybatis 执行速度监听">
-<meta name="twitter:description" content="Mybatis 添加执行sql时间监控在Mybatis配置文件中添加执行监控    &amp;lt;!-- 数据库会话工厂 --&amp;gt; &amp;lt;bean id=&amp;quot;sqlSessionFactoryDefault&amp;quot; class=&amp;quot;org.mybatis.spring.SqlSessionFactoryBean&amp;quot;&amp;gt;     &amp;lt;property name=&amp;">
+<meta name="twitter:title" content="Coolcat的博客">
+<meta name="twitter:description" content="重庆科技学院12级，就职于二流科技公司。擅长各项前端技能，深入研究JAVA后端技术。此为博客一枚。">
   
     <link rel="alternative" href="/atom.xml" title="Coolcat的博客" type="application/atom+xml">
   
@@ -140,188 +138,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2017-06-15-5-Java" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Mybatis 执行速度监听
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/06/25/2017-06-25-5-blog/" class="archive-article-date">
+  	<time datetime="2017-06-25T15:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/06/25/2017-06-25-5-blog/">Mybatis 执行速度监听</a>
     </h1>
   
 
-        
-        <a href="/2017/05/25/2017-06-15-5-Java/" class="archive-article-date">
-  	<time datetime="2017-05-25T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Mybatis-添加执行sql时间监控"><a href="#Mybatis-添加执行sql时间监控" class="headerlink" title="Mybatis 添加执行sql时间监控"></a>Mybatis 添加执行sql时间监控</h1><p>在Mybatis配置文件中添加执行监控  </p>
-<blockquote>
-<pre><code>&lt;!-- 数据库会话工厂 --&gt;
-&lt;bean id=&quot;sqlSessionFactoryDefault&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
-    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSourceDefault&quot; /&gt;
-    &lt;property name=&quot;configLocation&quot; value=&quot;classpath:mybatis-config.xml&quot; /&gt;
-    &lt;property name=&quot;plugins&quot;&gt;
-        &lt;array&gt;
-            &lt;bean id=&quot;sqlStatementInterceptor&quot; class=&quot;com.lan.console.common.SqlStatementInterceptor&quot;/&gt;
-        &lt;/array&gt;
-    &lt;/property&gt;
-&lt;/bean&gt;
-</code></pre></blockquote>
-<p>创建监听类:&nbsp;<span style="color:red;">SqlStatementInterceptor</span></p>
-<pre><code>@Intercepts(value = { @Signature(type = Executor.class, method = &quot;update&quot;, args = { MappedStatement.class, Object.class }), 
-        @Signature(type = Executor.class, method = &quot;query&quot;, args = { MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class }),
-        @Signature(type = Executor.class, method = &quot;query&quot;, args = { MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class }) })
-public class SqlStatementInterceptor implements Interceptor {
-
-    private static Logger logger = LoggerFactory.getLogger(SqlStatementInterceptor.class);
-
-    @SuppressWarnings(&quot;unused&quot;)
-    private Properties properties;
-
-    @Override
-    public Object intercept(Invocation arg0) throws Throwable {
-        MappedStatement mappedStatement = (MappedStatement) arg0.getArgs()[0];
-        String sqlId = mappedStatement.getId();
-        Object returnValue;
-
-        long start = System.currentTimeMillis();
-        returnValue = arg0.proceed();
-        long end = System.currentTimeMillis();
-        long time = end - start;
-
-        StringBuilder str = new StringBuilder(100);
-        str.append(sqlId);
-        str.append(&quot;: &quot;);
-        str.append(&quot;cost time &quot;);
-        str.append(time);
-        str.append(&quot; ms.&quot;);
-        String sqlInfo = str.toString(); 
-        logger.debug(sqlInfo); 
-        return returnValue;
-    }
-
-    @Override
-    public Object plugin(Object arg0) {
-        return Plugin.wrap(arg0, this);
-    }
-
-    @Override
-    public void setProperties(Properties arg0) {
-        this.properties = arg0;
-    }
-
-}
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2017/05/25/2017-06-15-5-Java/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/05/25/2017-05-25-4-Java/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java 字符串操作
-        
-      </div>
-    </a>
   
   
-</nav>
-
-
-
-
-
-
-  
-    <div class="duoshuo"></div>
+    </div></section>
   
 
-
+    
 
 
           </div>
@@ -344,9 +214,9 @@ public class SqlStatementInterceptor implements Interceptor {
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
@@ -402,11 +272,15 @@ public class SqlStatementInterceptor implements Interceptor {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -415,6 +289,10 @@ public class SqlStatementInterceptor implements Interceptor {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>

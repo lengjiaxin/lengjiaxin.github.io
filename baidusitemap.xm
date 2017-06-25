@@ -4,6 +4,40 @@
 
     
   <url>
+    <loc>//litten.me/2017/06/25/2017-06-25-5-Java/</loc>
+    <lastmod>2017-06-25T15:22:41.386Z</lastmod>
+    <data>
+        <display>
+        <title>JAVA GC 简单总结</title>
+        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
+        
+        <tag>java</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>//litten.me/2017/06/25/2017-06-25-5-blog/</loc>
+    <lastmod>2017-06-25T15:16:46.207Z</lastmod>
+    <data>
+        <display>
+        <title>Mybatis 执行速度监听</title>
+        <pubTime>2017-06-25T15:20:00.000Z</pubTime>
+        
+        <tag>github</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>//litten.me/2017/06/15/2017-06-15-5-Java/</loc>
     <lastmod>2017-06-15T07:45:43.721Z</lastmod>
     <data>

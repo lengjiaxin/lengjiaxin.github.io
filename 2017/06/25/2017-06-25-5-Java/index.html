@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>Mybatis 执行速度监听 | Coolcat的博客</title>
+  <title>JAVA GC 简单总结 | Coolcat的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Mybatis 添加执行sql时间监控在Mybatis配置文件中添加执行监控    &amp;lt;!-- 数据库会话工厂 --&amp;gt; &amp;lt;bean id=&amp;quot;sqlSessionFactoryDefault&amp;quot; class=&amp;quot;org.mybatis.spring.SqlSessionFactoryBean&amp;quot;&amp;gt;     &amp;lt;property name=&amp;">
-<meta name="keywords" content="Mybatis">
+  <meta name="description" content="GC分代GC的英文全拼是Garbage Collection，意思是垃圾收集。 Java 将堆内存分为三代来管理：  年轻代 (Young Generation) 年老代 (Old Generation) 永久代 (Perm Generation)  年轻代：又分为Eden、From和To，其中From和To又统称为Survivor Spaces（幸存区）。年轻代大小可以由-Xmn来控制，也可以用">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mybatis 执行速度监听">
-<meta property="og:url" content="//litten.me/2017/06/15/2017-06-15-5-Java/index.html">
+<meta property="og:title" content="JAVA GC 简单总结">
+<meta property="og:url" content="//litten.me/2017/06/25/2017-06-25-5-Java/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
-<meta property="og:description" content="Mybatis 添加执行sql时间监控在Mybatis配置文件中添加执行监控    &amp;lt;!-- 数据库会话工厂 --&amp;gt; &amp;lt;bean id=&amp;quot;sqlSessionFactoryDefault&amp;quot; class=&amp;quot;org.mybatis.spring.SqlSessionFactoryBean&amp;quot;&amp;gt;     &amp;lt;property name=&amp;">
-<meta property="og:updated_time" content="2017-06-15T07:45:43.721Z">
+<meta property="og:description" content="GC分代GC的英文全拼是Garbage Collection，意思是垃圾收集。 Java 将堆内存分为三代来管理：  年轻代 (Young Generation) 年老代 (Old Generation) 永久代 (Perm Generation)  年轻代：又分为Eden、From和To，其中From和To又统称为Survivor Spaces（幸存区）。年轻代大小可以由-Xmn来控制，也可以用">
+<meta property="og:updated_time" content="2017-06-25T15:22:41.386Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mybatis 执行速度监听">
-<meta name="twitter:description" content="Mybatis 添加执行sql时间监控在Mybatis配置文件中添加执行监控    &amp;lt;!-- 数据库会话工厂 --&amp;gt; &amp;lt;bean id=&amp;quot;sqlSessionFactoryDefault&amp;quot; class=&amp;quot;org.mybatis.spring.SqlSessionFactoryBean&amp;quot;&amp;gt;     &amp;lt;property name=&amp;">
+<meta name="twitter:title" content="JAVA GC 简单总结">
+<meta name="twitter:description" content="GC分代GC的英文全拼是Garbage Collection，意思是垃圾收集。 Java 将堆内存分为三代来管理：  年轻代 (Young Generation) 年老代 (Old Generation) 永久代 (Perm Generation)  年轻代：又分为Eden、From和To，其中From和To又统称为Survivor Spaces（幸存区）。年轻代大小可以由-Xmn来控制，也可以用">
   
     <link rel="alternative" href="/atom.xml" title="Coolcat的博客" type="application/atom+xml">
   
@@ -140,84 +140,51 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2017-06-15-5-Java" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2017-06-25-5-Java" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Mybatis 执行速度监听
+      JAVA GC 简单总结
     </h1>
   
 
         
-        <a href="/2017/06/15/2017-06-15-5-Java/" class="archive-article-date">
-  	<time datetime="2017-06-15T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-15</time>
+        <a href="/2017/06/25/2017-06-25-5-Java/" class="archive-article-date">
+  	<time datetime="2017-06-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Mybatis-添加执行sql时间监控"><a href="#Mybatis-添加执行sql时间监控" class="headerlink" title="Mybatis 添加执行sql时间监控"></a>Mybatis 添加执行sql时间监控</h1><p>在Mybatis配置文件中添加执行监控  </p>
-<blockquote>
-<pre><code>&lt;!-- 数据库会话工厂 --&gt;
-&lt;bean id=&quot;sqlSessionFactoryDefault&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
-    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSourceDefault&quot; /&gt;
-    &lt;property name=&quot;configLocation&quot; value=&quot;classpath:mybatis-config.xml&quot; /&gt;
-    &lt;property name=&quot;plugins&quot;&gt;
-        &lt;array&gt;
-            &lt;bean id=&quot;sqlStatementInterceptor&quot; class=&quot;com.lan.console.common.SqlStatementInterceptor&quot;/&gt;
-        &lt;/array&gt;
-    &lt;/property&gt;
-&lt;/bean&gt;
-</code></pre></blockquote>
-<p>创建监听类:&nbsp;<span style="color:red;">SqlStatementInterceptor</span></p>
-<pre><code>@Intercepts(value = { @Signature(type = Executor.class, method = &quot;update&quot;, args = { MappedStatement.class, Object.class }), 
-        @Signature(type = Executor.class, method = &quot;query&quot;, args = { MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class }),
-        @Signature(type = Executor.class, method = &quot;query&quot;, args = { MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class }) })
-public class SqlStatementInterceptor implements Interceptor {
+        <h2 id="GC分代"><a href="#GC分代" class="headerlink" title="GC分代"></a>GC分代</h2><p>GC的英文全拼是Garbage Collection，意思是垃圾收集。</p>
+<p>Java 将堆内存分为三代来管理：</p>
+<ul>
+<li>年轻代 (<code>Young Generation</code>)</li>
+<li>年老代 (<code>Old Generation</code>)</li>
+<li>永久代 (<code>Perm Generation</code>)</li>
+</ul>
+<p><strong>年轻代</strong>：又分为<code>Eden</code>、<code>From</code>和<code>To</code>，其中<code>From</code>和<code>To</code>又统称为<code>Survivor Spaces</code>（幸存区）。年轻代大小可以由<code>-Xmn</code>来控制，也可以用<code>-XX:SurvivorRatio</code>来控制<code>Eden</code>和<code>Survivor</code>的比例，使用<code>–XX:NewRatio</code>来指定新生代和年老代的大小比例。</p>
+<p><strong>年老代</strong>：用来存放多次垃圾回收依然存活的对象。</p>
+<p><strong>永久代</strong>：来存放方法区。可通过<code>-XX:PermSize</code>和<code>-XX:MaxPermSize</code>来指定最小值和最大值。</p>
+<p>正常情况下，一个对象从创建到销毁，应该是从<code>Eden</code>，然后到<code>Survivor Spaces</code>（幸存区），再到<code>Old Generation</code>（年老代），最后在某次GC下消失。也可能一个对象直接在<code>Eden</code>里死掉，也可能一直在<code>Old Generation</code>（年老代）存活。</p>
+<h2 id="GC种类"><a href="#GC种类" class="headerlink" title="GC种类"></a>GC种类</h2><p>Java GC分为两类：</p>
+<ul>
+<li><code>Minar GC</code></li>
+<li><code>FULL GC</code></li>
+<li><code>Major GC</code></li>
+</ul>
+<p><strong>Minar GC</strong>：从年轻代空间（包括 <code>Eden</code> 和 <code>Survivor</code> 区域）回收内存被称为 Minor GC。</p>
+<p><strong>Major GC</strong>：是清理老年代。</p>
+<p><strong>FULL GC</strong>：是清理整个堆空间—包括年轻代和老年代。</p>
+<p>GC的时候，会暂停全世界(<code>stop-the-world</code>)，意思是停止所有的应用线程，所以要避免不必要的GC已提高性能。</p>
+<h2 id="GC日志"><a href="#GC日志" class="headerlink" title="GC日志"></a>GC日志</h2><p><code>-XX:+PrintGCDetails</code>打印日志详情。</p>
+<p><code>-XX:+PrintGCTimeStamps</code>打印时间戳。</p>
+<p><code>-Xloggc</code>输出GC日志到文件。</p>
 
-    private static Logger logger = LoggerFactory.getLogger(SqlStatementInterceptor.class);
-
-    @SuppressWarnings(&quot;unused&quot;)
-    private Properties properties;
-
-    @Override
-    public Object intercept(Invocation arg0) throws Throwable {
-        MappedStatement mappedStatement = (MappedStatement) arg0.getArgs()[0];
-        String sqlId = mappedStatement.getId();
-        Object returnValue;
-
-        long start = System.currentTimeMillis();
-        returnValue = arg0.proceed();
-        long end = System.currentTimeMillis();
-        long time = end - start;
-
-        StringBuilder str = new StringBuilder(100);
-        str.append(sqlId);
-        str.append(&quot;: &quot;);
-        str.append(&quot;cost time &quot;);
-        str.append(time);
-        str.append(&quot; ms.&quot;);
-        String sqlInfo = str.toString(); 
-        logger.debug(sqlInfo); 
-        return returnValue;
-    }
-
-    @Override
-    public Object plugin(Object arg0) {
-        return Plugin.wrap(arg0, this);
-    }
-
-    @Override
-    public void setProperties(Properties arg0) {
-        this.properties = arg0;
-    }
-
-}
-</code></pre>
       
 
       
@@ -230,7 +197,7 @@ public class SqlStatementInterceptor implements Interceptor {
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
@@ -286,7 +253,7 @@ public class SqlStatementInterceptor implements Interceptor {
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2017/06/15/2017-06-15-5-Java/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2017/06/25/2017-06-25-5-Java/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -300,18 +267,18 @@ public class SqlStatementInterceptor implements Interceptor {
   
 <nav id="article-nav">
   
-    <a href="/2017/05/25/2017-05-25-4-Java/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/15/2017-06-15-5-Java/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Java 字符串操作
+          Mybatis 执行速度监听
         
       </div>
     </a>
   
   
-    <a href="/2017/06/25/2017-06-25-5-Java/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JAVA GC 简单总结</div>
+    <a href="/2017/06/25/2017-06-25-5-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mybatis 执行速度监听</div>
       <i class="icon-circle-right"></i>
     </a>
   
