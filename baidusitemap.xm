@@ -4,8 +4,25 @@
 
     
   <url>
-    <loc>//litten.me/2017/06/25/2017-06-25-5-blog/</loc>
-    <lastmod>2017-06-25T16:10:50.909Z</lastmod>
+    <loc>//litten.me/2017/06/27/2017-06-27-9-Mybatis/</loc>
+    <lastmod>2017-06-27T15:08:40.931Z</lastmod>
+    <data>
+        <display>
+        <title>JAVA GC 简单总结</title>
+        <pubTime>2017-06-26T16:00:00.000Z</pubTime>
+        
+        <tag>Mybatis</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>//litten.me/2017/06/25/2017-06-25-6-Blog/</loc>
+    <lastmod>2017-06-27T15:06:59.878Z</lastmod>
     <data>
         <display>
         <title>GitHubBlog绑定域名</title>
@@ -21,7 +38,24 @@
 
     
   <url>
-    <loc>//litten.me/2017/06/25/2017-06-25-5-Java/</loc>
+    <loc>//litten.me/2017/06/27/2017-06-27-8-Javascript/</loc>
+    <lastmod>2017-06-27T15:05:59.086Z</lastmod>
+    <data>
+        <display>
+        <title>Javascript 页面飘窗窗</title>
+        <pubTime>2017-06-26T16:00:00.000Z</pubTime>
+        
+        <tag>Javascript</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>//litten.me/2017/06/25/2017-06-25-7-Java/</loc>
     <lastmod>2017-06-25T15:28:19.151Z</lastmod>
     <data>
         <display>
@@ -38,7 +72,7 @@
 
     
   <url>
-    <loc>//litten.me/2017/06/15/2017-06-15-5-Java/</loc>
+    <loc>//litten.me/2017/06/15/2017-06-15-4-Mybatis/</loc>
     <lastmod>2017-06-15T07:45:43.721Z</lastmod>
     <data>
         <display>
@@ -55,7 +89,7 @@
 
     
   <url>
-    <loc>//litten.me/2017/05/25/2017-05-25-4-Java/</loc>
+    <loc>//litten.me/2017/05/25/2017-05-25-5-Java/</loc>
     <lastmod>2017-05-25T14:13:20.026Z</lastmod>
     <data>
         <display>

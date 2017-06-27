@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>Archives: 2017 | Coolcat的博客</title>
+  <title>JAVA GC 简单总结 | Coolcat的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="重庆科技学院12级，就职于二流科技公司。擅长各项前端技能，深入研究JAVA后端技术。此为博客一枚。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Coolcat的博客">
-<meta property="og:url" content="//litten.me/archives/2017/index.html">
+  <meta name="description" content="GC分代GC的英文全拼是Garbage Collection，意思是垃圾收集。 Java 将堆内存分为三代来管理：  年轻代 (Young Generation) 年老代 (Old Generation) 永久代 (Perm Generation)  年轻代：又分为Eden、From和To，其中From和To又统称为Survivor Spaces（幸存区）。年轻代大小可以由-Xmn来控制，也可以用">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA GC 简单总结">
+<meta property="og:url" content="//litten.me/2017/06/25/2017-06-25-7-Java/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
-<meta property="og:description" content="重庆科技学院12级，就职于二流科技公司。擅长各项前端技能，深入研究JAVA后端技术。此为博客一枚。">
+<meta property="og:description" content="GC分代GC的英文全拼是Garbage Collection，意思是垃圾收集。 Java 将堆内存分为三代来管理：  年轻代 (Young Generation) 年老代 (Old Generation) 永久代 (Perm Generation)  年轻代：又分为Eden、From和To，其中From和To又统称为Survivor Spaces（幸存区）。年轻代大小可以由-Xmn来控制，也可以用">
+<meta property="og:updated_time" content="2017-06-25T15:28:19.151Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Coolcat的博客">
-<meta name="twitter:description" content="重庆科技学院12级，就职于二流科技公司。擅长各项前端技能，深入研究JAVA后端技术。此为博客一枚。">
+<meta name="twitter:title" content="JAVA GC 简单总结">
+<meta name="twitter:description" content="GC分代GC的英文全拼是Garbage Collection，意思是垃圾收集。 Java 将堆内存分为三代来管理：  年轻代 (Young Generation) 年老代 (Old Generation) 永久代 (Perm Generation)  年轻代：又分为Eden、From和To，其中From和To又统称为Survivor Spaces（幸存区）。年轻代大小可以由-Xmn来控制，也可以用">
   
     <link rel="alternative" href="/atom.xml" title="Coolcat的博客" type="application/atom+xml">
   
@@ -138,150 +140,58 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2017-06-25-7-Java" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/27/2017-06-27-8-Javascript/" class="archive-article-date">
-  	<time datetime="2017-06-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/27/2017-06-27-8-Javascript/">Javascript 页面飘窗窗</a>
+    <h1 class="article-title" itemprop="name">
+      JAVA GC 简单总结
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/27/2017-06-27-9-Mybatis/" class="archive-article-date">
-  	<time datetime="2017-06-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/27/2017-06-27-9-Mybatis/">JAVA GC 简单总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/25/2017-06-25-6-Blog/" class="archive-article-date">
-  	<time datetime="2017-06-25T15:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/25/2017-06-25-6-Blog/">GitHubBlog绑定域名</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/25/2017-06-25-7-Java/" class="archive-article-date">
+        
+        <a href="/2017/06/25/2017-06-25-7-Java/" class="archive-article-date">
   	<time datetime="2017-06-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/25/2017-06-25-7-Java/">JAVA GC 简单总结</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="GC分代"><a href="#GC分代" class="headerlink" title="GC分代"></a>GC分代</h2><p>GC的英文全拼是Garbage Collection，意思是垃圾收集。</p>
+<p>Java 将堆内存分为三代来管理：</p>
+<ul>
+<li>年轻代 (<code>Young Generation</code>)</li>
+<li>年老代 (<code>Old Generation</code>)</li>
+<li>永久代 (<code>Perm Generation</code>)</li>
+</ul>
+<p><strong>年轻代</strong>：又分为<code>Eden</code>、<code>From</code>和<code>To</code>，其中<code>From</code>和<code>To</code>又统称为<code>Survivor Spaces</code>（幸存区）。年轻代大小可以由<code>-Xmn</code>来控制，也可以用<code>-XX:SurvivorRatio</code>来控制<code>Eden</code>和<code>Survivor</code>的比例，使用<code>–XX:NewRatio</code>来指定新生代和年老代的大小比例。</p>
+<p><strong>年老代</strong>：用来存放多次垃圾回收依然存活的对象。</p>
+<p><strong>永久代</strong>：来存放方法区。可通过<code>-XX:PermSize</code>和<code>-XX:MaxPermSize</code>来指定最小值和最大值。</p>
+<p>正常情况下，一个对象从创建到销毁，应该是从<code>Eden</code>，然后到<code>Survivor Spaces</code>（幸存区），再到<code>Old Generation</code>（年老代），最后在某次GC下消失。也可能一个对象直接在<code>Eden</code>里死掉，也可能一直在<code>Old Generation</code>（年老代）存活。</p>
+<h2 id="GC种类"><a href="#GC种类" class="headerlink" title="GC种类"></a>GC种类</h2><p>Java GC分为两类：</p>
+<ul>
+<li><code>Minar GC</code></li>
+<li><code>FULL GC</code></li>
+<li><code>Major GC</code></li>
+</ul>
+<p><strong>Minar GC</strong>：从年轻代空间（包括 <code>Eden</code> 和 <code>Survivor</code> 区域）回收内存被称为 Minor GC。</p>
+<p><strong>Major GC</strong>：是清理老年代。</p>
+<p><strong>FULL GC</strong>：是清理整个堆空间—包括年轻代和老年代。</p>
+<p>GC的时候，会暂停全世界(<code>stop-the-world</code>)，意思是停止所有的应用线程，所以要避免不必要的GC已提高性能。</p>
+<h2 id="GC日志"><a href="#GC日志" class="headerlink" title="GC日志"></a>GC日志</h2><p><code>-XX:+PrintGCDetails</code>打印日志详情。</p>
+<p><code>-XX:+PrintGCTimeStamps</code>打印时间戳。</p>
+<p><code>-Xloggc</code>输出GC日志到文件。</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -293,209 +203,97 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2017/06/25/2017-06-25-7-Java/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/15/2017-06-15-4-Mybatis/" class="archive-article-date">
-  	<time datetime="2017-06-15T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-15</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/15/2017-06-15-4-Mybatis/">Mybatis 执行速度监听</a>
-    </h1>
+    <a href="/2017/06/15/2017-06-15-4-Mybatis/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Mybatis 执行速度监听
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/25/2017-06-25-6-Blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">GitHubBlog绑定域名</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/2017-05-25-5-Java/" class="archive-article-date">
-  	<time datetime="2017-05-25T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/2017-05-25-5-Java/">Java 字符串操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/14/2017-05-14-2-Java/" class="archive-article-date">
-  	<time datetime="2017-05-14T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/14/2017-05-14-2-Java/">Java多线程面试问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/14/2017-05-14-1-HelloWorld/" class="archive-article-date">
-  	<time datetime="2017-05-14T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/14/2017-05-14-1-HelloWorld/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/14/2017-05-14-3-LiftTime/" class="archive-article-date">
-  	<time datetime="2017-05-14T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/14/2017-05-14-3-LiftTime/">2017五一醒悟</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -518,8 +316,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
