@@ -4,11 +4,28 @@
 
     
   <url>
-    <loc>//litten.me/2017/06/27/2017-06-27-9-Mybatis/</loc>
-    <lastmod>2017-06-27T15:08:40.931Z</lastmod>
+    <loc>//litten.me/2017/06/27/2017-06-27-8-Javascript/</loc>
+    <lastmod>2017-06-27T15:11:22.342Z</lastmod>
     <data>
         <display>
-        <title>JAVA GC 简单总结</title>
+        <title>Javascript 页面飘窗</title>
+        <pubTime>2017-06-26T16:00:00.000Z</pubTime>
+        
+        <tag>Javascript</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>//litten.me/2017/06/27/2017-06-27-9-Mybatis/</loc>
+    <lastmod>2017-06-27T15:11:15.500Z</lastmod>
+    <data>
+        <display>
+        <title>druid连接池监控配置</title>
         <pubTime>2017-06-26T16:00:00.000Z</pubTime>
         
         <tag>Mybatis</tag>
@@ -29,23 +46,6 @@
         <pubTime>2017-06-25T15:20:00.000Z</pubTime>
         
         <tag>github</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>//litten.me/2017/06/27/2017-06-27-8-Javascript/</loc>
-    <lastmod>2017-06-27T15:05:59.086Z</lastmod>
-    <data>
-        <display>
-        <title>Javascript 页面飘窗窗</title>
-        <pubTime>2017-06-26T16:00:00.000Z</pubTime>
-        
-        <tag>Javascript</tag>
          
          
            
