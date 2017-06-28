@@ -248,10 +248,80 @@ function floatAD() {
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="阿里巴巴DRUID-链接监控配置"><a href="#阿里巴巴DRUID-链接监控配置" class="headerlink" title="阿里巴巴DRUID 链接监控配置"></a>阿里巴巴DRUID 链接监控配置</h1><p>##Maven添加jar包<br>    <!-- 数据库连接池 --><br>     <dependency><br>       <groupid>com.alibaba</groupid><br>       <artifactid>druid</artifactid><br>       <version>0.2.26</version><br>     </dependency></p>
-<p>##数据库连接池配置<br>    <!-- druid driverClassName属性可以不用配置能自动识别，能自动从连接字符串中获取 --><br>     <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"><br>     <property name="url" value="*"><br>     <property name="username" value="*"><br>     <property name="password" value="*"><br>     <property name="filters" value="stat"><br>     <property name="maxActive" value="20"><br>     <property name="initialSize" value="1"><br>     <property name="maxWait" value="60000"><br>     <property name="minIdle" value="1"><br>     <property name="timeBetweenEvictionRunsMillis" value="60000"><br>     <property name="minEvictableIdleTimeMillis" value="300000"><br>     <property name="validationQuery" value="SELECT 'x'"><br>     <property name="testWhileIdle" value="true"><br>     <property name="testOnBorrow" value="false"><br>     <property name="testOnReturn" value="false"><br>     <property name="poolPreparedStatements" value="true"><br>     <property name="maxPoolPreparedStatementPerConnectionSize" value="50">        </property></property></property></property></property></property></property></property></property></property></property></property></property></property></property></property></property></p>
-<p>##配置Druid过滤器web.xml<br>    <!-- 添加druid监控 --><br>    <servlet><br>        <servlet-name>DruidStatView</servlet-name><br>        <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class><br>        <init-param><br>        <!-- 允许清空统计数据 --><br>        <param-name>resetEnable</param-name><br>        <param-value>true</param-value><br>        </init-param><br>        <init-param><br>            <!-- 用户名 --><br>            <param-name>loginUsername</param-name><br>            <param-value>druid</param-value><br>        </init-param><br>        <init-param><br>            <!-- 密码 --><br>            <param-name>loginPassword</param-name><br>            <param-value>druid</param-value><br>        </init-param><br>    </servlet><br>    <servlet-mapping><br>        <servlet-name>DruidStatView</servlet-name><br>        <url-pattern>/druid/<em></em></url-pattern><br>    </servlet-mapping><br>    <!-- 添加Web应用等监控 session监控--><br>    <filter><br>        <filter-name>DruidWebStatFilter</filter-name><br>        <filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class><br>        <init-param><br>            <param-name>exclusions</param-name><br>            <param-value>.js,<em>.gif,</em>.jpg,<em>.png,</em>.css,<em>.ico,/druid/</em></param-value><br>        </init-param><br>        <init-param><br>            <param-name>profileEnable</param-name><br>            <param-value>true</param-value><br>        </init-param><br>        <init-param><br>            <param-name>principalCookieName</param-name><br>            <param-value>USER_COOKIE</param-value><br>        </init-param><br>        <init-param><br>            <param-name>principalSessionName</param-name><br>            <param-value>USER_SESSION</param-value><br>        </init-param><br>    </filter><br>    <filter-mapping><br>        <filter-name>DruidWebStatFilter</filter-name><br>        <url-pattern>/*</url-pattern><br>    </filter-mapping></p>
-<h2 id="druld配置spring监听过滤"><a href="#druld配置spring监听过滤" class="headerlink" title="druld配置spring监听过滤"></a>druld配置spring监听过滤</h2><pre><code>&lt;!-- druld配置spring 监听 --&gt;
+        <h1 id="阿里巴巴DRUID-链接监控配置"><a href="#阿里巴巴DRUID-链接监控配置" class="headerlink" title="阿里巴巴DRUID 链接监控配置"></a>阿里巴巴DRUID 链接监控配置</h1><h2 id="Maven添加jar包"><a href="#Maven添加jar包" class="headerlink" title="Maven添加jar包"></a>Maven添加jar包</h2><pre><code>&lt;!-- 数据库连接池 --&gt;
+ &lt;dependency&gt;
+   &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+   &lt;artifactId&gt;druid&lt;/artifactId&gt;
+   &lt;version&gt;0.2.26&lt;/version&gt;
+ &lt;/dependency&gt;
+</code></pre><h2 id="数据库连接池配置"><a href="#数据库连接池配置" class="headerlink" title="数据库连接池配置"></a>数据库连接池配置</h2><pre><code>&lt;!-- druid driverClassName属性可以不用配置能自动识别，能自动从连接字符串中获取 --&gt;
+ &lt;property name=&quot;driverClassName&quot; value=&quot;com.microsoft.sqlserver.jdbc.SQLServerDriver&quot; /&gt; 
+ &lt;property name=&quot;url&quot; value=&quot;*&quot; /&gt;
+ &lt;property name=&quot;username&quot; value=&quot;*&quot; /&gt;
+ &lt;property name=&quot;password&quot; value=&quot;*&quot; /&gt;
+ &lt;property name=&quot;filters&quot; value=&quot;stat&quot; /&gt;  
+ &lt;property name=&quot;maxActive&quot; value=&quot;20&quot; /&gt;
+ &lt;property name=&quot;initialSize&quot; value=&quot;1&quot; /&gt;
+ &lt;property name=&quot;maxWait&quot; value=&quot;60000&quot; /&gt;
+ &lt;property name=&quot;minIdle&quot; value=&quot;1&quot; /&gt;
+ &lt;property name=&quot;timeBetweenEvictionRunsMillis&quot; value=&quot;60000&quot; /&gt;
+ &lt;property name=&quot;minEvictableIdleTimeMillis&quot; value=&quot;300000&quot; /&gt;
+ &lt;property name=&quot;validationQuery&quot; value=&quot;SELECT &apos;x&apos;&quot; /&gt;
+ &lt;property name=&quot;testWhileIdle&quot; value=&quot;true&quot; /&gt;
+ &lt;property name=&quot;testOnBorrow&quot; value=&quot;false&quot; /&gt;
+ &lt;property name=&quot;testOnReturn&quot; value=&quot;false&quot; /&gt;
+ &lt;property name=&quot;poolPreparedStatements&quot; value=&quot;true&quot; /&gt;
+ &lt;property name=&quot;maxPoolPreparedStatementPerConnectionSize&quot; value=&quot;50&quot; /&gt;        
+</code></pre><h2 id="配置Druid过滤器web-xml"><a href="#配置Druid过滤器web-xml" class="headerlink" title="配置Druid过滤器web.xml"></a>配置Druid过滤器web.xml</h2><pre><code>   &lt;!-- 添加druid监控 --&gt;
+   &lt;servlet&gt;
+       &lt;servlet-name&gt;DruidStatView&lt;/servlet-name&gt;
+       &lt;servlet-class&gt;com.alibaba.druid.support.http.StatViewServlet&lt;/servlet-class&gt;
+       &lt;init-param&gt;  
+       &lt;!-- 允许清空统计数据 --&gt;  
+       &lt;param-name&gt;resetEnable&lt;/param-name&gt;  
+       &lt;param-value&gt;true&lt;/param-value&gt;  
+       &lt;/init-param&gt;  
+       &lt;init-param&gt;  
+           &lt;!-- 用户名 --&gt;  
+           &lt;param-name&gt;loginUsername&lt;/param-name&gt;  
+           &lt;param-value&gt;druid&lt;/param-value&gt;  
+       &lt;/init-param&gt;  
+       &lt;init-param&gt;  
+           &lt;!-- 密码 --&gt;  
+           &lt;param-name&gt;loginPassword&lt;/param-name&gt;  
+           &lt;param-value&gt;druid&lt;/param-value&gt;  
+       &lt;/init-param&gt;   
+   &lt;/servlet&gt;
+   &lt;servlet-mapping&gt;
+       &lt;servlet-name&gt;DruidStatView&lt;/servlet-name&gt;
+       &lt;url-pattern&gt;/druid/*&lt;/url-pattern&gt;
+   &lt;/servlet-mapping&gt;
+   &lt;!-- 添加Web应用等监控 session监控--&gt;
+   &lt;filter&gt;
+       &lt;filter-name&gt;DruidWebStatFilter&lt;/filter-name&gt;
+       &lt;filter-class&gt;com.alibaba.druid.support.http.WebStatFilter&lt;/filter-class&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;exclusions&lt;/param-name&gt;
+           &lt;param-value&gt;*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*&lt;/param-value&gt;
+       &lt;/init-param&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;profileEnable&lt;/param-name&gt;
+           &lt;param-value&gt;true&lt;/param-value&gt;
+       &lt;/init-param&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;principalCookieName&lt;/param-name&gt;
+           &lt;param-value&gt;USER_COOKIE&lt;/param-value&gt;
+       &lt;/init-param&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;principalSessionName&lt;/param-name&gt;
+           &lt;param-value&gt;USER_SESSION&lt;/param-value&gt;
+       &lt;/init-param&gt;
+   &lt;/filter&gt;
+   &lt;filter-mapping&gt;
+       &lt;filter-name&gt;DruidWebStatFilter&lt;/filter-name&gt;
+       &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</code></pre><h2 id="druld配置spring监听过滤"><a href="#druld配置spring监听过滤" class="headerlink" title="druld配置spring监听过滤"></a>druld配置spring监听过滤</h2><pre><code>&lt;!-- druld配置spring 监听 --&gt;
 &lt;bean id=&quot;druid-stat-interceptor&quot; class=&quot;com.alibaba.druid.support.spring.stat.DruidStatInterceptor&quot; /&gt;
 &lt;bean id=&quot;druid-stat-pointcut&quot; class=&quot;org.springframework.aop.support.JdkRegexpMethodPointcut&quot; scope=&quot;prototype&quot;&gt;
 &lt;property name=&quot;patterns&quot;&gt;
@@ -265,8 +335,7 @@ function floatAD() {
 &lt;aop:advisor advice-ref=&quot;druid-stat-interceptor&quot;
     pointcut-ref=&quot;druid-stat-pointcut&quot; /&gt;
 &lt;/aop:config&gt;  
-</code></pre><p>##访问地址<a href="http://ip:port/project/druid/index.html" target="_blank" rel="external">http://ip:port/project/druid/index.html</a> </p>
-<p><img src="http://lengjiaxin.github.io/images/druid/druid_1.PNG" alt=""></p>
+</code></pre><h2 id="访问地址http-ip-port-project-druid-index-html"><a href="#访问地址http-ip-port-project-druid-index-html" class="headerlink" title="访问地址http://ip:port/project/druid/index.html"></a>访问地址<a href="http://ip:port/project/druid/index.html" target="_blank" rel="external">http://ip:port/project/druid/index.html</a></h2><p><img src="http://lengjiaxin.github.io/images/druid/druid_1.PNG" alt=""></p>
 <p><img src="http://lengjiaxin.github.io/images/druid/druid_2.PNG" alt=""></p>
 <p><img src="http://lengjiaxin.github.io/images/druid/druid_3.PNG" alt=""></p>
 
@@ -627,6 +696,72 @@ public class SqlStatementInterceptor implements Interceptor {
 
 
   
+    <article id="post-2017-05-14-1-HelloWorld" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/14/2017-05-14-1-HelloWorld/">Hello World</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/14/2017-05-14-1-HelloWorld/" class="archive-article-date">
+  	<time datetime="2017-05-14T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-2017-05-14-2-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -860,72 +995,6 @@ Executors可以用于方便的创建线程池。
 
 
   
-    <article id="post-2017-05-14-1-HelloWorld" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/14/2017-05-14-1-HelloWorld/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/14/2017-05-14-1-HelloWorld/" class="archive-article-date">
-  	<time datetime="2017-05-14T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1011,11 +1080,11 @@ Executors可以用于方便的创建线程池。
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
