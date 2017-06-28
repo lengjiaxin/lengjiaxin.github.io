@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="//litten.me">
   <title>druid连接池监控配置 | Coolcat的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="阿里巴巴DRUID 链接监控配置Maven添加jar包&amp;lt;!-- 数据库连接池 --&amp;gt;  &amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;druid&amp;lt;/artifactId&amp;gt;    &amp;lt;version&amp;gt;0.2.26&amp;lt;/version&amp;gt">
+  <meta name="description" content="阿里巴巴DRUID 链接监控配置Maven添加jar包&amp;lt;!-- 数据库连接池 --&amp;gt;     &amp;lt;dependency&amp;gt;         &amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt;         &amp;lt;artifactId&amp;gt;druid&amp;lt;/artifactId&amp;gt;         &amp;lt;version&amp;gt;0.2">
 <meta name="keywords" content="Mybatis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="druid连接池监控配置">
 <meta property="og:url" content="//litten.me/2017/06/27/2017-06-27-9-Mybatis/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
-<meta property="og:description" content="阿里巴巴DRUID 链接监控配置Maven添加jar包&amp;lt;!-- 数据库连接池 --&amp;gt;  &amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;druid&amp;lt;/artifactId&amp;gt;    &amp;lt;version&amp;gt;0.2.26&amp;lt;/version&amp;gt">
+<meta property="og:description" content="阿里巴巴DRUID 链接监控配置Maven添加jar包&amp;lt;!-- 数据库连接池 --&amp;gt;     &amp;lt;dependency&amp;gt;         &amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt;         &amp;lt;artifactId&amp;gt;druid&amp;lt;/artifactId&amp;gt;         &amp;lt;version&amp;gt;0.2">
 <meta property="og:image" content="http://lengjiaxin.github.io/images/druid/druid_1.PNG">
 <meta property="og:image" content="http://lengjiaxin.github.io/images/druid/druid_2.PNG">
 <meta property="og:image" content="http://lengjiaxin.github.io/images/druid/druid_3.PNG">
-<meta property="og:updated_time" content="2017-06-28T15:13:56.816Z">
+<meta property="og:updated_time" content="2017-06-28T15:16:59.467Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="druid连接池监控配置">
-<meta name="twitter:description" content="阿里巴巴DRUID 链接监控配置Maven添加jar包&amp;lt;!-- 数据库连接池 --&amp;gt;  &amp;lt;dependency&amp;gt;    &amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt;druid&amp;lt;/artifactId&amp;gt;    &amp;lt;version&amp;gt;0.2.26&amp;lt;/version&amp;gt">
+<meta name="twitter:description" content="阿里巴巴DRUID 链接监控配置Maven添加jar包&amp;lt;!-- 数据库连接池 --&amp;gt;     &amp;lt;dependency&amp;gt;         &amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt;         &amp;lt;artifactId&amp;gt;druid&amp;lt;/artifactId&amp;gt;         &amp;lt;version&amp;gt;0.2">
 <meta name="twitter:image" content="http://lengjiaxin.github.io/images/druid/druid_1.PNG">
   
     <link rel="alternative" href="/atom.xml" title="Coolcat的博客" type="application/atom+xml">
@@ -165,11 +165,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="阿里巴巴DRUID-链接监控配置"><a href="#阿里巴巴DRUID-链接监控配置" class="headerlink" title="阿里巴巴DRUID 链接监控配置"></a>阿里巴巴DRUID 链接监控配置</h1><h2 id="Maven添加jar包"><a href="#Maven添加jar包" class="headerlink" title="Maven添加jar包"></a>Maven添加jar包</h2><pre><code>&lt;!-- 数据库连接池 --&gt;
- &lt;dependency&gt;
-   &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
-   &lt;artifactId&gt;druid&lt;/artifactId&gt;
-   &lt;version&gt;0.2.26&lt;/version&gt;
- &lt;/dependency&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+        &lt;artifactId&gt;druid&lt;/artifactId&gt;
+        &lt;version&gt;0.2.26&lt;/version&gt;
+    &lt;/dependency&gt;
 </code></pre><h2 id="数据库连接池配置"><a href="#数据库连接池配置" class="headerlink" title="数据库连接池配置"></a>数据库连接池配置</h2><pre><code>&lt;!-- druid driverClassName属性可以不用配置能自动识别，能自动从连接字符串中获取 --&gt;
  &lt;property name=&quot;driverClassName&quot; value=&quot;com.microsoft.sqlserver.jdbc.SQLServerDriver&quot; /&gt; 
  &lt;property name=&quot;url&quot; value=&quot;*&quot; /&gt;
@@ -439,10 +439,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -451,15 +447,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
