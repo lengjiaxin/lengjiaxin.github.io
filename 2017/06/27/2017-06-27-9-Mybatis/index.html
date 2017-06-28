@@ -8,17 +8,21 @@
   <link rel="dns-prefetch" href="//litten.me">
   <title>druid连接池监控配置 | Coolcat的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Mybatis druid 连接池监控配置">
+  <meta name="description" content="阿里巴巴DRUID 链接监控配置##Maven添加jar包                            com.alibaba            druid            0.2.26         ##数据库连接池配置">
 <meta name="keywords" content="Mybatis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="druid连接池监控配置">
 <meta property="og:url" content="//litten.me/2017/06/27/2017-06-27-9-Mybatis/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
-<meta property="og:description" content="Mybatis druid 连接池监控配置">
-<meta property="og:updated_time" content="2017-06-27T15:11:15.500Z">
+<meta property="og:description" content="阿里巴巴DRUID 链接监控配置##Maven添加jar包                            com.alibaba            druid            0.2.26         ##数据库连接池配置">
+<meta property="og:image" content="http://lengjiaxin.github.io/images/druid/druid_1.PNG">
+<meta property="og:image" content="http://lengjiaxin.github.io/images/druid/druid_2.PNG">
+<meta property="og:image" content="http://lengjiaxin.github.io/images/druid/druid_3.PNG">
+<meta property="og:updated_time" content="2017-06-28T14:50:31.966Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="druid连接池监控配置">
-<meta name="twitter:description" content="Mybatis druid 连接池监控配置">
+<meta name="twitter:description" content="阿里巴巴DRUID 链接监控配置##Maven添加jar包                            com.alibaba            druid            0.2.26         ##数据库连接池配置">
+<meta name="twitter:image" content="http://lengjiaxin.github.io/images/druid/druid_1.PNG">
   
     <link rel="alternative" href="/atom.xml" title="Coolcat的博客" type="application/atom+xml">
   
@@ -160,7 +164,28 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Mybatis-druid-连接池监控配置"><a href="#Mybatis-druid-连接池监控配置" class="headerlink" title="Mybatis druid 连接池监控配置"></a>Mybatis druid 连接池监控配置</h2>
+        <h1 id="阿里巴巴DRUID-链接监控配置"><a href="#阿里巴巴DRUID-链接监控配置" class="headerlink" title="阿里巴巴DRUID 链接监控配置"></a>阿里巴巴DRUID 链接监控配置</h1><p>##Maven添加jar包<br>        <!-- 数据库连接池 --><br>        <dependency><br>            <groupid>com.alibaba</groupid><br>            <artifactid>druid</artifactid><br>            <version>0.2.26</version><br>        </dependency></p>
+<p>##数据库连接池配置<br>        <!-- druid driverClassName属性可以不用配置能自动识别，能自动从连接字符串中获取 --><br>        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"><br>        <property name="url" value="*"><br>        <property name="username" value="*"><br>        <property name="password" value="*"><br>        <property name="filters" value="stat"><br>        <property name="maxActive" value="20"><br>        <property name="initialSize" value="1"><br>        <property name="maxWait" value="60000"><br>        <property name="minIdle" value="1"><br>        <property name="timeBetweenEvictionRunsMillis" value="60000"><br>        <property name="minEvictableIdleTimeMillis" value="300000"><br>        <property name="validationQuery" value="SELECT 'x'"><br>        <property name="testWhileIdle" value="true"><br>        <property name="testOnBorrow" value="false"><br>        <property name="testOnReturn" value="false"><br>        <property name="poolPreparedStatements" value="true"><br>        <property name="maxPoolPreparedStatementPerConnectionSize" value="50"></property></property></property></property></property></property></property></property></property></property></property></property></property></property></property></property></property></p>
+<p>##配置Druid过滤器web.xml<br>    <!-- 添加druid监控 --><br>    <servlet><br>        <servlet-name>DruidStatView</servlet-name><br>        <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class><br>        <init-param><br>        <!-- 允许清空统计数据 --><br>        <param-name>resetEnable</param-name><br>        <param-value>true</param-value><br>        </init-param><br>        <init-param><br>            <!-- 用户名 --><br>            <param-name>loginUsername</param-name><br>            <param-value>druid</param-value><br>        </init-param><br>        <init-param><br>            <!-- 密码 --><br>            <param-name>loginPassword</param-name><br>            <param-value>druid</param-value><br>        </init-param><br>    </servlet><br>    <servlet-mapping><br>        <servlet-name>DruidStatView</servlet-name><br>        <url-pattern>/druid/<em></em></url-pattern><br>    </servlet-mapping><br>    <!-- 添加Web应用等监控 session监控--><br>    <filter><br>        <filter-name>DruidWebStatFilter</filter-name><br>        <filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class><br>        <init-param><br>            <param-name>exclusions</param-name><br>            <param-value>.js,<em>.gif,</em>.jpg,<em>.png,</em>.css,<em>.ico,/druid/</em></param-value><br>        </init-param><br>        <init-param><br>            <param-name>profileEnable</param-name><br>            <param-value>true</param-value><br>        </init-param><br>        <init-param><br>            <param-name>principalCookieName</param-name><br>            <param-value>USER_COOKIE</param-value><br>        </init-param><br>        <init-param><br>            <param-name>principalSessionName</param-name><br>            <param-value>USER_SESSION</param-value><br>        </init-param><br>    </filter><br>    <filter-mapping><br>        <filter-name>DruidWebStatFilter</filter-name><br>        <url-pattern>/*</url-pattern><br>    </filter-mapping></p>
+<h2 id="druld配置spring监听过滤"><a href="#druld配置spring监听过滤" class="headerlink" title="druld配置spring监听过滤"></a>druld配置spring监听过滤</h2><pre><code>&lt;!-- druld配置spring 监听 --&gt;
+&lt;bean id=&quot;druid-stat-interceptor&quot; class=&quot;com.alibaba.druid.support.spring.stat.DruidStatInterceptor&quot; /&gt;
+&lt;bean id=&quot;druid-stat-pointcut&quot; class=&quot;org.springframework.aop.support.JdkRegexpMethodPointcut&quot; scope=&quot;prototype&quot;&gt;
+&lt;property name=&quot;patterns&quot;&gt;
+    &lt;list&gt;
+        &lt;value&gt;com.*.service.*&lt;/value&gt;
+        &lt;value&gt;com.*.dao.*&lt;/value&gt;
+    &lt;/list&gt;
+&lt;/property&gt;
+&lt;/bean&gt;
+&lt;aop:config&gt;
+&lt;aop:advisor advice-ref=&quot;druid-stat-interceptor&quot;
+    pointcut-ref=&quot;druid-stat-pointcut&quot; /&gt;
+&lt;/aop:config&gt;  
+</code></pre><p>###访问地址<a href="http://ip:port/project/druid/index.html" target="_blank" rel="external">http://ip:port/project/druid/index.html</a> </p>
+<p><img src="http://lengjiaxin.github.io/images/druid/druid_1.PNG" alt=""></p>
+<p><img src="http://lengjiaxin.github.io/images/druid/druid_2.PNG" alt=""></p>
+<p><img src="http://lengjiaxin.github.io/images/druid/druid_3.PNG" alt=""></p>
+
       
 
       
@@ -243,15 +268,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/27/2017-06-27-8-Javascript/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/25/2017-06-25-6-Blog/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Javascript 页面飘窗
+          GitHubBlog绑定域名
         
       </div>
     </a>
   
+  
+    <a href="/2017/06/27/2017-06-27-8-Javascript/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Javascript 页面飘窗</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -345,19 +375,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -365,11 +383,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
