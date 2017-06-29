@@ -5,7 +5,7 @@
     
   <url>
     <loc>//litten.me/2017/06/29/2017-06-29-2-yilia/</loc>
-    <lastmod>2017-06-29T15:38:50.418Z</lastmod>
+    <lastmod>2017-06-29T15:41:20.017Z</lastmod>
     <data>
         <display>
         <title>yilia配置CNZZ</title>
