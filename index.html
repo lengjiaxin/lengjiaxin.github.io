@@ -192,9 +192,8 @@
 </code></pre><p>上面的APP ID和APP KEY是在畅言设置中得到。</p>
 <p>这里需要注意一点的是：sid=”&lt;%= page.title %&gt;”&gt; 这样的话畅言就可以直接根据对应的文章来识别，使得文章有对应的评论，不会都乱在一起。</p>
 <p>2、在每篇文章开头的 front-matter 中添加一句comments: true，然后回到博客根目录执行命令 hexo d -g ，重新生成博客并部署博客，然后刷新，任选一篇文章进入下拉，会发现评论功能可以使用了。</p>
-<p><img src="http://lengjiaxin.github.io/images/yilia/yilia.PNG" alt=""></p>
-<p>#修改 BUG</p>
-<p>但是，这是你会发现一个 Bug，表情按钮点击不了，原因是被左侧的 div 层覆盖了，回到我们刚才改过的代码，找到 &lt;div id=”SOHUCS” 开头的一串代码。并做如下更改</p>
+<p><img src="http://lengjiaxin.github.io/images/yilia/yilia.JPG" alt=""></p>
+<h2 id="修改-BUG"><a href="#修改-BUG" class="headerlink" title="修改 BUG"></a>修改 BUG</h2><p>但是，这是你会发现一个 Bug，表情按钮点击不了，原因是被左侧的 div 层覆盖了，回到我们刚才改过的代码，找到 &lt;div id=”SOHUCS” 开头的一串代码。并做如下更改</p>
 <pre><code>&lt;div id=&quot;SOHUCS&quot; sid=&quot;&lt;%= page.title %&gt;&quot; style=&quot;padding: 0px 30px 0px 46px;&quot;&gt;&lt;/div&gt;
 </code></pre><p>加入上面这一段样式代码，即可修复。</p>
 
