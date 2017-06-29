@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>//litten.me/2017/06/29/2017-06-29-2-yilia/</loc>
+    <lastmod>2017-06-29T15:38:50.418Z</lastmod>
+    <data>
+        <display>
+        <title>yilia配置CNZZ</title>
+        <pubTime>2017-06-28T16:00:00.000Z</pubTime>
+        
+        <tag>yilia</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>//litten.me/2017/06/29/2017-06-29-1-yilia/</loc>
     <lastmod>2017-06-29T15:27:11.224Z</lastmod>
     <data>
