@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>Archives: 2017/5 | Coolcat的博客</title>
+  <title>yilia配置多说评论 | Coolcat的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="重庆科技学院12级，就职于二流科技公司。擅长各项前端技能，深入研究JAVA后端技术。此为博客一枚。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Coolcat的博客">
-<meta property="og:url" content="//litten.me/archives/2017/05/index.html">
+  <meta name="description" content="使用畅言系统1、修改 themes\yilia\layout_partial\article.ejs 模板，把如下代码 &amp;lt;% if (!index &amp;amp;&amp;amp; post.comments &amp;amp;&amp;amp; config.disqus_shortname){ %&amp;gt;  &amp;lt;section id=&amp;quot;comments&amp;quot;&amp;gt;    &amp;lt;div id=">
+<meta name="keywords" content="yilia">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yilia配置多说评论">
+<meta property="og:url" content="//litten.me/2017/06/29/2017-06-29-1-yilia/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
-<meta property="og:description" content="重庆科技学院12级，就职于二流科技公司。擅长各项前端技能，深入研究JAVA后端技术。此为博客一枚。">
+<meta property="og:description" content="使用畅言系统1、修改 themes\yilia\layout_partial\article.ejs 模板，把如下代码 &amp;lt;% if (!index &amp;amp;&amp;amp; post.comments &amp;amp;&amp;amp; config.disqus_shortname){ %&amp;gt;  &amp;lt;section id=&amp;quot;comments&amp;quot;&amp;gt;    &amp;lt;div id=">
+<meta property="og:image" content="http://lengjiaxin.github.io/images/yilia/yilia.PNG">
+<meta property="og:updated_time" content="2017-06-29T15:22:47.845Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Coolcat的博客">
-<meta name="twitter:description" content="重庆科技学院12级，就职于二流科技公司。擅长各项前端技能，深入研究JAVA后端技术。此为博客一枚。">
+<meta name="twitter:title" content="yilia配置多说评论">
+<meta name="twitter:description" content="使用畅言系统1、修改 themes\yilia\layout_partial\article.ejs 模板，把如下代码 &amp;lt;% if (!index &amp;amp;&amp;amp; post.comments &amp;amp;&amp;amp; config.disqus_shortname){ %&amp;gt;  &amp;lt;section id=&amp;quot;comments&amp;quot;&amp;gt;    &amp;lt;div id=">
+<meta name="twitter:image" content="http://lengjiaxin.github.io/images/yilia/yilia.PNG">
   
     <link rel="alternative" href="/atom.xml" title="Coolcat的博客" type="application/atom+xml">
   
@@ -138,176 +142,189 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2017-06-29-1-yilia" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      yilia配置多说评论
+    </h1>
+  
+
+        
+        <a href="/2017/06/29/2017-06-29-1-yilia/" class="archive-article-date">
+  	<time datetime="2017-06-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="使用畅言系统"><a href="#使用畅言系统" class="headerlink" title="使用畅言系统"></a>使用畅言系统</h2><p>1、修改 themes\yilia\layout_partial\article.ejs 模板，把如下代码</p>
+<pre><code>&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname){ %&gt;
+ &lt;section id=&quot;comments&quot;&gt;
+   &lt;div id=&quot;disqus_thread&quot;&gt;
+     这里还有很多代码
+   &lt;/div&gt;
+ &lt;/section&gt;
+ &lt;% } %&gt;
+</code></pre><p>修改为：</p>
+<pre><code> &lt;% if (!index &amp;&amp; post.comments){ %&gt;
+  &lt;section id=&quot;comments&quot;&gt;
+&lt;!--高速版，加载速度快，使用前需测试页面的兼容性--&gt;
+&lt;div id=&quot;SOHUCS&quot; sid=&quot;&lt;%= page.title %&gt;&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  (function(){
+    var appid = &apos;你的APP ID&apos;,
+    conf = &apos;你的APP KEY&apos;;
+    var doc = document,
+    s = doc.createElement(&apos;script&apos;),
+    h = doc.getElementsByTagName(&apos;head&apos;)[0] || doc.head || doc.documentElement;
+    s.type = &apos;text/javascript&apos;;
+    s.charset = &apos;utf-8&apos;;
+    s.src =  &apos;http://assets.changyan.sohu.com/upload/changyan.js?conf=&apos;+ conf +&apos;&amp;appid=&apos; + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+&lt;/script&gt;    
+  &lt;/section&gt;
+  &lt;% } %&gt;
+</code></pre><p>上面的APP ID和APP KEY是在畅言设置中得到。</p>
+<p>这里需要注意一点的是：sid=”&lt;%= page.title %&gt;”&gt; 这样的话畅言就可以直接根据对应的文章来识别，使得文章有对应的评论，不会都乱在一起。</p>
+<p>2、在每篇文章开头的 front-matter 中添加一句comments: true，然后回到博客根目录执行命令 hexo d -g ，重新生成博客并部署博客，然后刷新，任选一篇文章进入下拉，会发现评论功能可以使用了。</p>
+<p><img src="http://lengjiaxin.github.io/images/yilia/yilia.PNG" alt=""></p>
+<p>#修改 BUG</p>
+<p>但是，这是你会发现一个 Bug，表情按钮点击不了，原因是被左侧的 div 层覆盖了，回到我们刚才改过的代码，找到 &lt;div id=”SOHUCS” 开头的一串代码。并做如下更改</p>
+<pre><code>&lt;div id=&quot;SOHUCS&quot; sid=&quot;&lt;%= page.title %&gt;&quot; style=&quot;padding: 0px 30px 0px 46px;&quot;&gt;&lt;/div&gt;
+</code></pre><p>加入上面这一段样式代码，即可修复。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/2017-05-25-5-Java/" class="archive-article-date">
-  	<time datetime="2017-05-25T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/2017-05-25-5-Java/">Java 字符串操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2017/06/29/2017-06-29-1-yilia/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/14/2017-05-14-1-HelloWorld/" class="archive-article-date">
-  	<time datetime="2017-05-14T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/14/2017-05-14-1-HelloWorld/">Hello World</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/14/2017-05-14-2-Java/" class="archive-article-date">
-  	<time datetime="2017-05-14T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/14/2017-05-14-2-Java/">Java多线程面试问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/14/2017-05-14-3-LiftTime/" class="archive-article-date">
-  	<time datetime="2017-05-14T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/14/2017-05-14-3-LiftTime/">2017五一醒悟</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2017/06/27/2017-06-27-9-Mybatis/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          druid连接池监控配置
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
 
+<!--多说模块--> 
 
+  <section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性--> 
+<div id="SOHUCS" sid="yilia配置多说评论" style="padding: 0px 30px 0px 46px;"></div> 
+<script>
+  (function(){
+    var appid = 'cyt5seecS',
+    conf = '7e84b5efec98eb14e1f59fbf01c725d1';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+  </section>
+  
           </div>
         </div>
       </div>
@@ -329,8 +346,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
