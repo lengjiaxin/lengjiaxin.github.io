@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>Archives: 2017 | Coolcat的博客</title>
+  <title>Java ConcurrentHashMap 缓存 | Coolcat的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="重庆科技学院12级，就职于二流科技公司。擅长各项前端技能，深入研究JAVA后端技术。此为博客一枚。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Coolcat的博客">
-<meta property="og:url" content="//litten.me/archives/2017/index.html">
+  <meta name="description" content="ConcurrentHashMap 缓存在项目实际开发中有时候固定不变的数据，大量请求数据库增加IO。我们就可以考虑缓存到内存中定时更新维护就行建议先看看：ConcurrentHashMap ######基础类MonitorCache /**  * Title: MonitorCache.java&amp;lt;br /&amp;gt;  * Description: 实时监控缓存类&amp;lt;br /&amp;gt;  *">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java ConcurrentHashMap 缓存">
+<meta property="og:url" content="//litten.me/2017/07/18/2017-07-18-cache/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
-<meta property="og:description" content="重庆科技学院12级，就职于二流科技公司。擅长各项前端技能，深入研究JAVA后端技术。此为博客一枚。">
+<meta property="og:description" content="ConcurrentHashMap 缓存在项目实际开发中有时候固定不变的数据，大量请求数据库增加IO。我们就可以考虑缓存到内存中定时更新维护就行建议先看看：ConcurrentHashMap ######基础类MonitorCache /**  * Title: MonitorCache.java&amp;lt;br /&amp;gt;  * Description: 实时监控缓存类&amp;lt;br /&amp;gt;  *">
+<meta property="og:updated_time" content="2017-07-18T13:32:51.597Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Coolcat的博客">
-<meta name="twitter:description" content="重庆科技学院12级，就职于二流科技公司。擅长各项前端技能，深入研究JAVA后端技术。此为博客一枚。">
+<meta name="twitter:title" content="Java ConcurrentHashMap 缓存">
+<meta name="twitter:description" content="ConcurrentHashMap 缓存在项目实际开发中有时候固定不变的数据，大量请求数据库增加IO。我们就可以考虑缓存到内存中定时更新维护就行建议先看看：ConcurrentHashMap ######基础类MonitorCache /**  * Title: MonitorCache.java&amp;lt;br /&amp;gt;  * Description: 实时监控缓存类&amp;lt;br /&amp;gt;  *">
   
     <link rel="alternative" href="/atom.xml" title="Coolcat的博客" type="application/atom+xml">
   
@@ -138,36 +140,248 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-2017-07-18-cache" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Java ConcurrentHashMap 缓存
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/18/2017-07-18-cache/" class="archive-article-date">
+
+        
+        <a href="/2017/07/18/2017-07-18-cache/" class="archive-article-date">
   	<time datetime="2017-07-18T08:20:04.988Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-18</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/18/2017-07-18-cache/">Java ConcurrentHashMap 缓存</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ConcurrentHashMap-缓存"><a href="#ConcurrentHashMap-缓存" class="headerlink" title="ConcurrentHashMap 缓存"></a>ConcurrentHashMap 缓存</h2><p>在项目实际开发中有时候固定不变的数据，大量请求数据库增加IO。我们就可以考虑缓存到内存中定时更新维护就行<br>建议先看看：<br><a href="https://www.ibm.com/developerworks/cn/java/java-lo-concurrenthashmap/" title="ConcurrentHashMap" target="_blank" rel="external">ConcurrentHashMap</a></p>
+<p>######基础类MonitorCache</p>
+<pre><code>/**
+ * Title: MonitorCache.java&lt;br /&gt;
+ * Description: 实时监控缓存类&lt;br /&gt;
+ * Copyright: Copyright (c) 2017&lt;br /&gt; 
+ */
+public final class MonitorCache&lt;K, V&gt; {
+    // 缓存Map
+    private ConcurrentHashMap&lt;K, V&gt; cache;
+    // 缓存计数器（用于判断缓存是否被占用）
+    private int cacheCounter;
+    // 更新时间（用于判断缓存中的数据是否更新）
+    private Date updateDate;
 
-        <div class="article-info info-on-right">
-          
+    public MonitorCache() {
+        this.cache = new ConcurrentHashMap&lt;K, V&gt;();
+        this.cacheCounter = 0;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    /**
+     * 开启缓存（计数器加1）
+     */
+    public synchronized void open() {
+        this.cacheCounter++;
+    }
+
+    /**
+     * 关闭缓存（计数器减1）
+     */
+    public synchronized void close() {
+        this.cacheCounter = (this.cacheCounter - 1 &lt; 0) ? 0 : (this.cacheCounter - 1);
+    }
+
+    /**
+     * 缓存当前是否空闲（未被占用）
+     * 
+     * @return
+     */
+    public boolean isFree() {
+        return (this.cacheCounter == 0);
+    }
+
+    // 缓存访问校验
+    private void validate() {
+        if (this.cacheCounter == 0) {
+            throw new RuntimeException(&quot;缓存未打开时禁止访问&quot;);
+        }
+    }
+
+    /**
+     * 写入缓存数据
+     * 
+     * @param k
+     * @param v
+     */
+    public void put(K k, V v) {
+        validate();
+        this.cache.put(k, v);
+    }
+
+    /**
+     * 读取缓存数据
+     * 
+     * @param k
+     * @return
+     */
+    public V get(K k) {
+        validate();
+        V v = this.cache.get(k);
+        return v;
+    }
+
+    /**
+     * 是否包含键值
+     * 
+     * @param key
+     * @return
+     */
+    public boolean containsKey(Object key) {
+        validate();
+        return this.cache.containsKey(key);
+    }
+
+    /**
+     * 读取所有键值
+     * 
+     * @return
+     */
+    public Set&lt;K&gt; getAllKeys() {
+        validate();
+        return this.cache.keySet();
+    }
+
+    /**
+     * 清空缓存
+     */
+    public void clearCache() {
+        validate();
+        if (this.cache != null &amp;&amp; !this.cache.isEmpty()) {
+            this.cache.clear();
+        }
+    }
+
+    /**
+     * 缓存中存放的数据量
+     * 
+     * @return
+     */
+    public int size() {
+        validate();
+        return this.cache.size();
+    }
+}
+</code></pre><p>######分组类 MonitorCacheGroup<br>    /**</p>
+<pre><code> * Title: MonitorCacheGroup.java&lt;br /&gt;
+ * Description: 实时监控缓存集合类&lt;br /&gt;
+ * Copyright: Copyright (c) 2017&lt;br /&gt; 
+ */
+public final class MonitorCacheGroup&lt;K, V&gt; {
+
+    private static final LogWrapper log = new LogWrapper(MonitorCacheGroup.class);
+
+    // 缓存集合总量
+    private final static int CACHECOUNT = 5;
+
+    // 缓存集合
+    private final List&lt;MonitorCache&lt;K, V&gt;&gt; cacheList;
+
+    public MonitorCacheGroup() {
+        cacheList = new ArrayList&lt;MonitorCache&lt;K, V&gt;&gt;(CACHECOUNT);
+
+        MonitorCache&lt;K, V&gt; cache = null;
+        for (int i = 0; i &lt; CACHECOUNT; i++) {
+            cache = new MonitorCache&lt;K, V&gt;();
+            cacheList.add(cache);
+        }
+    }
+
+    /**
+     * 更新缓存
+     * 
+     * @param updatedCache
+     */
+    public void updateCache(MonitorCache&lt;K, V&gt; updatedCache) {
+        for (int i = 0; i &lt; CACHECOUNT; i++) {
+            if (cacheList.get(i).isFree()) {
+                updatedCache.setUpdateDate(new Date());
+                if (cacheList.get(i).isFree()) {
+                    cacheList.remove(i);
+                    cacheList.add(i, updatedCache);
+                    log.debug(&quot;当前更新缓存序号:&quot; + i);
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * 获取缓存（默认打开缓存）
+     * 
+     * @return
+     */
+    public MonitorCache&lt;K, V&gt; getCache() {
+        int index = 0;
+
+        // 要返回最近更新过的那份缓存
+        Date maxDate = cacheList.get(0).getUpdateDate();
+        for (int i = 1; i &lt; CACHECOUNT; i++) {
+
+            MonitorCache&lt;K, V&gt; cache = cacheList.get(i);
+            if (!ValidationUtil.isNullOrEmpty(cache) &amp;&amp; !ValidationUtil.isNullOrEmpty(cache.getUpdateDate())) {
+
+                // 缓存没有数据
+                if (cache.getUpdateDate().compareTo(maxDate) &gt; 0) {
+                    maxDate = cacheList.get(i).getUpdateDate();
+                    index = i;
+                }
+
+            }
+        }
+
+        log.debug(&quot;当前获取缓存序号:&quot; + index);
+        cacheList.get(index).open();
+        return cacheList.get(index);
+    }
+
+    /**
+     * 关闭缓存
+     * 
+     * @param cache
+     */
+    public void closeCache(MonitorCache&lt;K, V&gt; cache) {
+        if (cache != null) {
+            cache.close();
+        }
+    }
+}
+</code></pre><p>######使用缓存示例<br>    // 缓存容器<br>    private volatile MonitorCacheGroup<string, list<integer="">&gt; vehicleCacheGroup = new MonitorCacheGroup<string, list<integer="">&gt;();</string,></string,></p>
+<pre><code>MonitorCache&lt;String, List&lt;Integer&gt;&gt; vCache = new MonitorCache&lt;String, List&lt;Integer&gt;&gt;();
+//打开
+vCache.open();
+//更新
+vehicleCacheGroup.updateCache(vCache);
+//获取
+vCache.get(key);
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -179,439 +393,113 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2017/07/18/2017-07-18-cache/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/29/2017-06-29-1-yilia/" class="archive-article-date">
-  	<time datetime="2017-06-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/29/2017-06-29-1-yilia/">yilia配置多说评论</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/29/2017-06-29-2-yilia/" class="archive-article-date">
-  	<time datetime="2017-06-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/29/2017-06-29-2-yilia/">yilia配置CNZZ</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/27/2017-06-27-8-Javascript/" class="archive-article-date">
-  	<time datetime="2017-06-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/27/2017-06-27-8-Javascript/">Javascript 页面飘窗</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/27/2017-06-27-9-Mybatis/" class="archive-article-date">
-  	<time datetime="2017-06-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/27/2017-06-27-9-Mybatis/">druid连接池监控配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/25/2017-06-25-6-Blog/" class="archive-article-date">
-  	<time datetime="2017-06-25T15:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/25/2017-06-25-6-Blog/">GitHubBlog绑定域名</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/25/2017-06-25-7-Java/" class="archive-article-date">
-  	<time datetime="2017-06-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/25/2017-06-25-7-Java/">JAVA GC 简单总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/15/2017-06-15-4-Mybatis/" class="archive-article-date">
-  	<time datetime="2017-06-15T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/15/2017-06-15-4-Mybatis/">Mybatis 执行速度监听</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/25/2017-05-25-5-Java/" class="archive-article-date">
-  	<time datetime="2017-05-25T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/25/2017-05-25-5-Java/">Java 字符串操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/14/2017-05-14-2-Java/" class="archive-article-date">
-  	<time datetime="2017-05-14T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/14/2017-05-14-2-Java/">Java多线程面试问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/14/2017-05-14-3-LiftTime/" class="archive-article-date">
-  	<time datetime="2017-05-14T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/14/2017-05-14-3-LiftTime/">2017五一醒悟</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/14/2017-05-14-1-HelloWorld/" class="archive-article-date">
-  	<time datetime="2017-05-14T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/14/2017-05-14-1-HelloWorld/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2017/06/29/2017-06-29-1-yilia/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          yilia配置多说评论
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
 
+<!--多说模块--> 
 
+  <section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性--> 
+<div id="SOHUCS" sid="Java ConcurrentHashMap 缓存" style="padding: 0px 30px 0px 46px;"></div> 
+<script>
+  (function(){
+    var appid = 'cyt5seecS',
+    conf = '7e84b5efec98eb14e1f59fbf01c725d1';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+  </section>
+  
           </div>
         </div>
       </div>
@@ -633,8 +521,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

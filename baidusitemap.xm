@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>//litten.me/2017/07/18/2017-07-18-cache/</loc>
+    <lastmod>2017-07-18T13:32:51.597Z</lastmod>
+    <data>
+        <display>
+        <title>Java ConcurrentHashMap 缓存</title>
+        <pubTime>2017-07-18T08:20:04.988Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>//litten.me/2017/06/29/2017-06-29-2-yilia/</loc>
     <lastmod>2017-06-29T15:41:20.017Z</lastmod>
     <data>
