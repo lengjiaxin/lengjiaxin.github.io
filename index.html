@@ -161,8 +161,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="ConcurrentHashMap-缓存"><a href="#ConcurrentHashMap-缓存" class="headerlink" title="ConcurrentHashMap 缓存"></a>ConcurrentHashMap 缓存</h2><p>在项目实际开发中有时候固定不变的数据，大量请求数据库增加IO。我们就可以考虑缓存到内存中定时更新维护就行<br>建议先看看：<br><a href="https://www.ibm.com/developerworks/cn/java/java-lo-concurrenthashmap/" title="ConcurrentHashMap" target="_blank" rel="external">ConcurrentHashMap</a></p>
-<p>######基础类MonitorCache</p>
-<pre><code>/**
+<h6 id="基础类MonitorCache"><a href="#基础类MonitorCache" class="headerlink" title="基础类MonitorCache"></a>基础类MonitorCache</h6><pre><code>/**
  * Title: MonitorCache.java&lt;br /&gt;
  * Description: 实时监控缓存类&lt;br /&gt;
  * Copyright: Copyright (c) 2017&lt;br /&gt; 
@@ -282,8 +281,8 @@ public final class MonitorCache&lt;K, V&gt; {
         return this.cache.size();
     }
 }
-</code></pre><p>######分组类 MonitorCacheGroup<br>    /**</p>
-<pre><code> * Title: MonitorCacheGroup.java&lt;br /&gt;
+</code></pre><h6 id="分组类-MonitorCacheGroup"><a href="#分组类-MonitorCacheGroup" class="headerlink" title="分组类 MonitorCacheGroup"></a>分组类 MonitorCacheGroup</h6><pre><code>/**
+ * Title: MonitorCacheGroup.java&lt;br /&gt;
  * Description: 实时监控缓存集合类&lt;br /&gt;
  * Copyright: Copyright (c) 2017&lt;br /&gt; 
  */
@@ -366,8 +365,10 @@ public final class MonitorCacheGroup&lt;K, V&gt; {
         }
     }
 }
-</code></pre><p>######使用缓存示例<br>    // 缓存容器<br>    private volatile MonitorCacheGroup<string, list<integer="">&gt; vehicleCacheGroup = new MonitorCacheGroup<string, list<integer="">&gt;();</string,></string,></p>
-<pre><code>MonitorCache&lt;String, List&lt;Integer&gt;&gt; vCache = new MonitorCache&lt;String, List&lt;Integer&gt;&gt;();
+</code></pre><p>######使用缓存示例</p>
+<pre><code>// 缓存容器
+private volatile MonitorCacheGroup&lt;String, List&lt;Integer&gt;&gt; vehicleCacheGroup = new MonitorCacheGroup&lt;String, List&lt;Integer&gt;&gt;();
+MonitorCache&lt;String, List&lt;Integer&gt;&gt; vCache = new MonitorCache&lt;String, List&lt;Integer&gt;&gt;();
 //打开
 vCache.open();
 //更新
@@ -388,99 +389,6 @@ vCache.get(key);
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
-    <article id="post-2017-06-29-1-yilia" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/29/2017-06-29-1-yilia/">yilia配置多说评论</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/29/2017-06-29-1-yilia/" class="archive-article-date">
-  	<time datetime="2017-06-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="使用畅言系统"><a href="#使用畅言系统" class="headerlink" title="使用畅言系统"></a>使用畅言系统</h2><p>1、修改 themes\yilia\layout_partial\article.ejs 模板，把如下代码</p>
-<pre><code>&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname){ %&gt;
- &lt;section id=&quot;comments&quot;&gt;
-   &lt;div id=&quot;disqus_thread&quot;&gt;
-     这里还有很多代码
-   &lt;/div&gt;
- &lt;/section&gt;
- &lt;% } %&gt;
-</code></pre><p>修改为：</p>
-<pre><code> &lt;% if (!index &amp;&amp; post.comments){ %&gt;
-  &lt;section id=&quot;comments&quot;&gt;
-&lt;!--高速版，加载速度快，使用前需测试页面的兼容性--&gt;
-&lt;div id=&quot;SOHUCS&quot; sid=&quot;&lt;%= page.title %&gt;&quot;&gt;&lt;/div&gt;
-&lt;script&gt;
-  (function(){
-    var appid = &apos;你的APP ID&apos;,
-    conf = &apos;你的APP KEY&apos;;
-    var doc = document,
-    s = doc.createElement(&apos;script&apos;),
-    h = doc.getElementsByTagName(&apos;head&apos;)[0] || doc.head || doc.documentElement;
-    s.type = &apos;text/javascript&apos;;
-    s.charset = &apos;utf-8&apos;;
-    s.src =  &apos;http://assets.changyan.sohu.com/upload/changyan.js?conf=&apos;+ conf +&apos;&amp;appid=&apos; + appid;
-    h.insertBefore(s,h.firstChild);
-    window.SCS_NO_IFRAME = true;
-  })()
-&lt;/script&gt;    
-  &lt;/section&gt;
-  &lt;% } %&gt;
-</code></pre><p>上面的APP ID和APP KEY是在畅言设置中得到。</p>
-<p>这里需要注意一点的是：sid=”&lt;%= page.title %&gt;”&gt; 这样的话畅言就可以直接根据对应的文章来识别，使得文章有对应的评论，不会都乱在一起。</p>
-<p>2、在每篇文章开头的 front-matter 中添加一句comments: true，然后回到博客根目录执行命令 hexo d -g ，重新生成博客并部署博客，然后刷新，任选一篇文章进入下拉，会发现评论功能可以使用了。</p>
-<p><img src="http://lengjiaxin.github.io/images/yilia/yilia.JPG" alt=""></p>
-<h2 id="修改-BUG"><a href="#修改-BUG" class="headerlink" title="修改 BUG"></a>修改 BUG</h2><p>但是，这是你会发现一个 Bug，表情按钮点击不了，原因是被左侧的 div 层覆盖了，回到我们刚才改过的代码，找到 &lt;div id=”SOHUCS” 开头的一串代码。并做如下更改</p>
-<pre><code>&lt;div id=&quot;SOHUCS&quot; sid=&quot;&lt;%= page.title %&gt;&quot; style=&quot;padding: 0px 30px 0px 46px;&quot;&gt;&lt;/div&gt;
-</code></pre><p>加入上面这一段样式代码，即可修复。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
         		</li>
       		
 		</ul>
@@ -581,58 +489,63 @@ vCache.get(key);
 <!--多说模块--> 
 
   
-    <article id="post-2017-06-27-8-Javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2017-06-29-1-yilia" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/27/2017-06-27-8-Javascript/">Javascript 页面飘窗</a>
+      <a class="article-title" href="/2017/06/29/2017-06-29-1-yilia/">yilia配置多说评论</a>
     </h1>
   
 
         
-        <a href="/2017/06/27/2017-06-27-8-Javascript/" class="archive-article-date">
-  	<time datetime="2017-06-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
+        <a href="/2017/06/29/2017-06-29-1-yilia/" class="archive-article-date">
+  	<time datetime="2017-06-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Javascript设置相对屏幕左右距离"><a href="#Javascript设置相对屏幕左右距离" class="headerlink" title="Javascript设置相对屏幕左右距离"></a>Javascript设置相对屏幕左右距离</h2><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-var obj;
-var x = 50,y = 60;
-var xin = true, yin = true;
-var step = 1;
-var delay = 30; 
-function floatAD() {  
-    var L=T=0;
-    var R= (document.documentElement.clientWidth || document.body.clientWidth)-obj.offsetWidth;
-    var B = (document.documentElement.clientHeight || document.body.clientHeight)-obj.offsetHeight;
-    obj.style.left = x + (document.documentElement.scrollLeft || document.body.scrollLeft) + &apos;px&apos;;
-    obj.style.top = y + (document.documentElement.scrollTop || document.body.scrollTop) + &apos;px&apos;;
-    x = x + step*(xin?1:-1);
-    if (x &lt; L) { xin = true; x = L}
-    if (x &gt; R){ xin = false; x = R}
-    y = y + step*(yin?1:-1);
-    if (y &lt; T) { yin = true; y = T }
-    if (y &gt; B) { yin = false; y = B } 
-}
-    function loadTest(){  
-    obj = document.getElementById(&quot;pc&quot;); 
-    if(obj!=null){ 
-        var itl= setInterval(&quot;floatAD()&quot;, delay);
-        obj.onmouseover=function(){clearInterval(itl)};
-        obj.onmouseout=function(){itl=setInterval(&quot;floatAD()&quot;, delay)};
-    } 
-    }
-&lt;/script&gt;
-</code></pre><h2 id="HTML设置加载"><a href="#HTML设置加载" class="headerlink" title="HTML设置加载"></a>HTML设置加载</h2><pre><code>onload=&quot;loadTest();&quot;//页面初始化加载
+        <h2 id="使用畅言系统"><a href="#使用畅言系统" class="headerlink" title="使用畅言系统"></a>使用畅言系统</h2><p>1、修改 themes\yilia\layout_partial\article.ejs 模板，把如下代码</p>
+<pre><code>&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname){ %&gt;
+ &lt;section id=&quot;comments&quot;&gt;
+   &lt;div id=&quot;disqus_thread&quot;&gt;
+     这里还有很多代码
+   &lt;/div&gt;
+ &lt;/section&gt;
+ &lt;% } %&gt;
+</code></pre><p>修改为：</p>
+<pre><code> &lt;% if (!index &amp;&amp; post.comments){ %&gt;
+  &lt;section id=&quot;comments&quot;&gt;
+&lt;!--高速版，加载速度快，使用前需测试页面的兼容性--&gt;
+&lt;div id=&quot;SOHUCS&quot; sid=&quot;&lt;%= page.title %&gt;&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  (function(){
+    var appid = &apos;你的APP ID&apos;,
+    conf = &apos;你的APP KEY&apos;;
+    var doc = document,
+    s = doc.createElement(&apos;script&apos;),
+    h = doc.getElementsByTagName(&apos;head&apos;)[0] || doc.head || doc.documentElement;
+    s.type = &apos;text/javascript&apos;;
+    s.charset = &apos;utf-8&apos;;
+    s.src =  &apos;http://assets.changyan.sohu.com/upload/changyan.js?conf=&apos;+ conf +&apos;&amp;appid=&apos; + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+&lt;/script&gt;    
+  &lt;/section&gt;
+  &lt;% } %&gt;
+</code></pre><p>上面的APP ID和APP KEY是在畅言设置中得到。</p>
+<p>这里需要注意一点的是：sid=”&lt;%= page.title %&gt;”&gt; 这样的话畅言就可以直接根据对应的文章来识别，使得文章有对应的评论，不会都乱在一起。</p>
+<p>2、在每篇文章开头的 front-matter 中添加一句comments: true，然后回到博客根目录执行命令 hexo d -g ，重新生成博客并部署博客，然后刷新，任选一篇文章进入下拉，会发现评论功能可以使用了。</p>
+<p><img src="http://lengjiaxin.github.io/images/yilia/yilia.JPG" alt=""></p>
+<h2 id="修改-BUG"><a href="#修改-BUG" class="headerlink" title="修改 BUG"></a>修改 BUG</h2><p>但是，这是你会发现一个 Bug，表情按钮点击不了，原因是被左侧的 div 层覆盖了，回到我们刚才改过的代码，找到 &lt;div id=”SOHUCS” 开头的一串代码。并做如下更改</p>
+<pre><code>&lt;div id=&quot;SOHUCS&quot; sid=&quot;&lt;%= page.title %&gt;&quot; style=&quot;padding: 0px 30px 0px 46px;&quot;&gt;&lt;/div&gt;
+</code></pre><p>加入上面这一段样式代码，即可修复。</p>
 
-&lt;div id=&quot;pc&quot; style=&quot;Z-INDEX: 1000; POSITION: absolute&quot;&gt;&lt;A href=&quot;www.baidu.com&quot; target=&quot;_blank&quot;&gt;&lt;IMG src=&quot;images/cypc.png&quot; border=0 width=&quot;280&quot;/&gt;&lt;/A&gt;&lt;/div&gt;
-</code></pre>
       
 
       
@@ -645,7 +558,7 @@ function floatAD() {
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
         		</li>
       		
 		</ul>
@@ -816,6 +729,94 @@ function floatAD() {
 <!--多说模块--> 
 
   
+    <article id="post-2017-06-27-8-Javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/27/2017-06-27-8-Javascript/">Javascript 页面飘窗</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/27/2017-06-27-8-Javascript/" class="archive-article-date">
+  	<time datetime="2017-06-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Javascript设置相对屏幕左右距离"><a href="#Javascript设置相对屏幕左右距离" class="headerlink" title="Javascript设置相对屏幕左右距离"></a>Javascript设置相对屏幕左右距离</h2><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+var obj;
+var x = 50,y = 60;
+var xin = true, yin = true;
+var step = 1;
+var delay = 30; 
+function floatAD() {  
+    var L=T=0;
+    var R= (document.documentElement.clientWidth || document.body.clientWidth)-obj.offsetWidth;
+    var B = (document.documentElement.clientHeight || document.body.clientHeight)-obj.offsetHeight;
+    obj.style.left = x + (document.documentElement.scrollLeft || document.body.scrollLeft) + &apos;px&apos;;
+    obj.style.top = y + (document.documentElement.scrollTop || document.body.scrollTop) + &apos;px&apos;;
+    x = x + step*(xin?1:-1);
+    if (x &lt; L) { xin = true; x = L}
+    if (x &gt; R){ xin = false; x = R}
+    y = y + step*(yin?1:-1);
+    if (y &lt; T) { yin = true; y = T }
+    if (y &gt; B) { yin = false; y = B } 
+}
+    function loadTest(){  
+    obj = document.getElementById(&quot;pc&quot;); 
+    if(obj!=null){ 
+        var itl= setInterval(&quot;floatAD()&quot;, delay);
+        obj.onmouseover=function(){clearInterval(itl)};
+        obj.onmouseout=function(){itl=setInterval(&quot;floatAD()&quot;, delay)};
+    } 
+    }
+&lt;/script&gt;
+</code></pre><h2 id="HTML设置加载"><a href="#HTML设置加载" class="headerlink" title="HTML设置加载"></a>HTML设置加载</h2><pre><code>onload=&quot;loadTest();&quot;//页面初始化加载
+
+&lt;div id=&quot;pc&quot; style=&quot;Z-INDEX: 1000; POSITION: absolute&quot;&gt;&lt;A href=&quot;www.baidu.com&quot; target=&quot;_blank&quot;&gt;&lt;IMG src=&quot;images/cypc.png&quot; border=0 width=&quot;280&quot;/&gt;&lt;/A&gt;&lt;/div&gt;
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -902,6 +903,10 @@ function floatAD() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -919,10 +924,6 @@ function floatAD() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
