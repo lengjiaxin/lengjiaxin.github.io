@@ -15,7 +15,7 @@
 <meta property="og:url" content="//litten.me/2017/07/18/2017-07-18-cache/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
 <meta property="og:description" content="ConcurrentHashMap 缓存在项目实际开发中有时候固定不变的数据，大量请求数据库增加IO。我们就可以考虑缓存到内存中定时更新维护就行建议先看看：ConcurrentHashMap 基础类MonitorCache/**  * Title: MonitorCache.java&amp;lt;br /&amp;gt;  * Description: 实时监控缓存类&amp;lt;br /&amp;gt;  * Copyri">
-<meta property="og:updated_time" content="2017-07-18T13:36:53.378Z">
+<meta property="og:updated_time" content="2017-07-18T13:39:41.026Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java ConcurrentHashMap 缓存">
 <meta name="twitter:description" content="ConcurrentHashMap 缓存在项目实际开发中有时候固定不变的数据，大量请求数据库增加IO。我们就可以考虑缓存到内存中定时更新维护就行建议先看看：ConcurrentHashMap 基础类MonitorCache/**  * Title: MonitorCache.java&amp;lt;br /&amp;gt;  * Description: 实时监控缓存类&amp;lt;br /&amp;gt;  * Copyri">
@@ -365,8 +365,7 @@ public final class MonitorCacheGroup&lt;K, V&gt; {
         }
     }
 }
-</code></pre><p>######使用缓存示例</p>
-<pre><code>// 缓存容器
+</code></pre><h6 id="使用缓存示例"><a href="#使用缓存示例" class="headerlink" title="使用缓存示例"></a>使用缓存示例</h6><pre><code>// 缓存容器
 private volatile MonitorCacheGroup&lt;String, List&lt;Integer&gt;&gt; vehicleCacheGroup = new MonitorCacheGroup&lt;String, List&lt;Integer&gt;&gt;();
 MonitorCache&lt;String, List&lt;Integer&gt;&gt; vCache = new MonitorCache&lt;String, List&lt;Integer&gt;&gt;();
 //打开
