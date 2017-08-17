@@ -581,6 +581,94 @@ vCache.get(key);
 <!--多说模块--> 
 
   
+    <article id="post-2017-06-27-8-Javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/27/2017-06-27-8-Javascript/">Javascript 页面飘窗</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/27/2017-06-27-8-Javascript/" class="archive-article-date">
+  	<time datetime="2017-06-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Javascript设置相对屏幕左右距离"><a href="#Javascript设置相对屏幕左右距离" class="headerlink" title="Javascript设置相对屏幕左右距离"></a>Javascript设置相对屏幕左右距离</h2><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+var obj;
+var x = 50,y = 60;
+var xin = true, yin = true;
+var step = 1;
+var delay = 30; 
+function floatAD() {  
+    var L=T=0;
+    var R= (document.documentElement.clientWidth || document.body.clientWidth)-obj.offsetWidth;
+    var B = (document.documentElement.clientHeight || document.body.clientHeight)-obj.offsetHeight;
+    obj.style.left = x + (document.documentElement.scrollLeft || document.body.scrollLeft) + &apos;px&apos;;
+    obj.style.top = y + (document.documentElement.scrollTop || document.body.scrollTop) + &apos;px&apos;;
+    x = x + step*(xin?1:-1);
+    if (x &lt; L) { xin = true; x = L}
+    if (x &gt; R){ xin = false; x = R}
+    y = y + step*(yin?1:-1);
+    if (y &lt; T) { yin = true; y = T }
+    if (y &gt; B) { yin = false; y = B } 
+}
+    function loadTest(){  
+    obj = document.getElementById(&quot;pc&quot;); 
+    if(obj!=null){ 
+        var itl= setInterval(&quot;floatAD()&quot;, delay);
+        obj.onmouseover=function(){clearInterval(itl)};
+        obj.onmouseout=function(){itl=setInterval(&quot;floatAD()&quot;, delay)};
+    } 
+    }
+&lt;/script&gt;
+</code></pre><h2 id="HTML设置加载"><a href="#HTML设置加载" class="headerlink" title="HTML设置加载"></a>HTML设置加载</h2><pre><code>onload=&quot;loadTest();&quot;//页面初始化加载
+
+&lt;div id=&quot;pc&quot; style=&quot;Z-INDEX: 1000; POSITION: absolute&quot;&gt;&lt;A href=&quot;www.baidu.com&quot; target=&quot;_blank&quot;&gt;&lt;IMG src=&quot;images/cypc.png&quot; border=0 width=&quot;280&quot;/&gt;&lt;/A&gt;&lt;/div&gt;
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2017-06-27-9-Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -728,94 +816,6 @@ vCache.get(key);
 <!--多说模块--> 
 
   
-    <article id="post-2017-06-27-8-Javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/27/2017-06-27-8-Javascript/">Javascript 页面飘窗</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/27/2017-06-27-8-Javascript/" class="archive-article-date">
-  	<time datetime="2017-06-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Javascript设置相对屏幕左右距离"><a href="#Javascript设置相对屏幕左右距离" class="headerlink" title="Javascript设置相对屏幕左右距离"></a>Javascript设置相对屏幕左右距离</h2><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-var obj;
-var x = 50,y = 60;
-var xin = true, yin = true;
-var step = 1;
-var delay = 30; 
-function floatAD() {  
-    var L=T=0;
-    var R= (document.documentElement.clientWidth || document.body.clientWidth)-obj.offsetWidth;
-    var B = (document.documentElement.clientHeight || document.body.clientHeight)-obj.offsetHeight;
-    obj.style.left = x + (document.documentElement.scrollLeft || document.body.scrollLeft) + &apos;px&apos;;
-    obj.style.top = y + (document.documentElement.scrollTop || document.body.scrollTop) + &apos;px&apos;;
-    x = x + step*(xin?1:-1);
-    if (x &lt; L) { xin = true; x = L}
-    if (x &gt; R){ xin = false; x = R}
-    y = y + step*(yin?1:-1);
-    if (y &lt; T) { yin = true; y = T }
-    if (y &gt; B) { yin = false; y = B } 
-}
-    function loadTest(){  
-    obj = document.getElementById(&quot;pc&quot;); 
-    if(obj!=null){ 
-        var itl= setInterval(&quot;floatAD()&quot;, delay);
-        obj.onmouseover=function(){clearInterval(itl)};
-        obj.onmouseout=function(){itl=setInterval(&quot;floatAD()&quot;, delay)};
-    } 
-    }
-&lt;/script&gt;
-</code></pre><h2 id="HTML设置加载"><a href="#HTML设置加载" class="headerlink" title="HTML设置加载"></a>HTML设置加载</h2><pre><code>onload=&quot;loadTest();&quot;//页面初始化加载
-
-&lt;div id=&quot;pc&quot; style=&quot;Z-INDEX: 1000; POSITION: absolute&quot;&gt;&lt;A href=&quot;www.baidu.com&quot; target=&quot;_blank&quot;&gt;&lt;IMG src=&quot;images/cypc.png&quot; border=0 width=&quot;280&quot;/&gt;&lt;/A&gt;&lt;/div&gt;
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -910,7 +910,7 @@ function floatAD() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -918,19 +918,19 @@ function floatAD() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
             
             <div class="clearfix"></div>
