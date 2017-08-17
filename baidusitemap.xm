@@ -5,7 +5,7 @@
     
   <url>
     <loc>//litten.me/2017/08/17/2017-08-17-commit/</loc>
-    <lastmod>2017-08-17T14:43:03.870Z</lastmod>
+    <lastmod>2017-08-17T14:47:54.242Z</lastmod>
     <data>
         <display>
         <title>Git Hub Commit</title>
