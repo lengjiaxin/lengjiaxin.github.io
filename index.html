@@ -478,83 +478,6 @@ vCache.get(key);
 <!--多说模块--> 
 
   
-    <article id="post-2017-06-29-2-yilia" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/29/2017-06-29-2-yilia/">yilia配置CNZZ</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/29/2017-06-29-2-yilia/" class="archive-article-date">
-  	<time datetime="2017-06-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="使用CNZZ数据专家"><a href="#使用CNZZ数据专家" class="headerlink" title="使用CNZZ数据专家"></a>使用CNZZ数据专家</h2><p>1、修改 themes\yilia\layout_partial\footer.ejs 模板，把如下代码</p>
-<pre><code> &lt;div id=&quot;footer-info&quot;&gt;
-    &lt;div class=&quot;footer-left&quot;&gt;
-        &amp;copy; &lt;%= date(new Date(), &apos;YYYY&apos;) %&gt; &lt;%= config.author || config.title %&gt;
-    &lt;/div&gt;
-      &lt;div class=&quot;footer-right&quot;&gt;
-          &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot;&gt;Hexo&lt;/a&gt;  Theme &lt;a href=&quot;https://github.com/litten/hexo-theme-yilia&quot; target=&quot;_blank&quot;&gt;Yilia&lt;/a&gt; by Litten
-      &lt;/div&gt;
-&lt;/div&gt;
-</code></pre><p>修改为：</p>
-<pre><code>&lt;div id=&quot;footer-info&quot;&gt;
-       &lt;div class=&quot;footer-left&quot;&gt;
-           &amp;copy; &lt;%= date(new Date(), &apos;YYYY&apos;) %&gt; &lt;%= config.author || config.title %&gt;
-       &lt;/div&gt;
-         &lt;div class=&quot;footer-right&quot;&gt; 
-         &lt;-- 这里填写入CNZZ得js代码段  --&gt;
-        Theme &lt;a href=&quot;https://github.com/litten/hexo-theme-yilia&quot; target=&quot;_blank&quot;&gt;Yilia&lt;/a&gt; by Litten
-         &lt;/div&gt;
-   &lt;/div&gt; 
-</code></pre><p><img src="http://lengjiaxin.github.io/images/cnzz/cnzz.JPG" alt=""></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
     <article id="post-2017-06-29-1-yilia" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -611,6 +534,83 @@ vCache.get(key);
 <h2 id="修改-BUG"><a href="#修改-BUG" class="headerlink" title="修改 BUG"></a>修改 BUG</h2><p>但是，这是你会发现一个 Bug，表情按钮点击不了，原因是被左侧的 div 层覆盖了，回到我们刚才改过的代码，找到 &lt;div id=”SOHUCS” 开头的一串代码。并做如下更改</p>
 <pre><code>&lt;div id=&quot;SOHUCS&quot; sid=&quot;&lt;%= page.title %&gt;&quot; style=&quot;padding: 0px 30px 0px 46px;&quot;&gt;&lt;/div&gt;
 </code></pre><p>加入上面这一段样式代码，即可修复。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
+    <article id="post-2017-06-29-2-yilia" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/29/2017-06-29-2-yilia/">yilia配置CNZZ</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/29/2017-06-29-2-yilia/" class="archive-article-date">
+  	<time datetime="2017-06-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="使用CNZZ数据专家"><a href="#使用CNZZ数据专家" class="headerlink" title="使用CNZZ数据专家"></a>使用CNZZ数据专家</h2><p>1、修改 themes\yilia\layout_partial\footer.ejs 模板，把如下代码</p>
+<pre><code> &lt;div id=&quot;footer-info&quot;&gt;
+    &lt;div class=&quot;footer-left&quot;&gt;
+        &amp;copy; &lt;%= date(new Date(), &apos;YYYY&apos;) %&gt; &lt;%= config.author || config.title %&gt;
+    &lt;/div&gt;
+      &lt;div class=&quot;footer-right&quot;&gt;
+          &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot;&gt;Hexo&lt;/a&gt;  Theme &lt;a href=&quot;https://github.com/litten/hexo-theme-yilia&quot; target=&quot;_blank&quot;&gt;Yilia&lt;/a&gt; by Litten
+      &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>修改为：</p>
+<pre><code>&lt;div id=&quot;footer-info&quot;&gt;
+       &lt;div class=&quot;footer-left&quot;&gt;
+           &amp;copy; &lt;%= date(new Date(), &apos;YYYY&apos;) %&gt; &lt;%= config.author || config.title %&gt;
+       &lt;/div&gt;
+         &lt;div class=&quot;footer-right&quot;&gt; 
+         &lt;-- 这里填写入CNZZ得js代码段  --&gt;
+        Theme &lt;a href=&quot;https://github.com/litten/hexo-theme-yilia&quot; target=&quot;_blank&quot;&gt;Yilia&lt;/a&gt; by Litten
+         &lt;/div&gt;
+   &lt;/div&gt; 
+</code></pre><p><img src="http://lengjiaxin.github.io/images/cnzz/cnzz.JPG" alt=""></p>
 
       
 
@@ -822,11 +822,15 @@ function floatAD() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -834,11 +838,11 @@ function floatAD() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -847,10 +851,6 @@ function floatAD() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
             
             <div class="clearfix"></div>
