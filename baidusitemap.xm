@@ -5,7 +5,7 @@
     
   <url>
     <loc>//litten.me/2017/12/05/2017-12-05-LiftTime/</loc>
-    <lastmod>2017-12-05T12:30:36.363Z</lastmod>
+    <lastmod>2017-12-05T13:39:51.163Z</lastmod>
     <data>
         <display>
         <title>【2017】人生中最重要的开始</title>
