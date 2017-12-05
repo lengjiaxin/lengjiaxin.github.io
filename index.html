@@ -599,19 +599,19 @@ vCache.get(key);
 <!--多说模块--> 
 
   
-    <article id="post-2017-06-29-1-yilia" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2017-06-29-2-yilia" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/29/2017-06-29-1-yilia/">yilia配置多说评论</a>
+      <a class="article-title" href="/2017/06/29/2017-06-29-2-yilia/">yilia配置CNZZ</a>
     </h1>
   
 
         
-        <a href="/2017/06/29/2017-06-29-1-yilia/" class="archive-article-date">
+        <a href="/2017/06/29/2017-06-29-2-yilia/" class="archive-article-date">
   	<time datetime="2017-06-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
 </a>
         
@@ -619,42 +619,26 @@ vCache.get(key);
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="使用畅言系统"><a href="#使用畅言系统" class="headerlink" title="使用畅言系统"></a>使用畅言系统</h2><p>1、修改 themes\yilia\layout_partial\article.ejs 模板，把如下代码</p>
-<pre><code>&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname){ %&gt;
- &lt;section id=&quot;comments&quot;&gt;
-   &lt;div id=&quot;disqus_thread&quot;&gt;
-     这里还有很多代码
-   &lt;/div&gt;
- &lt;/section&gt;
- &lt;% } %&gt;
+        <h2 id="使用CNZZ数据专家"><a href="#使用CNZZ数据专家" class="headerlink" title="使用CNZZ数据专家"></a>使用CNZZ数据专家</h2><p>1、修改 themes\yilia\layout_partial\footer.ejs 模板，把如下代码</p>
+<pre><code> &lt;div id=&quot;footer-info&quot;&gt;
+    &lt;div class=&quot;footer-left&quot;&gt;
+        &amp;copy; &lt;%= date(new Date(), &apos;YYYY&apos;) %&gt; &lt;%= config.author || config.title %&gt;
+    &lt;/div&gt;
+      &lt;div class=&quot;footer-right&quot;&gt;
+          &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot;&gt;Hexo&lt;/a&gt;  Theme &lt;a href=&quot;https://github.com/litten/hexo-theme-yilia&quot; target=&quot;_blank&quot;&gt;Yilia&lt;/a&gt; by Litten
+      &lt;/div&gt;
+&lt;/div&gt;
 </code></pre><p>修改为：</p>
-<pre><code> &lt;% if (!index &amp;&amp; post.comments){ %&gt;
-  &lt;section id=&quot;comments&quot;&gt;
-&lt;!--高速版，加载速度快，使用前需测试页面的兼容性--&gt;
-&lt;div id=&quot;SOHUCS&quot; sid=&quot;&lt;%= page.title %&gt;&quot;&gt;&lt;/div&gt;
-&lt;script&gt;
-  (function(){
-    var appid = &apos;你的APP ID&apos;,
-    conf = &apos;你的APP KEY&apos;;
-    var doc = document,
-    s = doc.createElement(&apos;script&apos;),
-    h = doc.getElementsByTagName(&apos;head&apos;)[0] || doc.head || doc.documentElement;
-    s.type = &apos;text/javascript&apos;;
-    s.charset = &apos;utf-8&apos;;
-    s.src =  &apos;http://assets.changyan.sohu.com/upload/changyan.js?conf=&apos;+ conf +&apos;&amp;appid=&apos; + appid;
-    h.insertBefore(s,h.firstChild);
-    window.SCS_NO_IFRAME = true;
-  })()
-&lt;/script&gt;    
-  &lt;/section&gt;
-  &lt;% } %&gt;
-</code></pre><p>上面的APP ID和APP KEY是在畅言设置中得到。</p>
-<p>这里需要注意一点的是：sid=”&lt;%= page.title %&gt;”&gt; 这样的话畅言就可以直接根据对应的文章来识别，使得文章有对应的评论，不会都乱在一起。</p>
-<p>2、在每篇文章开头的 front-matter 中添加一句comments: true，然后回到博客根目录执行命令 hexo d -g ，重新生成博客并部署博客，然后刷新，任选一篇文章进入下拉，会发现评论功能可以使用了。</p>
-<p><img src="http://lengjiaxin.github.io/images/yilia/yilia.JPG" alt=""></p>
-<h2 id="修改-BUG"><a href="#修改-BUG" class="headerlink" title="修改 BUG"></a>修改 BUG</h2><p>但是，这是你会发现一个 Bug，表情按钮点击不了，原因是被左侧的 div 层覆盖了，回到我们刚才改过的代码，找到 &lt;div id=”SOHUCS” 开头的一串代码。并做如下更改</p>
-<pre><code>&lt;div id=&quot;SOHUCS&quot; sid=&quot;&lt;%= page.title %&gt;&quot; style=&quot;padding: 0px 30px 0px 46px;&quot;&gt;&lt;/div&gt;
-</code></pre><p>加入上面这一段样式代码，即可修复。</p>
+<pre><code>&lt;div id=&quot;footer-info&quot;&gt;
+       &lt;div class=&quot;footer-left&quot;&gt;
+           &amp;copy; &lt;%= date(new Date(), &apos;YYYY&apos;) %&gt; &lt;%= config.author || config.title %&gt;
+       &lt;/div&gt;
+         &lt;div class=&quot;footer-right&quot;&gt; 
+         &lt;-- 这里填写入CNZZ得js代码段  --&gt;
+        Theme &lt;a href=&quot;https://github.com/litten/hexo-theme-yilia&quot; target=&quot;_blank&quot;&gt;Yilia&lt;/a&gt; by Litten
+         &lt;/div&gt;
+   &lt;/div&gt; 
+</code></pre><p><img src="http://lengjiaxin.github.io/images/cnzz/cnzz.JPG" alt=""></p>
 
       
 
@@ -778,11 +762,11 @@ vCache.get(key);
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -790,11 +774,7 @@ vCache.get(key);
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -802,11 +782,15 @@ vCache.get(key);
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
