@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>//litten.me/2017/12/25/2017-12-25-Java/</loc>
+    <lastmod>2017-12-25T14:01:24.314Z</lastmod>
+    <data>
+        <display>
+        <title>【Tomcat】多实例项目配置</title>
+        <pubTime>2017-12-25T11:45:00.000Z</pubTime>
+        
+        <tag>JAVA</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>//litten.me/2017/12/05/2017-12-05-LiftTime/</loc>
     <lastmod>2017-12-05T13:39:51.163Z</lastmod>
     <data>
