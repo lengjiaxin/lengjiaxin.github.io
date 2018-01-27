@@ -4,8 +4,25 @@
 
     
   <url>
+    <loc>//litten.me/2017/06/25/2017-06-25-7-Java/</loc>
+    <lastmod>2018-01-27T06:25:19.343Z</lastmod>
+    <data>
+        <display>
+        <title>JAVA GC 简单总结</title>
+        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>//litten.me/2018/01/27/2018-01-27-LiftTime/</loc>
-    <lastmod>2018-01-27T06:13:04.150Z</lastmod>
+    <lastmod>2018-01-27T06:21:25.053Z</lastmod>
     <data>
         <display>
         <title>【2018】不断总结规律得旅途</title>
@@ -199,23 +216,6 @@
         <pubTime>2017-06-25T15:20:00.000Z</pubTime>
         
         <tag>github</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>//litten.me/2017/06/25/2017-06-25-7-Java/</loc>
-    <lastmod>2017-06-25T15:28:19.151Z</lastmod>
-    <data>
-        <display>
-        <title>JAVA GC 简单总结</title>
-        <pubTime>2017-06-24T16:00:00.000Z</pubTime>
-        
-        <tag>java</tag>
          
          
            
