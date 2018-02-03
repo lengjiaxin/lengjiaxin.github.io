@@ -140,19 +140,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-2017-06-27-8-Javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2017-06-27-9-Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/27/2017-06-27-8-Javascript/">Javascript 页面飘窗</a>
+      <a class="article-title" href="/2017/06/27/2017-06-27-9-Mybatis/">druid连接池监控配置</a>
     </h1>
   
 
         
-        <a href="/2017/06/27/2017-06-27-8-Javascript/" class="archive-article-date">
+        <a href="/2017/06/27/2017-06-27-9-Mybatis/" class="archive-article-date">
   	<time datetime="2017-06-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
 </a>
         
@@ -160,38 +160,97 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Javascript设置相对屏幕左右距离"><a href="#Javascript设置相对屏幕左右距离" class="headerlink" title="Javascript设置相对屏幕左右距离"></a>Javascript设置相对屏幕左右距离</h2><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-var obj;
-var x = 50,y = 60;
-var xin = true, yin = true;
-var step = 1;
-var delay = 30; 
-function floatAD() {  
-    var L=T=0;
-    var R= (document.documentElement.clientWidth || document.body.clientWidth)-obj.offsetWidth;
-    var B = (document.documentElement.clientHeight || document.body.clientHeight)-obj.offsetHeight;
-    obj.style.left = x + (document.documentElement.scrollLeft || document.body.scrollLeft) + &apos;px&apos;;
-    obj.style.top = y + (document.documentElement.scrollTop || document.body.scrollTop) + &apos;px&apos;;
-    x = x + step*(xin?1:-1);
-    if (x &lt; L) { xin = true; x = L}
-    if (x &gt; R){ xin = false; x = R}
-    y = y + step*(yin?1:-1);
-    if (y &lt; T) { yin = true; y = T }
-    if (y &gt; B) { yin = false; y = B } 
-}
-    function loadTest(){  
-    obj = document.getElementById(&quot;pc&quot;); 
-    if(obj!=null){ 
-        var itl= setInterval(&quot;floatAD()&quot;, delay);
-        obj.onmouseover=function(){clearInterval(itl)};
-        obj.onmouseout=function(){itl=setInterval(&quot;floatAD()&quot;, delay)};
-    } 
-    }
-&lt;/script&gt;
-</code></pre><h2 id="HTML设置加载"><a href="#HTML设置加载" class="headerlink" title="HTML设置加载"></a>HTML设置加载</h2><pre><code>onload=&quot;loadTest();&quot;//页面初始化加载
+        <h2 id="Maven添加jar包"><a href="#Maven添加jar包" class="headerlink" title="Maven添加jar包"></a>Maven添加jar包</h2><pre><code>&lt;!-- 数据库连接池 --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+        &lt;artifactId&gt;druid&lt;/artifactId&gt;
+        &lt;version&gt;0.2.26&lt;/version&gt;
+    &lt;/dependency&gt;
+</code></pre><h2 id="数据库连接池配置"><a href="#数据库连接池配置" class="headerlink" title="数据库连接池配置"></a>数据库连接池配置</h2><pre><code>&lt;!-- druid driverClassName属性可以不用配置能自动识别，能自动从连接字符串中获取 --&gt;
+ &lt;property name=&quot;driverClassName&quot; value=&quot;com.microsoft.sqlserver.jdbc.SQLServerDriver&quot; /&gt; 
+ &lt;property name=&quot;url&quot; value=&quot;*&quot; /&gt;
+ &lt;property name=&quot;username&quot; value=&quot;*&quot; /&gt;
+ &lt;property name=&quot;password&quot; value=&quot;*&quot; /&gt;
+ &lt;property name=&quot;filters&quot; value=&quot;stat&quot; /&gt;  
+ &lt;property name=&quot;maxActive&quot; value=&quot;20&quot; /&gt;
+ &lt;property name=&quot;initialSize&quot; value=&quot;1&quot; /&gt;
+ &lt;property name=&quot;maxWait&quot; value=&quot;60000&quot; /&gt;
+ &lt;property name=&quot;minIdle&quot; value=&quot;1&quot; /&gt;
+ &lt;property name=&quot;timeBetweenEvictionRunsMillis&quot; value=&quot;60000&quot; /&gt;
+ &lt;property name=&quot;minEvictableIdleTimeMillis&quot; value=&quot;300000&quot; /&gt;
+ &lt;property name=&quot;validationQuery&quot; value=&quot;SELECT &apos;x&apos;&quot; /&gt;
+ &lt;property name=&quot;testWhileIdle&quot; value=&quot;true&quot; /&gt;
+ &lt;property name=&quot;testOnBorrow&quot; value=&quot;false&quot; /&gt;
+ &lt;property name=&quot;testOnReturn&quot; value=&quot;false&quot; /&gt;
+ &lt;property name=&quot;poolPreparedStatements&quot; value=&quot;true&quot; /&gt;
+ &lt;property name=&quot;maxPoolPreparedStatementPerConnectionSize&quot; value=&quot;50&quot; /&gt;        
+</code></pre><h2 id="配置Druid过滤器web-xml"><a href="#配置Druid过滤器web-xml" class="headerlink" title="配置Druid过滤器web.xml"></a>配置Druid过滤器web.xml</h2><pre><code>   &lt;!-- 添加druid监控 --&gt;
+   &lt;servlet&gt;
+       &lt;servlet-name&gt;DruidStatView&lt;/servlet-name&gt;
+       &lt;servlet-class&gt;com.alibaba.druid.support.http.StatViewServlet&lt;/servlet-class&gt;
+       &lt;init-param&gt;  
+       &lt;!-- 允许清空统计数据 --&gt;  
+       &lt;param-name&gt;resetEnable&lt;/param-name&gt;  
+       &lt;param-value&gt;true&lt;/param-value&gt;  
+       &lt;/init-param&gt;  
+       &lt;init-param&gt;  
+           &lt;!-- 用户名 --&gt;  
+           &lt;param-name&gt;loginUsername&lt;/param-name&gt;  
+           &lt;param-value&gt;druid&lt;/param-value&gt;  
+       &lt;/init-param&gt;  
+       &lt;init-param&gt;  
+           &lt;!-- 密码 --&gt;  
+           &lt;param-name&gt;loginPassword&lt;/param-name&gt;  
+           &lt;param-value&gt;druid&lt;/param-value&gt;  
+       &lt;/init-param&gt;   
+   &lt;/servlet&gt;
+   &lt;servlet-mapping&gt;
+       &lt;servlet-name&gt;DruidStatView&lt;/servlet-name&gt;
+       &lt;url-pattern&gt;/druid/*&lt;/url-pattern&gt;
+   &lt;/servlet-mapping&gt;
+   &lt;!-- 添加Web应用等监控 session监控--&gt;
+   &lt;filter&gt;
+       &lt;filter-name&gt;DruidWebStatFilter&lt;/filter-name&gt;
+       &lt;filter-class&gt;com.alibaba.druid.support.http.WebStatFilter&lt;/filter-class&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;exclusions&lt;/param-name&gt;
+           &lt;param-value&gt;*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*&lt;/param-value&gt;
+       &lt;/init-param&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;profileEnable&lt;/param-name&gt;
+           &lt;param-value&gt;true&lt;/param-value&gt;
+       &lt;/init-param&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;principalCookieName&lt;/param-name&gt;
+           &lt;param-value&gt;USER_COOKIE&lt;/param-value&gt;
+       &lt;/init-param&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;principalSessionName&lt;/param-name&gt;
+           &lt;param-value&gt;USER_SESSION&lt;/param-value&gt;
+       &lt;/init-param&gt;
+   &lt;/filter&gt;
+   &lt;filter-mapping&gt;
+       &lt;filter-name&gt;DruidWebStatFilter&lt;/filter-name&gt;
+       &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</code></pre><h2 id="druld配置spring监听过滤"><a href="#druld配置spring监听过滤" class="headerlink" title="druld配置spring监听过滤"></a>druld配置spring监听过滤</h2><pre><code>&lt;!-- druld配置spring 监听 --&gt;
+&lt;bean id=&quot;druid-stat-interceptor&quot; class=&quot;com.alibaba.druid.support.spring.stat.DruidStatInterceptor&quot; /&gt;
+&lt;bean id=&quot;druid-stat-pointcut&quot; class=&quot;org.springframework.aop.support.JdkRegexpMethodPointcut&quot; scope=&quot;prototype&quot;&gt;
+&lt;property name=&quot;patterns&quot;&gt;
+    &lt;list&gt;
+        &lt;value&gt;com.*.service.*&lt;/value&gt;
+        &lt;value&gt;com.*.dao.*&lt;/value&gt;
+    &lt;/list&gt;
+&lt;/property&gt;
+&lt;/bean&gt;
+&lt;aop:config&gt;
+&lt;aop:advisor advice-ref=&quot;druid-stat-interceptor&quot;
+    pointcut-ref=&quot;druid-stat-pointcut&quot; /&gt;
+&lt;/aop:config&gt;  
+</code></pre><h2 id="访问地址http-ip-port-project-druid-index-html"><a href="#访问地址http-ip-port-project-druid-index-html" class="headerlink" title="访问地址http://ip:port/project/druid/index.html"></a>访问地址<a href="http://ip:port/project/druid/index.html" target="_blank" rel="external">http://ip:port/project/druid/index.html</a></h2><p><img src="http://lengjiaxin.github.io/images/druid/druid_1.PNG" alt=""></p>
+<p><img src="http://lengjiaxin.github.io/images/druid/druid_2.PNG" alt=""></p>
+<p><img src="http://lengjiaxin.github.io/images/druid/druid_3.PNG" alt=""></p>
 
-&lt;div id=&quot;pc&quot; style=&quot;Z-INDEX: 1000; POSITION: absolute&quot;&gt;&lt;A href=&quot;www.baidu.com&quot; target=&quot;_blank&quot;&gt;&lt;IMG src=&quot;images/cypc.png&quot; border=0 width=&quot;280&quot;/&gt;&lt;/A&gt;&lt;/div&gt;
-</code></pre>
       
 
       
@@ -204,7 +263,7 @@ function floatAD() {
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
         		</li>
       		
 		</ul>
