@@ -140,6 +140,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2017-08-17-commit" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/17/2017-08-17-commit/">Git Hub Commit</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/17/2017-08-17-commit/" class="archive-article-date">
+  	<time datetime="2017-08-17T14:29:38.666Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1、打开本地git命令窗口或者cmd命令窗口，cd到你存放项目的根目录下，并执行一下命令行：</p>
+<p>git clone 仓库地址(上面一步复制出来的地址)，如下图，是我复制我创建的仓库地址：</p>
+<p><img src="http://lengjiaxin.github.io/images/github/blog_005.png" alt=""></p>
+<p>2、打开项目文件夹，会发现刚才在github里面新建的文件都存在本地了，</p>
+<p>3、将要上传的文件拷贝到这个目录下，拷贝完成后，再执行下命令git status，看git是否获取到文件的更改，如图：</p>
+<p><img src="http://lengjiaxin.github.io/images/github/blog_007.png" alt=""></p>
+<p>4、再执行命令git add –all,将所有文件都添加到仓库中，如果想添加某一个文件，则将后面的–all换成你要提交的文件名即可。</p>
+<p>5、然后还需要将增加的文件commit到仓库里去，执行命令git commmit -m “注释语句”，如图：<br><img src="http://lengjiaxin.github.io/images/github/blog_006.png" alt=""></p>
+<p>6、此时还没完，还要将commit的代码push到远程分支，由于我们本地只有master分支，所以我们可以直接执行命令git push，如图：<br><img src="http://lengjiaxin.github.io/images/github/blog_008.png" alt=""></p>
+<p>会让你输入用户名和密码，你输入你github登录的用户名和密码即可。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2017-07-18-cache" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -582,153 +649,6 @@ vCache.get(key);
 <!--多说模块--> 
 
   
-    <article id="post-2017-06-27-9-Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/27/2017-06-27-9-Mybatis/">druid连接池监控配置</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/27/2017-06-27-9-Mybatis/" class="archive-article-date">
-  	<time datetime="2017-06-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Maven添加jar包"><a href="#Maven添加jar包" class="headerlink" title="Maven添加jar包"></a>Maven添加jar包</h2><pre><code>&lt;!-- 数据库连接池 --&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
-        &lt;artifactId&gt;druid&lt;/artifactId&gt;
-        &lt;version&gt;0.2.26&lt;/version&gt;
-    &lt;/dependency&gt;
-</code></pre><h2 id="数据库连接池配置"><a href="#数据库连接池配置" class="headerlink" title="数据库连接池配置"></a>数据库连接池配置</h2><pre><code>&lt;!-- druid driverClassName属性可以不用配置能自动识别，能自动从连接字符串中获取 --&gt;
- &lt;property name=&quot;driverClassName&quot; value=&quot;com.microsoft.sqlserver.jdbc.SQLServerDriver&quot; /&gt; 
- &lt;property name=&quot;url&quot; value=&quot;*&quot; /&gt;
- &lt;property name=&quot;username&quot; value=&quot;*&quot; /&gt;
- &lt;property name=&quot;password&quot; value=&quot;*&quot; /&gt;
- &lt;property name=&quot;filters&quot; value=&quot;stat&quot; /&gt;  
- &lt;property name=&quot;maxActive&quot; value=&quot;20&quot; /&gt;
- &lt;property name=&quot;initialSize&quot; value=&quot;1&quot; /&gt;
- &lt;property name=&quot;maxWait&quot; value=&quot;60000&quot; /&gt;
- &lt;property name=&quot;minIdle&quot; value=&quot;1&quot; /&gt;
- &lt;property name=&quot;timeBetweenEvictionRunsMillis&quot; value=&quot;60000&quot; /&gt;
- &lt;property name=&quot;minEvictableIdleTimeMillis&quot; value=&quot;300000&quot; /&gt;
- &lt;property name=&quot;validationQuery&quot; value=&quot;SELECT &apos;x&apos;&quot; /&gt;
- &lt;property name=&quot;testWhileIdle&quot; value=&quot;true&quot; /&gt;
- &lt;property name=&quot;testOnBorrow&quot; value=&quot;false&quot; /&gt;
- &lt;property name=&quot;testOnReturn&quot; value=&quot;false&quot; /&gt;
- &lt;property name=&quot;poolPreparedStatements&quot; value=&quot;true&quot; /&gt;
- &lt;property name=&quot;maxPoolPreparedStatementPerConnectionSize&quot; value=&quot;50&quot; /&gt;        
-</code></pre><h2 id="配置Druid过滤器web-xml"><a href="#配置Druid过滤器web-xml" class="headerlink" title="配置Druid过滤器web.xml"></a>配置Druid过滤器web.xml</h2><pre><code>   &lt;!-- 添加druid监控 --&gt;
-   &lt;servlet&gt;
-       &lt;servlet-name&gt;DruidStatView&lt;/servlet-name&gt;
-       &lt;servlet-class&gt;com.alibaba.druid.support.http.StatViewServlet&lt;/servlet-class&gt;
-       &lt;init-param&gt;  
-       &lt;!-- 允许清空统计数据 --&gt;  
-       &lt;param-name&gt;resetEnable&lt;/param-name&gt;  
-       &lt;param-value&gt;true&lt;/param-value&gt;  
-       &lt;/init-param&gt;  
-       &lt;init-param&gt;  
-           &lt;!-- 用户名 --&gt;  
-           &lt;param-name&gt;loginUsername&lt;/param-name&gt;  
-           &lt;param-value&gt;druid&lt;/param-value&gt;  
-       &lt;/init-param&gt;  
-       &lt;init-param&gt;  
-           &lt;!-- 密码 --&gt;  
-           &lt;param-name&gt;loginPassword&lt;/param-name&gt;  
-           &lt;param-value&gt;druid&lt;/param-value&gt;  
-       &lt;/init-param&gt;   
-   &lt;/servlet&gt;
-   &lt;servlet-mapping&gt;
-       &lt;servlet-name&gt;DruidStatView&lt;/servlet-name&gt;
-       &lt;url-pattern&gt;/druid/*&lt;/url-pattern&gt;
-   &lt;/servlet-mapping&gt;
-   &lt;!-- 添加Web应用等监控 session监控--&gt;
-   &lt;filter&gt;
-       &lt;filter-name&gt;DruidWebStatFilter&lt;/filter-name&gt;
-       &lt;filter-class&gt;com.alibaba.druid.support.http.WebStatFilter&lt;/filter-class&gt;
-       &lt;init-param&gt;
-           &lt;param-name&gt;exclusions&lt;/param-name&gt;
-           &lt;param-value&gt;*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*&lt;/param-value&gt;
-       &lt;/init-param&gt;
-       &lt;init-param&gt;
-           &lt;param-name&gt;profileEnable&lt;/param-name&gt;
-           &lt;param-value&gt;true&lt;/param-value&gt;
-       &lt;/init-param&gt;
-       &lt;init-param&gt;
-           &lt;param-name&gt;principalCookieName&lt;/param-name&gt;
-           &lt;param-value&gt;USER_COOKIE&lt;/param-value&gt;
-       &lt;/init-param&gt;
-       &lt;init-param&gt;
-           &lt;param-name&gt;principalSessionName&lt;/param-name&gt;
-           &lt;param-value&gt;USER_SESSION&lt;/param-value&gt;
-       &lt;/init-param&gt;
-   &lt;/filter&gt;
-   &lt;filter-mapping&gt;
-       &lt;filter-name&gt;DruidWebStatFilter&lt;/filter-name&gt;
-       &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
-&lt;/filter-mapping&gt;
-</code></pre><h2 id="druld配置spring监听过滤"><a href="#druld配置spring监听过滤" class="headerlink" title="druld配置spring监听过滤"></a>druld配置spring监听过滤</h2><pre><code>&lt;!-- druld配置spring 监听 --&gt;
-&lt;bean id=&quot;druid-stat-interceptor&quot; class=&quot;com.alibaba.druid.support.spring.stat.DruidStatInterceptor&quot; /&gt;
-&lt;bean id=&quot;druid-stat-pointcut&quot; class=&quot;org.springframework.aop.support.JdkRegexpMethodPointcut&quot; scope=&quot;prototype&quot;&gt;
-&lt;property name=&quot;patterns&quot;&gt;
-    &lt;list&gt;
-        &lt;value&gt;com.*.service.*&lt;/value&gt;
-        &lt;value&gt;com.*.dao.*&lt;/value&gt;
-    &lt;/list&gt;
-&lt;/property&gt;
-&lt;/bean&gt;
-&lt;aop:config&gt;
-&lt;aop:advisor advice-ref=&quot;druid-stat-interceptor&quot;
-    pointcut-ref=&quot;druid-stat-pointcut&quot; /&gt;
-&lt;/aop:config&gt;  
-</code></pre><h2 id="访问地址http-ip-port-project-druid-index-html"><a href="#访问地址http-ip-port-project-druid-index-html" class="headerlink" title="访问地址http://ip:port/project/druid/index.html"></a>访问地址<a href="http://ip:port/project/druid/index.html" target="_blank" rel="external">http://ip:port/project/druid/index.html</a></h2><p><img src="http://lengjiaxin.github.io/images/druid/druid_1.PNG" alt=""></p>
-<p><img src="http://lengjiaxin.github.io/images/druid/druid_2.PNG" alt=""></p>
-<p><img src="http://lengjiaxin.github.io/images/druid/druid_3.PNG" alt=""></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
     <article id="post-2017-06-27-8-Javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -903,6 +823,10 @@ function floatAD() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -915,11 +839,11 @@ function floatAD() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -928,14 +852,6 @@ function floatAD() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
