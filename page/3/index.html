@@ -140,6 +140,153 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2017-06-27-9-Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/27/2017-06-27-9-Mybatis/">druid连接池监控配置</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/27/2017-06-27-9-Mybatis/" class="archive-article-date">
+  	<time datetime="2017-06-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Maven添加jar包"><a href="#Maven添加jar包" class="headerlink" title="Maven添加jar包"></a>Maven添加jar包</h2><pre><code>&lt;!-- 数据库连接池 --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+        &lt;artifactId&gt;druid&lt;/artifactId&gt;
+        &lt;version&gt;0.2.26&lt;/version&gt;
+    &lt;/dependency&gt;
+</code></pre><h2 id="数据库连接池配置"><a href="#数据库连接池配置" class="headerlink" title="数据库连接池配置"></a>数据库连接池配置</h2><pre><code>&lt;!-- druid driverClassName属性可以不用配置能自动识别，能自动从连接字符串中获取 --&gt;
+ &lt;property name=&quot;driverClassName&quot; value=&quot;com.microsoft.sqlserver.jdbc.SQLServerDriver&quot; /&gt; 
+ &lt;property name=&quot;url&quot; value=&quot;*&quot; /&gt;
+ &lt;property name=&quot;username&quot; value=&quot;*&quot; /&gt;
+ &lt;property name=&quot;password&quot; value=&quot;*&quot; /&gt;
+ &lt;property name=&quot;filters&quot; value=&quot;stat&quot; /&gt;  
+ &lt;property name=&quot;maxActive&quot; value=&quot;20&quot; /&gt;
+ &lt;property name=&quot;initialSize&quot; value=&quot;1&quot; /&gt;
+ &lt;property name=&quot;maxWait&quot; value=&quot;60000&quot; /&gt;
+ &lt;property name=&quot;minIdle&quot; value=&quot;1&quot; /&gt;
+ &lt;property name=&quot;timeBetweenEvictionRunsMillis&quot; value=&quot;60000&quot; /&gt;
+ &lt;property name=&quot;minEvictableIdleTimeMillis&quot; value=&quot;300000&quot; /&gt;
+ &lt;property name=&quot;validationQuery&quot; value=&quot;SELECT &apos;x&apos;&quot; /&gt;
+ &lt;property name=&quot;testWhileIdle&quot; value=&quot;true&quot; /&gt;
+ &lt;property name=&quot;testOnBorrow&quot; value=&quot;false&quot; /&gt;
+ &lt;property name=&quot;testOnReturn&quot; value=&quot;false&quot; /&gt;
+ &lt;property name=&quot;poolPreparedStatements&quot; value=&quot;true&quot; /&gt;
+ &lt;property name=&quot;maxPoolPreparedStatementPerConnectionSize&quot; value=&quot;50&quot; /&gt;        
+</code></pre><h2 id="配置Druid过滤器web-xml"><a href="#配置Druid过滤器web-xml" class="headerlink" title="配置Druid过滤器web.xml"></a>配置Druid过滤器web.xml</h2><pre><code>   &lt;!-- 添加druid监控 --&gt;
+   &lt;servlet&gt;
+       &lt;servlet-name&gt;DruidStatView&lt;/servlet-name&gt;
+       &lt;servlet-class&gt;com.alibaba.druid.support.http.StatViewServlet&lt;/servlet-class&gt;
+       &lt;init-param&gt;  
+       &lt;!-- 允许清空统计数据 --&gt;  
+       &lt;param-name&gt;resetEnable&lt;/param-name&gt;  
+       &lt;param-value&gt;true&lt;/param-value&gt;  
+       &lt;/init-param&gt;  
+       &lt;init-param&gt;  
+           &lt;!-- 用户名 --&gt;  
+           &lt;param-name&gt;loginUsername&lt;/param-name&gt;  
+           &lt;param-value&gt;druid&lt;/param-value&gt;  
+       &lt;/init-param&gt;  
+       &lt;init-param&gt;  
+           &lt;!-- 密码 --&gt;  
+           &lt;param-name&gt;loginPassword&lt;/param-name&gt;  
+           &lt;param-value&gt;druid&lt;/param-value&gt;  
+       &lt;/init-param&gt;   
+   &lt;/servlet&gt;
+   &lt;servlet-mapping&gt;
+       &lt;servlet-name&gt;DruidStatView&lt;/servlet-name&gt;
+       &lt;url-pattern&gt;/druid/*&lt;/url-pattern&gt;
+   &lt;/servlet-mapping&gt;
+   &lt;!-- 添加Web应用等监控 session监控--&gt;
+   &lt;filter&gt;
+       &lt;filter-name&gt;DruidWebStatFilter&lt;/filter-name&gt;
+       &lt;filter-class&gt;com.alibaba.druid.support.http.WebStatFilter&lt;/filter-class&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;exclusions&lt;/param-name&gt;
+           &lt;param-value&gt;*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*&lt;/param-value&gt;
+       &lt;/init-param&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;profileEnable&lt;/param-name&gt;
+           &lt;param-value&gt;true&lt;/param-value&gt;
+       &lt;/init-param&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;principalCookieName&lt;/param-name&gt;
+           &lt;param-value&gt;USER_COOKIE&lt;/param-value&gt;
+       &lt;/init-param&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;principalSessionName&lt;/param-name&gt;
+           &lt;param-value&gt;USER_SESSION&lt;/param-value&gt;
+       &lt;/init-param&gt;
+   &lt;/filter&gt;
+   &lt;filter-mapping&gt;
+       &lt;filter-name&gt;DruidWebStatFilter&lt;/filter-name&gt;
+       &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/filter-mapping&gt;
+</code></pre><h2 id="druld配置spring监听过滤"><a href="#druld配置spring监听过滤" class="headerlink" title="druld配置spring监听过滤"></a>druld配置spring监听过滤</h2><pre><code>&lt;!-- druld配置spring 监听 --&gt;
+&lt;bean id=&quot;druid-stat-interceptor&quot; class=&quot;com.alibaba.druid.support.spring.stat.DruidStatInterceptor&quot; /&gt;
+&lt;bean id=&quot;druid-stat-pointcut&quot; class=&quot;org.springframework.aop.support.JdkRegexpMethodPointcut&quot; scope=&quot;prototype&quot;&gt;
+&lt;property name=&quot;patterns&quot;&gt;
+    &lt;list&gt;
+        &lt;value&gt;com.*.service.*&lt;/value&gt;
+        &lt;value&gt;com.*.dao.*&lt;/value&gt;
+    &lt;/list&gt;
+&lt;/property&gt;
+&lt;/bean&gt;
+&lt;aop:config&gt;
+&lt;aop:advisor advice-ref=&quot;druid-stat-interceptor&quot;
+    pointcut-ref=&quot;druid-stat-pointcut&quot; /&gt;
+&lt;/aop:config&gt;  
+</code></pre><h2 id="访问地址http-ip-port-project-druid-index-html"><a href="#访问地址http-ip-port-project-druid-index-html" class="headerlink" title="访问地址http://ip:port/project/druid/index.html"></a>访问地址<a href="http://ip:port/project/druid/index.html" target="_blank" rel="external">http://ip:port/project/druid/index.html</a></h2><p><img src="http://lengjiaxin.github.io/images/druid/druid_1.PNG" alt=""></p>
+<p><img src="http://lengjiaxin.github.io/images/druid/druid_2.PNG" alt=""></p>
+<p><img src="http://lengjiaxin.github.io/images/druid/druid_3.PNG" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2017-06-27-8-Javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -484,71 +631,6 @@ public class SqlStatementInterceptor implements Interceptor {
 <!--多说模块--> 
 
   
-    <article id="post-2017-05-25-5-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/25/2017-05-25-5-Java/">Java 字符串操作</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/25/2017-05-25-5-Java/" class="archive-article-date">
-  	<time datetime="2017-05-25T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Java-6以后就不再需要StringBuilder拼接字符串"><a href="#Java-6以后就不再需要StringBuilder拼接字符串" class="headerlink" title="Java 6以后就不再需要StringBuilder拼接字符串"></a>Java 6以后就不再需要StringBuilder拼接字符串</h1><p><table><br>    <tr><br>        <td style="color:red;">Java基础篇一</td><br>    </tr><br></table><br>在Java中，字符串对象是不可变的，意思是它一旦创建，你就无法再改变它。所以在我们拼接字符串的时候，创建了一个新的字符串，旧的被垃圾回收器所标记。<br><br>如果我们处理上百万的字符串，然后，我们就会生成百万的额外字符串被垃圾回收器处理。</p>
-<blockquote>
-<h2 id="虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点操作-dot-operator-就是String-concat-String-操作"><a href="#虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点操作-dot-operator-就是String-concat-String-操作" class="headerlink" title="虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点操作(dot operator)就是String#concat(String)操作"></a>虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点操作(dot operator)就是String#concat(String)操作</h2><p> public String concat(String str) {<br>   int otherLen = str.length();<br>   if (otherLen == 0) {<br>       return this;<br>   }<br>   int len = value.length;<br>   char buf[] = Arrays.copyOf(value, len + otherLen);<br>   str.getChars(buf, len);<br>   return new String(buf, true);<br>}<br>public static char[] copyOf(char[] original, int newLength) {<br>   char[] copy = new char[newLength];<br>   System.arraycopy(original, 0, copy, 0,<br>                    Math.min(original.length, newLength));<br>   return copy;<br>}<br>void getChars(char dst[], int dstBegin) {<br>   System.arraycopy(value, 0, dst, dstBegin, value.length);<br>} </p>
-</blockquote>
-<p><table><br>    <tr><br>        <td style="color:#F99999;">Sevlet绑定Spring bean</td><br>    </tr><br></table><br><code>SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,cfg.getServletContext());//初始化Spring</code>  </p>
-<blockquote>
-<p>public static void processInjectionBasedOnServletContext(Object target, ServletContext servletContext)<br>   {<br> Assert.notNull(target, “Target object must not be null”);<br> WebApplicationContext cc = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext);<br> AutowiredAnnotationBeanPostProcessor bpp = new AutowiredAnnotationBeanPostProcessor();<br> bpp.setBeanFactory(cc.getAutowireCapableBeanFactory());<br>bpp.processInjection(target);<br>}</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -643,7 +725,7 @@ public class SqlStatementInterceptor implements Interceptor {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -651,7 +733,7 @@ public class SqlStatementInterceptor implements Interceptor {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -659,7 +741,7 @@ public class SqlStatementInterceptor implements Interceptor {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
