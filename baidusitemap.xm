@@ -123,23 +123,6 @@
 
     
   <url>
-    <loc>//litten.me/2017/12/05/2017-12-05-LiftTime/</loc>
-    <lastmod>2018-01-27T05:58:31.825Z</lastmod>
-    <data>
-        <display>
-        <title>【2017】人生中最重要的开始</title>
-        <pubTime>2017-12-05T11:45:00.000Z</pubTime>
-        
-        <tag>生活</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>//litten.me/2017/07/18/2017-07-18-cache/</loc>
     <lastmod>2017-10-15T09:54:15.093Z</lastmod>
     <data>
