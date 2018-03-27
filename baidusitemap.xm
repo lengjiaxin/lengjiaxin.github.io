@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>//litten.me/2018/03/27/2018-03-27-Java/</loc>
+    <lastmod>2018-03-27T15:34:43.241Z</lastmod>
+    <data>
+        <display>
+        <title>【Java】集群session实现共享得几种方式</title>
+        <pubTime>2018-03-27T11:45:00.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>//litten.me/2018/03/25/2018-03-25-Java/</loc>
     <lastmod>2018-03-27T15:17:47.711Z</lastmod>
     <data>
