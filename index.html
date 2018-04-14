@@ -143,22 +143,32 @@
     <article id="post-2018-04-14-linux" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/27/2018-04-14-linux/">【Java】集群session实现共享得几种方式</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/27/2018-04-14-linux/" class="archive-article-date">
+  	<time datetime="2018-03-27T11:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-27</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>layout:     post<br>title:      “linux基础环境搭建”<br>comments:    true<br>date:       2018-04-14<br>tags: </p>
-<pre><code>- linux  
-</code></pre><h2 id="reward-true"><a href="#reward-true" class="headerlink" title="reward: true "></a>reward: true </h2><h2 id="云主机基础环境搭建"><a href="#云主机基础环境搭建" class="headerlink" title="云主机基础环境搭建"></a>云主机基础环境搭建</h2><p>TOMCAT JDK</p>
-<p>##vim编辑文件基本命令</p>
-<ul>
+        <h2 id="云主机基础环境搭建"><a href="#云主机基础环境搭建" class="headerlink" title="云主机基础环境搭建"></a>云主机基础环境搭建</h2><p>TOMCAT JDK </p>
+<h2 id="vim编辑文件基本命令"><a href="#vim编辑文件基本命令" class="headerlink" title="vim编辑文件基本命令"></a>vim编辑文件基本命令</h2><ul>
 <li>i → Insert 模式，按 ESC 回到 Normal 模式.</li>
 <li>x → 删当前光标所在的一个字符。</li>
 <li>p → 粘贴剪贴板</li>
 <li>dd → 删除当前行，并把删除的行存到剪贴板里</li>
 <li>:wq → 存盘 + 退出 (:w 存盘, :q 退出)   （注：:w 后可以跟文件名）</li>
 </ul>
-<p>##JDK运行环境搭建</p>
-<ul>
+<h2 id="JDK运行环境搭建"><a href="#JDK运行环境搭建" class="headerlink" title="JDK运行环境搭建"></a>JDK运行环境搭建</h2><ul>
 <li>在Oracle官网下载jdk压缩包。通过WinScp上传到服务器</li>
 <li>通过PuTTY命令（tar -zxvf xxx.tar.gz）解压</li>
 <li>vim /etc/profile 打开配置文件开启编辑</li>
@@ -169,8 +179,7 @@
 <li>执行立即生效：source /etc/profile</li>
 <li>检查新安装的jdk：java -version</li>
 </ul>
-<p>##TOMCAT运行环境搭建</p>
-<ul>
+<h2 id="TOMCAT运行环境搭建"><a href="#TOMCAT运行环境搭建" class="headerlink" title="TOMCAT运行环境搭建"></a>TOMCAT运行环境搭建</h2><ul>
 <li>在Oracle官网下载tomcat压缩包。通过WinScp上传到服务器</li>
 <li>通过PuTTY命令（tar -zxvf xxx.tar.gz）解压</li>
 <li>进入tomcat的bin目录: cd /mydata/apache-tomcat-7.0.85/bin</li>
@@ -187,6 +196,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -638,7 +658,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -646,7 +666,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -655,14 +683,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
