@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>【Java】集群session实现共享得几种方式 | Coolcat的博客</title>
+  <title>Coolcat的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="集群session共享？ ip_hash技术，nginx中可以配置。  Tomcat session传播，复制功能。  session存在缓存memcache或者redis中。">
-<meta name="keywords" content="Java">
+  <meta name="description" content="layout:     posttitle:      “linux基础环境搭建”comments:    truedate:       2018-04-14tags:  - linux   reward: true 云主机基础环境搭建TOMCAT JDK ##vim编辑文件基本命令  i → Insert 模式，按 ESC 回到 Normal 模式. x → 删当前光标所在的一个字符。 p">
+<meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【Java】集群session实现共享得几种方式">
-<meta property="og:url" content="//litten.me/2018/03/27/2018-03-27-Java/index.html">
+<meta property="og:title" content="Coolcat的博客">
+<meta property="og:url" content="//litten.me/2018/04/14/2018-04-14-linux/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
-<meta property="og:description" content="集群session共享？ ip_hash技术，nginx中可以配置。  Tomcat session传播，复制功能。  session存在缓存memcache或者redis中。">
-<meta property="og:updated_time" content="2018-03-27T15:34:43.241Z">
+<meta property="og:description" content="layout:     posttitle:      “linux基础环境搭建”comments:    truedate:       2018-04-14tags:  - linux   reward: true 云主机基础环境搭建TOMCAT JDK ##vim编辑文件基本命令  i → Insert 模式，按 ESC 回到 Normal 模式. x → 删当前光标所在的一个字符。 p">
+<meta property="og:updated_time" content="2018-04-14T12:01:54.491Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【Java】集群session实现共享得几种方式">
-<meta name="twitter:description" content="集群session共享？ ip_hash技术，nginx中可以配置。  Tomcat session传播，复制功能。  session存在缓存memcache或者redis中。">
+<meta name="twitter:title" content="Coolcat的博客">
+<meta name="twitter:description" content="layout:     posttitle:      “linux基础环境搭建”comments:    truedate:       2018-04-14tags:  - linux   reward: true 云主机基础环境搭建TOMCAT JDK ##vim编辑文件基本命令  i → Insert 模式，按 ESC 回到 Normal 模式. x → 删当前光标所在的一个字符。 p">
   
     <link rel="alternative" href="/atom.xml" title="Coolcat的博客" type="application/atom+xml">
   
@@ -140,36 +140,44 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2018-03-27-Java" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2018-04-14-linux" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      【Java】集群session实现共享得几种方式
-    </h1>
-  
-
-        
-        <a href="/2018/03/27/2018-03-27-Java/" class="archive-article-date">
-  	<time datetime="2018-03-27T11:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-27</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li><h3 id="集群session共享？"><a href="#集群session共享？" class="headerlink" title="集群session共享？"></a>集群session共享？</h3><ul>
-<li><p>ip_hash技术，nginx中可以配置。</p>
-</li>
-<li><p>Tomcat session传播，复制功能。</p>
-</li>
-<li><p>session存在缓存memcache或者redis中。</p>
-</li>
+        <hr>
+<p>layout:     post<br>title:      “linux基础环境搭建”<br>comments:    true<br>date:       2018-04-14<br>tags: </p>
+<pre><code>- linux  
+</code></pre><h2 id="reward-true"><a href="#reward-true" class="headerlink" title="reward: true "></a>reward: true </h2><h2 id="云主机基础环境搭建"><a href="#云主机基础环境搭建" class="headerlink" title="云主机基础环境搭建"></a>云主机基础环境搭建</h2><p>TOMCAT JDK</p>
+<p>##vim编辑文件基本命令</p>
+<ul>
+<li>i → Insert 模式，按 ESC 回到 Normal 模式.</li>
+<li>x → 删当前光标所在的一个字符。</li>
+<li>p → 粘贴剪贴板</li>
+<li>dd → 删除当前行，并把删除的行存到剪贴板里</li>
+<li>:wq → 存盘 + 退出 (:w 存盘, :q 退出)   （注：:w 后可以跟文件名）</li>
 </ul>
-</li>
+<p>##JDK运行环境搭建</p>
+<ul>
+<li>在Oracle官网下载jdk压缩包。通过WinScp上传到服务器</li>
+<li>通过PuTTY命令（tar -zxvf xxx.tar.gz）解压</li>
+<li>vim /etc/profile 打开配置文件开启编辑</li>
+<li>在最前面添加：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> JAVA_HOME=<span class="regexp">/usr/</span>lib/jvm/jdk1<span class="number">.8</span><span class="number">.0</span>_131  </div><div class="line"><span class="keyword">export</span> JRE_HOME=$&#123;JAVA_HOME&#125;/jre  </div><div class="line"><span class="keyword">export</span> CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib  </div><div class="line"><span class="keyword">export</span> PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</div></pre></td></tr></table></figure>
+<ul>
+<li>执行立即生效：source /etc/profile</li>
+<li>检查新安装的jdk：java -version</li>
+</ul>
+<p>##TOMCAT运行环境搭建</p>
+<ul>
+<li>在Oracle官网下载tomcat压缩包。通过WinScp上传到服务器</li>
+<li>通过PuTTY命令（tar -zxvf xxx.tar.gz）解压</li>
+<li>进入tomcat的bin目录: cd /mydata/apache-tomcat-7.0.85/bin</li>
+<li>查看tomcat是否关闭(无信息证明关闭): ps -ef|grep java</li>
+<li>查看进程号：ps -ef |grep tomcat</li>
+<li>kill -9 进程号  //关闭进程 </li>
+<li>启动tomcat： ./startup.sh  </li>
 </ul>
 
       
@@ -179,17 +187,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -240,7 +237,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2018/03/27/2018-03-27-Java/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2018/04/14/2018-04-14-linux/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -254,20 +251,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/03/25/2018-03-25-Java/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/03/27/2018-03-27-Java/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          【Java】过滤器、拦截器
+          【Java】集群session实现共享得几种方式
         
       </div>
     </a>
   
-  
-    <a href="/2018/04/14/2018-04-14-linux/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
@@ -285,7 +277,7 @@
 
   <section id="comments">
 <!--高速版，加载速度快，使用前需测试页面的兼容性--> 
-<div id="SOHUCS" sid="【Java】集群session实现共享得几种方式" style="padding: 0px 30px 0px 46px;"></div> 
+<div id="SOHUCS" sid="" style="padding: 0px 30px 0px 46px;"></div> 
 <script>
   (function(){
     var appid = 'cyt5seecS',
