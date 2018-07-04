@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>//litten.me/2018/07/05/2018-07-04-Java/</loc>
+    <lastmod>2018-07-04T08:00:53.194Z</lastmod>
+    <data>
+        <display>
+        <title>SpringBoot连接mySQL事务失效</title>
+        <pubTime>2018-07-05T05:33:00.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>//litten.me/2018/04/14/2018-04-14-linux/</loc>
     <lastmod>2018-04-14T12:16:22.624Z</lastmod>
     <data>
