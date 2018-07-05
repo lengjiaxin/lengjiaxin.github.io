@@ -5,7 +5,7 @@
     
   <url>
     <loc>//litten.me/2018/07/05/2018-07-04-Java/</loc>
-    <lastmod>2018-07-05T08:13:09.422Z</lastmod>
+    <lastmod>2018-07-05T08:18:11.642Z</lastmod>
     <data>
         <display>
         <title>SpringBoot连接mySQL事务失效</title>

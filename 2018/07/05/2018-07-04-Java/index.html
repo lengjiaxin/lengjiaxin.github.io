@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="//litten.me">
   <title>SpringBoot连接mySQL事务失效 | Coolcat的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SpringBoot中JPA事务失效的问题 在SpringBoot中使用jpa，表是通过对应的实体直接建立，默认情况下，表的引擎engine=MyISAM性能更好,但不提供事务支持，如果需要使用事务，需要将JPA建表的默认引擎修改为：InNoDB，直接修改配置文件，如下：  application.xml1spring.jpa.database-platform=org.hibernate.dia">
+  <meta name="description" content="SpringBoot中JPA事务失效的问题 在SpringBoot中使用jpa，表是通过对应的实体直接建立，默认情况下，表的引擎engine=MyISAM性能更好,但不提供事务支持，如果需要使用事务,需要将JPA建表的默认引擎修改为：InNoDB，直接修改配置文件，如下：  application.xml1spring.jpa.database-platform=org.hibernate.dia">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot连接mySQL事务失效">
 <meta property="og:url" content="//litten.me/2018/07/05/2018-07-04-Java/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
-<meta property="og:description" content="SpringBoot中JPA事务失效的问题 在SpringBoot中使用jpa，表是通过对应的实体直接建立，默认情况下，表的引擎engine=MyISAM性能更好,但不提供事务支持，如果需要使用事务，需要将JPA建表的默认引擎修改为：InNoDB，直接修改配置文件，如下：  application.xml1spring.jpa.database-platform=org.hibernate.dia">
-<meta property="og:updated_time" content="2018-07-05T08:13:09.422Z">
+<meta property="og:description" content="SpringBoot中JPA事务失效的问题 在SpringBoot中使用jpa，表是通过对应的实体直接建立，默认情况下，表的引擎engine=MyISAM性能更好,但不提供事务支持，如果需要使用事务,需要将JPA建表的默认引擎修改为：InNoDB，直接修改配置文件，如下：  application.xml1spring.jpa.database-platform=org.hibernate.dia">
+<meta property="og:updated_time" content="2018-07-05T08:18:11.642Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot连接mySQL事务失效">
-<meta name="twitter:description" content="SpringBoot中JPA事务失效的问题 在SpringBoot中使用jpa，表是通过对应的实体直接建立，默认情况下，表的引擎engine=MyISAM性能更好,但不提供事务支持，如果需要使用事务，需要将JPA建表的默认引擎修改为：InNoDB，直接修改配置文件，如下：  application.xml1spring.jpa.database-platform=org.hibernate.dia">
+<meta name="twitter:description" content="SpringBoot中JPA事务失效的问题 在SpringBoot中使用jpa，表是通过对应的实体直接建立，默认情况下，表的引擎engine=MyISAM性能更好,但不提供事务支持，如果需要使用事务,需要将JPA建表的默认引擎修改为：InNoDB，直接修改配置文件，如下：  application.xml1spring.jpa.database-platform=org.hibernate.dia">
   
     <link rel="alternative" href="/atom.xml" title="Coolcat的博客" type="application/atom+xml">
   
@@ -161,7 +161,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="SpringBoot中JPA事务失效的问题"><a href="#SpringBoot中JPA事务失效的问题" class="headerlink" title="SpringBoot中JPA事务失效的问题"></a>SpringBoot中JPA事务失效的问题</h3><ol>
-<li>在SpringBoot中使用jpa，表是通过对应的实体直接建立，默认情况下，表的引擎engine=MyISAM性能更好,但不提供事务支持，如果需要使用事务，<br>需要将JPA建表的默认引擎修改为：InNoDB，直接修改配置文件，如下：</li>
+<li>在SpringBoot中使用jpa，表是通过对应的实体直接建立，默认情况下，表的引擎engine=MyISAM性能更好,但不提供事务支持，如果需要使用事务,需要将JPA建表的默认引擎修改为：InNoDB，直接修改配置文件，如下：</li>
 </ol>
 <p>application.xml<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spring<span class="selector-class">.jpa</span><span class="selector-class">.database-platform</span>=org<span class="selector-class">.hibernate</span><span class="selector-class">.dialect</span><span class="selector-class">.MySQL5InnoDBDialect</span></div></pre></td></tr></table></figure></p>
 <p>或者 </p>
@@ -391,15 +391,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -412,6 +408,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
             
             <div class="clearfix"></div>

@@ -140,19 +140,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-2018-07-04-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2018-07-05-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/05/2018-07-04-Java/">SpringBoot连接mySQL事务失效</a>
+      <a class="article-title" href="/2018/07/05/2018-07-05-Java/">Spring Boot 整合Druid数据源</a>
     </h1>
   
 
         
-        <a href="/2018/07/05/2018-07-04-Java/" class="archive-article-date">
+        <a href="/2018/07/05/2018-07-05-Java/" class="archive-article-date">
   	<time datetime="2018-07-05T05:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-05</time>
 </a>
         
@@ -160,20 +160,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="SpringBoot中JPA事务失效的问题"><a href="#SpringBoot中JPA事务失效的问题" class="headerlink" title="SpringBoot中JPA事务失效的问题"></a>SpringBoot中JPA事务失效的问题</h3><ol>
-<li>在SpringBoot中使用jpa，表是通过对应的实体直接建立，默认情况下，表的引擎engine=MyISAM性能更好,但不提供事务支持，如果需要使用事务，<br>需要将JPA建表的默认引擎修改为：InNoDB，直接修改配置文件，如下：</li>
-</ol>
-<p>application.xml<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spring<span class="selector-class">.jpa</span><span class="selector-class">.database-platform</span>=org<span class="selector-class">.hibernate</span><span class="selector-class">.dialect</span><span class="selector-class">.MySQL5InnoDBDialect</span></div></pre></td></tr></table></figure></p>
-<p>或者 </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">spring</span>:</div><div class="line">    <span class="selector-tag">jpa</span>:</div><div class="line">        <span class="selector-tag">database-platform</span>: <span class="selector-tag">org</span><span class="selector-class">.hibernate</span><span class="selector-class">.dialect</span><span class="selector-class">.MySQL5InnoDBDialect</span> <span class="selector-id">#InnoDB</span>才能支持事务</div></pre></td></tr></table></figure>
-<ol>
-<li><p>然后在特定的方法上使用注解@Transactional<br>//注意导入的包是org.springframework.transaction.annotation.Transactional</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Transactional</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertTwo</span><span class="params">()</span></span>&#123;&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>查看表引擎</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MYsql  <span class="keyword">show</span> <span class="keyword">CREATE</span> <span class="keyword">table</span> <span class="keyword">name</span>;</div></pre></td></tr></table></figure></li>
-</ol>
-
+        <h4 id="Spring-Boot-整合Druid数据源"><a href="#Spring-Boot-整合Druid数据源" class="headerlink" title="Spring Boot 整合Druid数据源"></a>Spring Boot 整合Druid数据源</h4><figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ERROR:</span></div><div class="line">Cannot determine embedded database driver class for database type NONE</div></pre></td></tr></table></figure>
+<p>1.原因是：springboot启动时会自动注入数据源和配置jpa</p>
+<p>2.解决：在@SpringBootApplication中排除其注入</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">SpringBootApplication</span>(<span class="keyword">exclude</span>=&#123;<span class="selector-tag">DataSourceAutoConfiguration</span><span class="selector-class">.class</span>,<span class="selector-tag">HibernateJpaAutoConfiguration</span><span class="selector-class">.class</span>&#125;)</div></pre></td></tr></table></figure>
       
 
       
@@ -210,19 +200,19 @@
 <!--多说模块--> 
 
   
-    <article id="post-2018-07-05-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2018-07-04-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/05/2018-07-05-Java/">Spring Boot 整合Druid数据源</a>
+      <a class="article-title" href="/2018/07/05/2018-07-04-Java/">SpringBoot连接mySQL事务失效</a>
     </h1>
   
 
         
-        <a href="/2018/07/05/2018-07-05-Java/" class="archive-article-date">
+        <a href="/2018/07/05/2018-07-04-Java/" class="archive-article-date">
   	<time datetime="2018-07-05T05:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-05</time>
 </a>
         
@@ -230,10 +220,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="Spring-Boot-整合Druid数据源"><a href="#Spring-Boot-整合Druid数据源" class="headerlink" title="Spring Boot 整合Druid数据源"></a>Spring Boot 整合Druid数据源</h4><figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ERROR:</span></div><div class="line">Cannot determine embedded database driver class for database type NONE</div></pre></td></tr></table></figure>
-<p>1.原因是：springboot启动时会自动注入数据源和配置jpa</p>
-<p>2.解决：在@SpringBootApplication中排除其注入</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">SpringBootApplication</span>(<span class="keyword">exclude</span>=&#123;<span class="selector-tag">DataSourceAutoConfiguration</span><span class="selector-class">.class</span>,<span class="selector-tag">HibernateJpaAutoConfiguration</span><span class="selector-class">.class</span>&#125;)</div></pre></td></tr></table></figure>
+        <h3 id="SpringBoot中JPA事务失效的问题"><a href="#SpringBoot中JPA事务失效的问题" class="headerlink" title="SpringBoot中JPA事务失效的问题"></a>SpringBoot中JPA事务失效的问题</h3><ol>
+<li>在SpringBoot中使用jpa，表是通过对应的实体直接建立，默认情况下，表的引擎engine=MyISAM性能更好,但不提供事务支持，如果需要使用事务,需要将JPA建表的默认引擎修改为：InNoDB，直接修改配置文件，如下：</li>
+</ol>
+<p>application.xml<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spring<span class="selector-class">.jpa</span><span class="selector-class">.database-platform</span>=org<span class="selector-class">.hibernate</span><span class="selector-class">.dialect</span><span class="selector-class">.MySQL5InnoDBDialect</span></div></pre></td></tr></table></figure></p>
+<p>或者 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">spring</span>:</div><div class="line">    <span class="selector-tag">jpa</span>:</div><div class="line">        <span class="selector-tag">database-platform</span>: <span class="selector-tag">org</span><span class="selector-class">.hibernate</span><span class="selector-class">.dialect</span><span class="selector-class">.MySQL5InnoDBDialect</span> <span class="selector-id">#InnoDB</span>才能支持事务</div></pre></td></tr></table></figure>
+<ol>
+<li><p>然后在特定的方法上使用注解@Transactional<br>//注意导入的包是org.springframework.transaction.annotation.Transactional</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Transactional</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertTwo</span><span class="params">()</span></span>&#123;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看表引擎</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MYsql  <span class="keyword">show</span> <span class="keyword">CREATE</span> <span class="keyword">table</span> <span class="keyword">name</span>;</div></pre></td></tr></table></figure></li>
+</ol>
+
       
 
       
@@ -579,15 +579,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -600,6 +596,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
             
             <div class="clearfix"></div>
