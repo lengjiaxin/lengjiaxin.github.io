@@ -4,14 +4,48 @@
 
     
   <url>
+    <loc>//litten.me/2018/07/05/2018-07-05-Java/</loc>
+    <lastmod>2018-07-05T08:08:33.031Z</lastmod>
+    <data>
+        <display>
+        <title>Spring Boot 整合Druid数据源</title>
+        <pubTime>2018-07-05T05:33:00.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>//litten.me/2018/07/05/2018-07-04-Java/</loc>
-    <lastmod>2018-07-04T08:00:53.194Z</lastmod>
+    <lastmod>2018-07-05T08:06:49.196Z</lastmod>
     <data>
         <display>
         <title>SpringBoot连接mySQL事务失效</title>
         <pubTime>2018-07-05T05:33:00.000Z</pubTime>
         
         <tag>Java</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>//litten.me/2018/07/04/2018-07-04-linux/</loc>
+    <lastmod>2018-07-05T07:47:15.154Z</lastmod>
+    <data>
+        <display>
+        <title>linux 断开某个用户的终端连接</title>
+        <pubTime>2018-07-04T11:45:00.000Z</pubTime>
+        
+        <tag>linux</tag>
          
          
            

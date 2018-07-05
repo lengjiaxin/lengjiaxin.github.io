@@ -140,6 +140,222 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2018-03-25-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/25/2018-03-25-Java/">【Java】过滤器、拦截器</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/25/2018-03-25-Java/" class="archive-article-date">
+  	<time datetime="2018-03-25T11:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><h3 id="Filter（过滤器）与Interceptor（拦截器）和Spring-AOP的区别？"><a href="#Filter（过滤器）与Interceptor（拦截器）和Spring-AOP的区别？" class="headerlink" title="Filter（过滤器）与Interceptor（拦截器）和Spring AOP的区别？"></a>Filter（过滤器）与Interceptor（拦截器）和Spring AOP的区别？</h3><ul>
+<li><p>Filter过滤器：拦截web访问url地址。</p>
+</li>
+<li><p>Interceptor拦截器：拦截以 .action结尾的url，拦截Action的访问。</p>
+</li>
+<li><p>Spring AOP拦截器：只能拦截Spring管理Bean的访问（业务层Service） </p>
+</li>
+</ul>
+</li>
+<li><p>①拦截器是基于java的反射机制的，而过滤器是基于函数回调。</p>
+</li>
+<li><p>②拦截器不依赖与servlet容器，过滤器依赖与servlet容器。</p>
+</li>
+<li><p>③拦截器只能对action请求起作用，而过滤器则可以对几乎所有的请求起作用。</p>
+</li>
+<li><p>④拦截器可以访问action上下文、值栈里的对象，而过滤器不能访问。</p>
+</li>
+<li><p>⑤在action的生命周期中，拦截器可以多次被调用，而过滤器只能在容器初始化时被调用一次。 </p>
+</li>
+<li><p>⑥拦截器可以获取IOC容器中的各个bean，而过滤器就不行，这点很重要，在拦截器里注入一个service，可以调用业务逻辑。</p>
+</li>
+<li><h3 id="触发时机"><a href="#触发时机" class="headerlink" title="触发时机"></a>触发时机</h3></li>
+<li><p>过滤器和拦截器触发时机不一样:</p>
+<ul>
+<li>过滤器是在请求进入容器后，但请求进入servlet之前进行预处理的。请求结束返回也是，是在servlet处理完后，返回给前端之前。</li>
+<li>总结：过滤器包裹住servlet，servlet包裹住拦截器。</li>
+</ul>
+</li>
+<li>SpringMVC的机制是由同一个Servlet来分发请求给不同的Controller，其实这一步是在Servlet的service()方法中执行的。<br>  所以过滤器、拦截器、service()方法，dispatc()方法的执行顺序应该是这样的 </li>
+<li><p>SpringMVC的机制是由同一个Servlet来分发请求给不同的Controller，其实这一步是在Servlet的service()方法中执行的。</p>
+</li>
+<li><p>拦截器是spring容器的，是spring支持的，</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
+    <article id="post-2018-02-26-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/26/2018-02-26-Java/">【Java】知识文献</a>
+    </h1>
+  
+
+        
+        <a href="/2018/02/26/2018-02-26-Java/" class="archive-article-date">
+  	<time datetime="2018-02-26T11:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><h3 id="操作系统中-heap-和-stack-的区别"><a href="#操作系统中-heap-和-stack-的区别" class="headerlink" title="操作系统中 heap 和 stack 的区别"></a>操作系统中 heap 和 stack 的区别</h3>堆栈是两种数据结构。堆栈都是一种数据项按序排列的数据结构，只能在一端(称为栈顶(top))对数据项进行插入和删除。在单片机应用中，堆栈是个特殊的存储区，主要功能是暂时存放数据和地址，通常用来保护断点和现场。要点：堆，队列优先,先进先出（FIFO—first in first out） 。栈，先进后出(FILO—First-In/Last-Out)</li>
+<li><h3 id="什么是基于注解的切面实现"><a href="#什么是基于注解的切面实现" class="headerlink" title="什么是基于注解的切面实现"></a>什么是基于注解的切面实现</h3>一是减少重复，二是专注业务。</li>
+<li><h3 id="什么是-对象-关系-映射集成模块"><a href="#什么是-对象-关系-映射集成模块" class="headerlink" title="什么是 对象/关系 映射集成模块"></a>什么是 对象/关系 映射集成模块</h3>Spring通过提供ORM模块在JDBC的基础上支持对象关系映射工具。这样的支持使得Spring可以集成主流的ORM框架，包括Hibernate, JDO, 及iBATIS SQL Maps。Spring的事务管理可以同时支持以上某种框架和JDBC。</li>
+<li><h3 id="什么是-Java-的反射机制"><a href="#什么是-Java-的反射机制" class="headerlink" title="什么是 Java 的反射机制"></a>什么是 Java 的反射机制</h3>Java Reflaction in Action有这么一句话，可以解释。反射是运行中的程序检查自己和软件运行环境的能力，它可以根据它发现的进行改变。通俗的讲就是反射可以在运行时根据指定的类名获得类的信息。</li>
+<li><h3 id="什么是-ACID"><a href="#什么是-ACID" class="headerlink" title="什么是 ACID"></a>什么是 ACID</h3>ACID，指数据库事务正确执行的四个基本要素的缩写。包含：原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）、持久性（Durability）。一个支持事务（Transaction）的数据库，必须要具有这四种特性，否则在事务过程（Transaction processing）当中无法保证数据的正确性，交易过程极可能达不到交易方的要求</li>
+<li><h3 id="BS与CS的联系与区别"><a href="#BS与CS的联系与区别" class="headerlink" title="BS与CS的联系与区别"></a>BS与CS的联系与区别</h3>C/S是Client/Server的缩写。服务器通常采用高性能的PC、工作站或小型机，并采用大型数据库系统，如Oracle、Sybase、Informix或 SQL Server。客户端需要安装专用的客户端软件。<br>B/S是Brower/Server的缩写，客户机上只要安装一个浏览器（Browser），如Netscape Navigator或Internet Explorer，服务器安装Oracle、Sybase、Informix或 SQL Server等数据库。在这种结构下，用户界面完全通过WWW浏览器实现，一部分事务逻辑在前端实现，但是主要事务逻辑在服务器端实现。浏览器通过Web Server 同数据库进行数据交互。<br>C/S 与 B/S 区别： </li>
+</ul>
+<ol>
+<li>硬件环境不同:<br>C/S 一般建立在专用的网络上, 小范围里的网络环境, 局域网之间再通过专门服务器提供连接和数据交换服务.<br>B/S 建立在广域网之上的, 不必是专门的网络硬件环境,例与电话上网, 租用设备. 信息自己管理. 有比C/S更强的适应范围, 一般只要有操作系统和浏览器就行 </li>
+<li>对安全要求不同<br>C/S 一般面向相对固定的用户群, 对信息安全的控制能力很强. 一般高度机密的信息系统采用C/S 结构适宜. 可以通过B/S发布部分可公开信息.<br>B/S 建立在广域网之上, 对安全的控制能力相对弱, 可能面向不可知的用户。</li>
+<li>对程序架构不同<br>C/S 程序可以更加注重流程, 可以对权限多层次校验, 对系统运行速度可以较少考虑.<br>B/S 对安全以及访问速度的多重的考虑, 建立在需要更加优化的基础之上. 比C/S有更高的要求 B/S结构的程序架构是发展的趋势, 从MS的.Net系列的BizTalk 2000 Exchange 2000等, 全面支持网络的构件搭建的系统. SUN 和IBM推的JavaBean 构件技术等,使 B/S更加成熟. </li>
+<li>软件重用不同<br>C/S 程序可以不可避免的整体性考虑, 构件的重用性不如在B/S要求下的构件的重用性好.<br>B/S 对的多重结构,要求构件相对独立的功能. 能够相对较好的重用.就入买来的餐桌可以再利用,而不是做在墙上的石头桌子 </li>
+<li>系统维护不同<br>C/S 程序由于整体性, 必须整体考察, 处理出现的问题以及系统升级. 升级难. 可能是再做一个全新的系统<br>B/S 构件组成,方面构件个别的更换,实现系统的无缝升级. 系统维护开销减到最小.用户从网上自己下载安装就可以实现升级. </li>
+<li>处理问题不同<br>C/S 程序可以处理用户面固定, 并且在相同区域, 安全要求高需求, 与操作系统相关. 应该都是相同的系统<br>B/S 建立在广域网上, 面向不同的用户群, 分散地域, 这是C/S无法作到的. 与操作系统平台关系最小. </li>
+<li>用户接口不同<br>C/S 多是建立的Window平台上,表现方法有限,对程序员普遍要求较高<br>B/S 建立在浏览器上, 有更加丰富和生动的表现方式与用户交流. 并且大部分难度减低,减低开发成本. </li>
+<li>信息流不同<br>C/S 程序一般是典型的中央集权的机械式处理, 交互性相对低<br>B/S 信息流向可变化, B-B B-C B-G等信息、流向的变化, 更像交易中心。</li>
+</ol>
+<ul>
+<li><h3 id="Cookie-和-Session的区别"><a href="#Cookie-和-Session的区别" class="headerlink" title="Cookie 和 Session的区别"></a>Cookie 和 Session的区别</h3>cookie保存在客户端，session保存在服务器端，<br>cookie目的可以跟踪会话，也可以保存用户喜好或者保存用户名密码<br>session用来跟踪会话</li>
+<li><h3 id="fail-fast-与-fail-safe-机制有什么区别"><a href="#fail-fast-与-fail-safe-机制有什么区别" class="headerlink" title="fail-fast 与 fail-safe 机制有什么区别"></a>fail-fast 与 fail-safe 机制有什么区别</h3>Iterator的安全失败是基于对底层集合做拷贝，因此，它不受源集合上修改的影响。java.util包下面的所有的集合类都是快速失败的，而java.util.concurrent包下面的所有的类都是安全失败的。快速失败的迭代器会抛出ConcurrentModificationException异常，而安全失败的迭代器永远不会抛出这样的异常。</li>
+<li><h3 id="get-和-post请求的区别"><a href="#get-和-post请求的区别" class="headerlink" title="get 和 post请求的区别"></a>get 和 post请求的区别</h3></li>
+</ul>
+<ol>
+<li>GET后退按钮/刷新无害，POST数据会被重新提交（浏览器应该告知用户数据会被重新提交）。</li>
+<li>GET书签可收藏，POST为书签不可收藏。GET能被缓存，POST不能缓存 </li>
+<li>GET编码类型application/x-www-form-url，POST编码类型encodedapplication/x-www-form-urlencoded 或 multipart/form-data。为二进制数据使用多重编码。</li>
+<li>GET历史参数保留在浏览器历史中。POST参数不会保存在浏览器历史中。GET对数据长度有限制，当发送数据时，</li>
+<li>GET 方法向 URL 添加数据；URL 的长度是受限制的（URL 的最大长度是 2048 个字符）。POST无限制。GET只允许 ASCII 字符。POST没有限制。也允许二进制数据。与 POST 相比，GET 的安全性较差，因为所发送的数据是 URL 的一部分。在发送密码或其他敏感信息时绝不要使用 GET ！POST 比 GET 更安全，因为参数不会被保存在浏览器历史或 web 服务器日志中。</li>
+<li>GET的数据在 URL 中对所有人都是可见的。POST的数据不会显示在 URL 中。 </li>
+</ol>
+<ul>
+<li><h3 id="Interface-与-abstract-类的区别"><a href="#Interface-与-abstract-类的区别" class="headerlink" title="Interface 与 abstract 类的区别"></a>Interface 与 abstract 类的区别</h3></li>
+</ul>
+<ol>
+<li>都是上层的抽象层。</li>
+<li>都不能被实例化</li>
+<li>都能包含抽象的方法，这些抽象的方法用于描述类具备的功能，但是不比提供具体的实现。</li>
+<li>他们的区别如下：1)    在抽象类中可以写非抽象的方法，从而避免在子类中重复书写他们，这样可以提高代码的复用性，这是抽象类的优势；接口中只能有抽象的方法。</li>
+<li>一个类只能继承一个直接父类，这个父类可以是具体的类也可是抽象类；但是一个类可以实现多个接口。</li>
+<li>Java语言中类的继承是单继承原因是：当子类重写父类方法的时候，或者隐藏父类的成员变量以及静态方法的时候，JVM使用不同的绑定规则。如果一个类有多个直接的父类，那么会使绑定规则变得更复杂。为了简化软件的体系结构和绑定机制，java语言禁止多继承。接口可以多继承，是因为接口中只有抽象方法，没有静态方法和非常量的属性，只有接口的实现类才会重写接口中方法。因此一个类有多个接口也不会增加JVM的绑定机制和复杂度。对于已经存在的继承树，可以方便的从类中抽象出新的接口，但是从类中抽象出新的抽象类就不那么容易了，因此接口更有利于软件系统的维护和重构。</li>
+</ol>
+<ul>
+<li><h3 id="IOC的优点是什么"><a href="#IOC的优点是什么" class="headerlink" title="IOC的优点是什么"></a>IOC的优点是什么</h3></li>
+<li><h3 id="IO-和-NIO的区别，NIO优点"><a href="#IO-和-NIO的区别，NIO优点" class="headerlink" title="IO 和 NIO的区别，NIO优点"></a>IO 和 NIO的区别，NIO优点</h3></li>
+<li><h3 id="Java-8-Java-7-为我们提供了什么新功能"><a href="#Java-8-Java-7-为我们提供了什么新功能" class="headerlink" title="Java 8 / Java 7 为我们提供了什么新功能"></a>Java 8 / Java 7 为我们提供了什么新功能</h3></li>
+<li><h3 id="什么是竞态条件？-举个例子说明。"><a href="#什么是竞态条件？-举个例子说明。" class="headerlink" title="什么是竞态条件？ 举个例子说明。"></a>什么是竞态条件？ 举个例子说明。</h3></li>
+<li><h3 id="JRE、JDK、JVM-及-JIT-之间有什么不同"><a href="#JRE、JDK、JVM-及-JIT-之间有什么不同" class="headerlink" title="JRE、JDK、JVM 及 JIT 之间有什么不同"></a>JRE、JDK、JVM 及 JIT 之间有什么不同</h3></li>
+<li><h3 id="MVC的各个部分都有那些技术来实现-如何实现"><a href="#MVC的各个部分都有那些技术来实现-如何实现" class="headerlink" title="MVC的各个部分都有那些技术来实现?如何实现?"></a>MVC的各个部分都有那些技术来实现?如何实现?</h3></li>
+<li><h3 id="RPC-通信和-RMI-区别"><a href="#RPC-通信和-RMI-区别" class="headerlink" title="RPC 通信和 RMI 区别"></a>RPC 通信和 RMI 区别</h3></li>
+<li><h3 id="什么是-Web-Service（Web服务）"><a href="#什么是-Web-Service（Web服务）" class="headerlink" title="什么是 Web Service（Web服务）"></a>什么是 Web Service（Web服务）</h3></li>
+<li><h3 id="JSWDL开发包的介绍。JAXP、JAXM的解释。SOAP、UDDI-WSDL解释。"><a href="#JSWDL开发包的介绍。JAXP、JAXM的解释。SOAP、UDDI-WSDL解释。" class="headerlink" title="JSWDL开发包的介绍。JAXP、JAXM的解释。SOAP、UDDI,WSDL解释。"></a>JSWDL开发包的介绍。JAXP、JAXM的解释。SOAP、UDDI,WSDL解释。</h3></li>
+<li><h3 id="WEB容器主要有哪些功能-并请列出一些常见的WEB容器名字。"><a href="#WEB容器主要有哪些功能-并请列出一些常见的WEB容器名字。" class="headerlink" title="WEB容器主要有哪些功能? 并请列出一些常见的WEB容器名字。"></a>WEB容器主要有哪些功能? 并请列出一些常见的WEB容器名字。</h3></li>
+<li><h3 id="一个”-java”源文件中是否可以包含多个类（不是内部类）？有什么限制"><a href="#一个”-java”源文件中是否可以包含多个类（不是内部类）？有什么限制" class="headerlink" title="一个”.java”源文件中是否可以包含多个类（不是内部类）？有什么限制"></a>一个”.java”源文件中是否可以包含多个类（不是内部类）？有什么限制</h3></li>
+<li><h3 id="简单说说你了解的类加载器。是否实现过类加载器"><a href="#简单说说你了解的类加载器。是否实现过类加载器" class="headerlink" title="简单说说你了解的类加载器。是否实现过类加载器"></a>简单说说你了解的类加载器。是否实现过类加载器</h3></li>
+<li><h3 id="解释一下什么叫AOP（面向切面编程）"><a href="#解释一下什么叫AOP（面向切面编程）" class="headerlink" title="解释一下什么叫AOP（面向切面编程）"></a>解释一下什么叫AOP（面向切面编程）</h3></li>
+<li><h3 id="请简述-Servlet-的生命周期及其相关的方法"><a href="#请简述-Servlet-的生命周期及其相关的方法" class="headerlink" title="请简述 Servlet 的生命周期及其相关的方法"></a>请简述 Servlet 的生命周期及其相关的方法</h3></li>
+<li><h3 id="请简述一下-Ajax-的原理及实现步骤"><a href="#请简述一下-Ajax-的原理及实现步骤" class="headerlink" title="请简述一下 Ajax 的原理及实现步骤"></a>请简述一下 Ajax 的原理及实现步骤</h3></li>
+<li><h3 id="简单描述Struts的主要功能"><a href="#简单描述Struts的主要功能" class="headerlink" title="简单描述Struts的主要功能"></a>简单描述Struts的主要功能</h3></li>
+<li><h3 id="什么是-N-层架构"><a href="#什么是-N-层架构" class="headerlink" title="什么是 N 层架构"></a>什么是 N 层架构</h3></li>
+<li><h3 id="什么是CORBA？用途是什么"><a href="#什么是CORBA？用途是什么" class="headerlink" title="什么是CORBA？用途是什么"></a>什么是CORBA？用途是什么</h3></li>
+<li><h3 id="什么是Java虚拟机？为什么Java被称作是“平台无关的编程语言”"><a href="#什么是Java虚拟机？为什么Java被称作是“平台无关的编程语言”" class="headerlink" title="什么是Java虚拟机？为什么Java被称作是“平台无关的编程语言”"></a>什么是Java虚拟机？为什么Java被称作是“平台无关的编程语言”</h3></li>
+<li><h3 id="什么是正则表达式？用途是什么？哪个包使用正则表达式来实现模式匹配"><a href="#什么是正则表达式？用途是什么？哪个包使用正则表达式来实现模式匹配" class="headerlink" title="什么是正则表达式？用途是什么？哪个包使用正则表达式来实现模式匹配"></a>什么是正则表达式？用途是什么？哪个包使用正则表达式来实现模式匹配</h3></li>
+<li><h3 id="什么是懒加载（Lazy-Loading）"><a href="#什么是懒加载（Lazy-Loading）" class="headerlink" title="什么是懒加载（Lazy Loading）"></a>什么是懒加载（Lazy Loading）</h3></li>
+<li><h3 id="什么是尾递归，为什么需要尾递归"><a href="#什么是尾递归，为什么需要尾递归" class="headerlink" title="什么是尾递归，为什么需要尾递归"></a>什么是尾递归，为什么需要尾递归</h3></li>
+<li><h3 id="什么是控制反转（Inversion-of-Control）与依赖注入（Dependency-Injection）"><a href="#什么是控制反转（Inversion-of-Control）与依赖注入（Dependency-Injection）" class="headerlink" title="什么是控制反转（Inversion of Control）与依赖注入（Dependency Injection）"></a>什么是控制反转（Inversion of Control）与依赖注入（Dependency Injection）</h3></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2018-02-03-StringUtils" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -320,130 +536,6 @@
 <!--多说模块--> 
 
   
-    <article id="post-2017-10-15-linux" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/15/2017-10-15-linux/">linux命令介绍</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/15/2017-10-15-linux/" class="archive-article-date">
-  	<time datetime="2017-10-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="使用linux快速复制-斜杠回到根目录-TAB上下键快捷选择"><a href="#使用linux快速复制-斜杠回到根目录-TAB上下键快捷选择" class="headerlink" title="使用linux快速复制 斜杠回到根目录  TAB上下键快捷选择"></a>使用linux快速复制 斜杠回到根目录  TAB上下键快捷选择</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
-    <article id="post-2017-08-17-commit" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/17/2017-08-17-commit/">Git Hub Commit</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/17/2017-08-17-commit/" class="archive-article-date">
-  	<time datetime="2017-08-17T14:29:38.666Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1、打开本地git命令窗口或者cmd命令窗口，cd到你存放项目的根目录下，并执行一下命令行：</p>
-<p>git clone 仓库地址(上面一步复制出来的地址)，如下图，是我复制我创建的仓库地址：</p>
-<p><img src="http://lengjiaxin.github.io/images/github/blog_005.png" alt=""></p>
-<p>2、打开项目文件夹，会发现刚才在github里面新建的文件都存在本地了，</p>
-<p>3、将要上传的文件拷贝到这个目录下，拷贝完成后，再执行下命令git status，看git是否获取到文件的更改，如图：</p>
-<p><img src="http://lengjiaxin.github.io/images/github/blog_007.png" alt=""></p>
-<p>4、再执行命令git add –all,将所有文件都添加到仓库中，如果想添加某一个文件，则将后面的–all换成你要提交的文件名即可。</p>
-<p>5、然后还需要将增加的文件commit到仓库里去，执行命令git commmit -m “注释语句”，如图：<br><img src="http://lengjiaxin.github.io/images/github/blog_006.png" alt=""></p>
-<p>6、此时还没完，还要将commit的代码push到远程分支，由于我们本地只有master分支，所以我们可以直接执行命令git push，如图：<br><img src="http://lengjiaxin.github.io/images/github/blog_008.png" alt=""></p>
-<p>会让你输入用户名和密码，你输入你github登录的用户名和密码即可。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -530,19 +622,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -559,6 +647,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
