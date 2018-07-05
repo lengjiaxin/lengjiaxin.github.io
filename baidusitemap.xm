@@ -4,11 +4,11 @@
 
     
   <url>
-    <loc>//litten.me/2018/07/05/2018-07-05-Java/</loc>
-    <lastmod>2018-07-05T08:08:33.031Z</lastmod>
+    <loc>//litten.me/2018/07/05/2018-07-04-Java/</loc>
+    <lastmod>2018-07-05T08:13:09.422Z</lastmod>
     <data>
         <display>
-        <title>Spring Boot 整合Druid数据源</title>
+        <title>SpringBoot连接mySQL事务失效</title>
         <pubTime>2018-07-05T05:33:00.000Z</pubTime>
         
         <tag>Java</tag>
@@ -21,11 +21,11 @@
 
     
   <url>
-    <loc>//litten.me/2018/07/05/2018-07-04-Java/</loc>
-    <lastmod>2018-07-05T08:06:49.196Z</lastmod>
+    <loc>//litten.me/2018/07/05/2018-07-05-Java/</loc>
+    <lastmod>2018-07-05T08:08:33.031Z</lastmod>
     <data>
         <display>
-        <title>SpringBoot连接mySQL事务失效</title>
+        <title>Spring Boot 整合Druid数据源</title>
         <pubTime>2018-07-05T05:33:00.000Z</pubTime>
         
         <tag>Java</tag>
