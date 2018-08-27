@@ -140,6 +140,99 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2017-06-29-1-yilia" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/29/2017-06-29-1-yilia/">yilia配置多说评论</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/29/2017-06-29-1-yilia/" class="archive-article-date">
+  	<time datetime="2017-06-28T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="使用畅言系统"><a href="#使用畅言系统" class="headerlink" title="使用畅言系统"></a>使用畅言系统</h2><p>1、修改 themes\yilia\layout_partial\article.ejs 模板，把如下代码</p>
+<pre><code>&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname){ %&gt;
+ &lt;section id=&quot;comments&quot;&gt;
+   &lt;div id=&quot;disqus_thread&quot;&gt;
+     这里还有很多代码
+   &lt;/div&gt;
+ &lt;/section&gt;
+ &lt;% } %&gt;
+</code></pre><p>修改为：</p>
+<pre><code> &lt;% if (!index &amp;&amp; post.comments){ %&gt;
+  &lt;section id=&quot;comments&quot;&gt;
+&lt;!--高速版，加载速度快，使用前需测试页面的兼容性--&gt;
+&lt;div id=&quot;SOHUCS&quot; sid=&quot;&lt;%= page.title %&gt;&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  (function(){
+    var appid = &apos;你的APP ID&apos;,
+    conf = &apos;你的APP KEY&apos;;
+    var doc = document,
+    s = doc.createElement(&apos;script&apos;),
+    h = doc.getElementsByTagName(&apos;head&apos;)[0] || doc.head || doc.documentElement;
+    s.type = &apos;text/javascript&apos;;
+    s.charset = &apos;utf-8&apos;;
+    s.src =  &apos;http://assets.changyan.sohu.com/upload/changyan.js?conf=&apos;+ conf +&apos;&amp;appid=&apos; + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+&lt;/script&gt;    
+  &lt;/section&gt;
+  &lt;% } %&gt;
+</code></pre><p>上面的APP ID和APP KEY是在畅言设置中得到。</p>
+<p>这里需要注意一点的是：sid=”&lt;%= page.title %&gt;”&gt; 这样的话畅言就可以直接根据对应的文章来识别，使得文章有对应的评论，不会都乱在一起。</p>
+<p>2、在每篇文章开头的 front-matter 中添加一句comments: true，然后回到博客根目录执行命令 hexo d -g ，重新生成博客并部署博客，然后刷新，任选一篇文章进入下拉，会发现评论功能可以使用了。</p>
+<p><img src="http://lengjiaxin.github.io/images/yilia/yilia.JPG" alt=""></p>
+<h2 id="修改-BUG"><a href="#修改-BUG" class="headerlink" title="修改 BUG"></a>修改 BUG</h2><p>但是，这是你会发现一个 Bug，表情按钮点击不了，原因是被左侧的 div 层覆盖了，回到我们刚才改过的代码，找到 &lt;div id=”SOHUCS” 开头的一串代码。并做如下更改</p>
+<pre><code>&lt;div id=&quot;SOHUCS&quot; sid=&quot;&lt;%= page.title %&gt;&quot; style=&quot;padding: 0px 30px 0px 46px;&quot;&gt;&lt;/div&gt;
+</code></pre><p>加入上面这一段样式代码，即可修复。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2017-06-27-9-Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -517,120 +610,6 @@ function floatAD() {
 <!--多说模块--> 
 
   
-    <article id="post-2017-06-15-4-Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/15/2017-06-15-4-Mybatis/">Mybatis 执行速度监听</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/15/2017-06-15-4-Mybatis/" class="archive-article-date">
-  	<time datetime="2017-06-15T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Mybatis-添加执行sql时间监控"><a href="#Mybatis-添加执行sql时间监控" class="headerlink" title="Mybatis 添加执行sql时间监控"></a>Mybatis 添加执行sql时间监控</h1><p>在Mybatis配置文件中添加执行监控  </p>
-<blockquote>
-<pre><code>&lt;!-- 数据库会话工厂 --&gt;
-&lt;bean id=&quot;sqlSessionFactoryDefault&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
-    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSourceDefault&quot; /&gt;
-    &lt;property name=&quot;configLocation&quot; value=&quot;classpath:mybatis-config.xml&quot; /&gt;
-    &lt;property name=&quot;plugins&quot;&gt;
-        &lt;array&gt;
-            &lt;bean id=&quot;sqlStatementInterceptor&quot; class=&quot;com.lan.console.common.SqlStatementInterceptor&quot;/&gt;
-        &lt;/array&gt;
-    &lt;/property&gt;
-&lt;/bean&gt;
-</code></pre></blockquote>
-<p>创建监听类:&nbsp;<span style="color:red;">SqlStatementInterceptor</span></p>
-<pre><code>@Intercepts(value = { @Signature(type = Executor.class, method = &quot;update&quot;, args = { MappedStatement.class, Object.class }), 
-        @Signature(type = Executor.class, method = &quot;query&quot;, args = { MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class }),
-        @Signature(type = Executor.class, method = &quot;query&quot;, args = { MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class }) })
-public class SqlStatementInterceptor implements Interceptor {
-
-    private static Logger logger = LoggerFactory.getLogger(SqlStatementInterceptor.class);
-
-    @SuppressWarnings(&quot;unused&quot;)
-    private Properties properties;
-
-    @Override
-    public Object intercept(Invocation arg0) throws Throwable {
-        MappedStatement mappedStatement = (MappedStatement) arg0.getArgs()[0];
-        String sqlId = mappedStatement.getId();
-        Object returnValue;
-
-        long start = System.currentTimeMillis();
-        returnValue = arg0.proceed();
-        long end = System.currentTimeMillis();
-        long time = end - start;
-
-        StringBuilder str = new StringBuilder(100);
-        str.append(sqlId);
-        str.append(&quot;: &quot;);
-        str.append(&quot;cost time &quot;);
-        str.append(time);
-        str.append(&quot; ms.&quot;);
-        String sqlInfo = str.toString(); 
-        logger.debug(sqlInfo); 
-        return returnValue;
-    }
-
-    @Override
-    public Object plugin(Object arg0) {
-        return Plugin.wrap(arg0, this);
-    }
-
-    @Override
-    public void setProperties(Properties arg0) {
-        this.properties = arg0;
-    }
-
-}
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -725,7 +704,7 @@ public class SqlStatementInterceptor implements Interceptor {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -733,7 +712,7 @@ public class SqlStatementInterceptor implements Interceptor {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -741,11 +720,11 @@ public class SqlStatementInterceptor implements Interceptor {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
             
             <div class="clearfix"></div>
