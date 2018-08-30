@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="//litten.me">
   <title>Zookeeper | Coolcat的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##zookeeper可以用于搭建高可用服务框架，主要先看以下几个应用场景：  ###1、master的选举基本思路和编码实现 ###2、数据的发布和订阅 ###3、软负载均衡 ###4、分布式队列 ###5、分布式锁 ###6、命名服务">
+  <meta name="description" content="##zookeeper可以用于搭建高可用服务框架，主要先看以下几个应用场景：  1、master的选举基本思路和编码实现 2、数据的发布和订阅 3、软负载均衡 4、分布式队列 5、分布式锁 6、命名服务">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Zookeeper">
 <meta property="og:url" content="//litten.me/2018/08/27/2018-08-27-Zookeeper/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
-<meta property="og:description" content="##zookeeper可以用于搭建高可用服务框架，主要先看以下几个应用场景：  ###1、master的选举基本思路和编码实现 ###2、数据的发布和订阅 ###3、软负载均衡 ###4、分布式队列 ###5、分布式锁 ###6、命名服务">
-<meta property="og:updated_time" content="2018-08-27T15:01:20.989Z">
+<meta property="og:description" content="##zookeeper可以用于搭建高可用服务框架，主要先看以下几个应用场景：  1、master的选举基本思路和编码实现 2、数据的发布和订阅 3、软负载均衡 4、分布式队列 5、分布式锁 6、命名服务">
+<meta property="og:updated_time" content="2018-08-30T10:00:38.061Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zookeeper">
-<meta name="twitter:description" content="##zookeeper可以用于搭建高可用服务框架，主要先看以下几个应用场景：  ###1、master的选举基本思路和编码实现 ###2、数据的发布和订阅 ###3、软负载均衡 ###4、分布式队列 ###5、分布式锁 ###6、命名服务">
+<meta name="twitter:description" content="##zookeeper可以用于搭建高可用服务框架，主要先看以下几个应用场景：  1、master的选举基本思路和编码实现 2、数据的发布和订阅 3、软负载均衡 4、分布式队列 5、分布式锁 6、命名服务">
   
     <link rel="alternative" href="/atom.xml" title="Coolcat的博客" type="application/atom+xml">
   
@@ -162,12 +162,12 @@
       
         <p>##zookeeper可以用于搭建高可用服务框架，主要先看以下几个应用场景：</p>
 <ul>
-<li>###1、master的选举基本思路和编码实现</li>
-<li>###2、数据的发布和订阅</li>
-<li>###3、软负载均衡</li>
-<li>###4、分布式队列</li>
-<li>###5、分布式锁</li>
-<li>###6、命名服务</li>
+<li><h3 id="1、master的选举基本思路和编码实现"><a href="#1、master的选举基本思路和编码实现" class="headerlink" title="1、master的选举基本思路和编码实现"></a>1、master的选举基本思路和编码实现</h3></li>
+<li><h3 id="2、数据的发布和订阅"><a href="#2、数据的发布和订阅" class="headerlink" title="2、数据的发布和订阅"></a>2、数据的发布和订阅</h3></li>
+<li><h3 id="3、软负载均衡"><a href="#3、软负载均衡" class="headerlink" title="3、软负载均衡"></a>3、软负载均衡</h3></li>
+<li><h3 id="4、分布式队列"><a href="#4、分布式队列" class="headerlink" title="4、分布式队列"></a>4、分布式队列</h3></li>
+<li><h3 id="5、分布式锁"><a href="#5、分布式锁" class="headerlink" title="5、分布式锁"></a>5、分布式锁</h3></li>
+<li><h3 id="6、命名服务"><a href="#6、命名服务" class="headerlink" title="6、命名服务"></a>6、命名服务</h3></li>
 </ul>
 
       
@@ -261,6 +261,11 @@
       </div>
     </a>
   
+  
+    <a href="/2018/08/30/2018-08-30-Java/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java知识归纳</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -374,15 +379,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -390,11 +387,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -403,6 +404,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>
