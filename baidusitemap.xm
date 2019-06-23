@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>//litten.me/2019/06/23/2019-06-23-Java/</loc>
+    <lastmod>2019-06-23T05:26:41.530Z</lastmod>
+    <data>
+        <display>
+        <title>点对点营销策略</title>
+        <pubTime>2019-06-23T05:30:00.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>//litten.me/2018/08/30/2018-08-30-Java/</loc>
     <lastmod>2018-08-30T10:08:07.077Z</lastmod>
     <data>
