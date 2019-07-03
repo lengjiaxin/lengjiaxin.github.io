@@ -168,7 +168,7 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">spring</span>:</div><div class="line">    <span class="selector-tag">jpa</span>:</div><div class="line">        <span class="selector-tag">database-platform</span>: <span class="selector-tag">org</span><span class="selector-class">.hibernate</span><span class="selector-class">.dialect</span><span class="selector-class">.MySQL5InnoDBDialect</span> <span class="selector-id">#InnoDB</span>才能支持事务</div></pre></td></tr></table></figure>
 <ol>
 <li><p>然后在特定的方法上使用注解@Transactional<br>//注意导入的包是org.springframework.transaction.annotation.Transactional</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Transactional</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertTwo</span><span class="params">()</span></span>&#123;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Transactional</span></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">insertTwo</span><span class="params">()</span></span>&#123;&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>查看表引擎</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MYsql  <span class="keyword">show</span> <span class="keyword">CREATE</span> <span class="keyword">table</span> <span class="keyword">name</span>;</div></pre></td></tr></table></figure></li>
@@ -256,18 +256,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/05/2018-07-05-Java/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/07/04/2018-07-04-linux/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Spring Boot 整合Druid数据源
+          linux 断开某个用户的终端连接
         
       </div>
     </a>
   
   
-    <a href="/2018/08/27/2018-08-27-Zookeeper/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Zookeeper</div>
+    <a href="/2018/07/05/2018-07-05-Java/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring Boot 整合Druid数据源</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -383,19 +383,7 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -403,15 +391,27 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
             
             <div class="clearfix"></div>
