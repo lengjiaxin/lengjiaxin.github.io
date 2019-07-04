@@ -4,11 +4,11 @@
 
     
   <url>
-    <loc>//litten.me/2019/07/04/2019-07-02-DailyThinking/</loc>
-    <lastmod>2019-07-04T15:40:34.059Z</lastmod>
+    <loc>//litten.me/2019/07/04/2019-07-04-DailyThinking/</loc>
+    <lastmod>2019-07-04T15:58:57.382Z</lastmod>
     <data>
         <display>
-        <title>【每日思考题1】</title>
+        <title>【每日思考题3】</title>
         <pubTime>2019-07-04T15:30:00.000Z</pubTime>
         
         <tag>DailyThinking</tag>
@@ -22,10 +22,10 @@
     
   <url>
     <loc>//litten.me/2019/07/04/2019-07-03-DailyThinking/</loc>
-    <lastmod>2019-07-04T15:37:34.171Z</lastmod>
+    <lastmod>2019-07-04T15:58:55.602Z</lastmod>
     <data>
         <display>
-        <title>【每日思考题1】</title>
+        <title>【每日思考题2】</title>
         <pubTime>2019-07-04T15:30:00.000Z</pubTime>
         
         <tag>DailyThinking</tag>
@@ -38,11 +38,11 @@
 
     
   <url>
-    <loc>//litten.me/2019/07/04/2019-07-04-DailyThinking/</loc>
-    <lastmod>2019-07-04T15:35:50.066Z</lastmod>
+    <loc>//litten.me/2019/07/04/2019-07-02-DailyThinking/</loc>
+    <lastmod>2019-07-04T15:58:52.363Z</lastmod>
     <data>
         <display>
-        <title>【每日思考题2】</title>
+        <title>【每日思考题1】</title>
         <pubTime>2019-07-04T15:30:00.000Z</pubTime>
         
         <tag>DailyThinking</tag>
