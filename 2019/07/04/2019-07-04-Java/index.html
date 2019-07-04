@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>Coolcat的博客</title>
+  <title>高性能分布式锁-redisson | Coolcat的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="重庆科技学院12级，就职于二流科技公司。擅长各项计算机技能，深入研究JAVA后端技术。此为博客一枚。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Coolcat的博客">
-<meta property="og:url" content="//litten.me/index.html">
+  <meta name="description" content="高性能分布式锁-redisson的使用业务场景：比如秒杀，抢票，抢购这些场景，都存在对核心资源，商品库存的争夺，控制不好， 库存数量可能被减少到负数，出现超卖的情况，或者 产生唯一的一个递增ID，由于web应用部署在多个机器上， 简单的同步加锁是无法实现的，给数据库加锁的话，对于高并发，1000/s的并发，数据库可能由行锁变成表锁， 性能下降会厉害。那相对而言，redis的分布式锁，相对而言，是个">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高性能分布式锁-redisson">
+<meta property="og:url" content="//litten.me/2019/07/04/2019-07-04-Java/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
-<meta property="og:description" content="重庆科技学院12级，就职于二流科技公司。擅长各项计算机技能，深入研究JAVA后端技术。此为博客一枚。">
+<meta property="og:description" content="高性能分布式锁-redisson的使用业务场景：比如秒杀，抢票，抢购这些场景，都存在对核心资源，商品库存的争夺，控制不好， 库存数量可能被减少到负数，出现超卖的情况，或者 产生唯一的一个递增ID，由于web应用部署在多个机器上， 简单的同步加锁是无法实现的，给数据库加锁的话，对于高并发，1000/s的并发，数据库可能由行锁变成表锁， 性能下降会厉害。那相对而言，redis的分布式锁，相对而言，是个">
+<meta property="og:updated_time" content="2019-07-04T15:28:06.325Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Coolcat的博客">
-<meta name="twitter:description" content="重庆科技学院12级，就职于二流科技公司。擅长各项计算机技能，深入研究JAVA后端技术。此为博客一枚。">
+<meta name="twitter:title" content="高性能分布式锁-redisson">
+<meta name="twitter:description" content="高性能分布式锁-redisson的使用业务场景：比如秒杀，抢票，抢购这些场景，都存在对核心资源，商品库存的争夺，控制不好， 库存数量可能被减少到负数，出现超卖的情况，或者 产生唯一的一个递增ID，由于web应用部署在多个机器上， 简单的同步加锁是无法实现的，给数据库加锁的话，对于高并发，1000/s的并发，数据库可能由行锁变成表锁， 性能下降会厉害。那相对而言，redis的分布式锁，相对而言，是个">
   
     <link rel="alternative" href="/atom.xml" title="Coolcat的博客" type="application/atom+xml">
   
@@ -138,79 +140,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-2019-07-02-DailyThinking" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-2019-07-04-Java" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/2019-07-02-DailyThinking/">【每日思考题1】</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/04/2019-07-02-DailyThinking/" class="archive-article-date">
-  	<time datetime="2019-07-04T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>什么是复合索引？</p>
-</li>
-<li><p>什么是最左匹配原则？</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DailyThinking</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
-    <article id="post-2019-07-04-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/2019-07-04-Java/">高性能分布式锁-redisson</a>
+    <h1 class="article-title" itemprop="name">
+      高性能分布式锁-redisson
     </h1>
   
 
@@ -252,207 +189,113 @@ redis官方推荐使用的Redisson就提供了分布式锁和相关服务。</co
       
 
       
-      <div class="clearfix"></div>
-    </div>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
   </div>
-</article>
+</div>
 
-
-
-
-
-
-<!--多说模块--> 
-
-  
-    <article id="post-2019-07-04-DailyThinking" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/2019-07-04-DailyThinking/">【每日思考题2】</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/04/2019-07-04-DailyThinking/" class="archive-article-date">
-  	<time datetime="2019-07-04T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="B树和B-树的区别是什么？"><a href="#B树和B-树的区别是什么？" class="headerlink" title="B树和B+树的区别是什么？"></a>B树和B+树的区别是什么？</h2>
-      
-
-      
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2019/07/04/2019-07-04-Java/" alt="微信分享二维码">
     </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DailyThinking</a>
-        		</li>
-      		
-		</ul>
-	</div>
+</div>
 
-      
-
-      
-
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
+  
+<nav id="article-nav">
+  
+    <a href="/2019/07/04/2019-07-02-DailyThinking/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          【每日思考题1】
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/04/2019-07-04-DailyThinking/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【每日思考题2】</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 
+
+
+
+  
+    <div class="duoshuo"></div>
+  
 
 
 <!--多说模块--> 
 
+  <section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性--> 
+<div id="SOHUCS" sid="高性能分布式锁-redisson" style="padding: 0px 30px 0px 46px;"></div> 
+<script>
+  (function(){
+    var appid = 'cyt5seecS',
+    conf = '7e84b5efec98eb14e1f59fbf01c725d1';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+  </section>
   
-    <article id="post-2019-07-03-DailyThinking" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/2019-07-03-DailyThinking/">【每日思考题1】</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/04/2019-07-03-DailyThinking/" class="archive-article-date">
-  	<time datetime="2019-07-04T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>SQL中存储记录（行）的数据结构是什么？</p>
-</li>
-<li><p>SQL中存储索引（单列或者多列）的数据结构是什么？</p>
-</li>
-<li><p>以上两者是什么关系？回表是什么操作？</p>
-</li>
-<li><p>索引为什么要用这种数据结构？为什么不用红黑树？</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DailyThinking</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
-    <article id="post-2019-06-23-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/23/2019-06-23-Java/">点对点营销策略</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/23/2019-06-23-Java/" class="archive-article-date">
-  	<time datetime="2019-06-23T05:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="点对点营销策略"><a href="#点对点营销策略" class="headerlink" title="点对点营销策略"></a>点对点营销策略</h5>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
-
-
           </div>
         </div>
       </div>
@@ -473,8 +316,8 @@ redis官方推荐使用的Redisson就提供了分布式锁和相关服务。</co
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

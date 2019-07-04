@@ -140,6 +140,332 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2017-06-25-7-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/25/2017-06-25-7-Java/">JAVA GC 简单总结</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/25/2017-06-25-7-Java/" class="archive-article-date">
+  	<time datetime="2017-06-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="GC分代"><a href="#GC分代" class="headerlink" title="GC分代"></a>GC分代</h2><p>GC的英文全拼是Garbage Collection，意思是垃圾收集。</p>
+<p>Java 将堆内存分为三代来管理：</p>
+<ul>
+<li>年轻代 (<code>Young Generation</code>)</li>
+<li>年老代 (<code>Old Generation</code>)</li>
+<li>永久代 (<code>Perm Generation</code>)</li>
+</ul>
+<p><strong>年轻代</strong>：又分为<code>Eden</code>、<code>From</code>和<code>To</code>，其中<code>From</code>和<code>To</code>又统称为<code>Survivor Spaces</code>（幸存区）。年轻代大小可以由<code>-Xmn</code>来控制，也可以用<code>-XX:SurvivorRatio</code>来控制<code>Eden</code>和<code>Survivor</code>的比例，使用<code>–XX:NewRatio</code>来指定新生代和年老代的大小比例。</p>
+<p><strong>年老代</strong>：用来存放多次垃圾回收依然存活的对象。</p>
+<p><strong>永久代</strong>：来存放方法区。可通过<code>-XX:PermSize</code>和<code>-XX:MaxPermSize</code>来指定最小值和最大值。</p>
+<p>正常情况下，一个对象从创建到销毁，应该是从<code>Eden</code>，然后到<code>Survivor Spaces</code>（幸存区），再到<code>Old Generation</code>（年老代），最后在某次GC下消失。也可能一个对象直接在<code>Eden</code>里死掉，也可能一直在<code>Old Generation</code>（年老代）存活。</p>
+<h2 id="GC种类"><a href="#GC种类" class="headerlink" title="GC种类"></a>GC种类</h2><p>Java GC分为两类：</p>
+<ul>
+<li><code>Minar GC</code></li>
+<li><code>FULL GC</code></li>
+<li><code>Major GC</code></li>
+</ul>
+<p><strong>Minar GC</strong>：从年轻代空间（包括 <code>Eden</code> 和 <code>Survivor</code> 区域）回收内存被称为 Minor GC。</p>
+<p><strong>Major GC</strong>：是清理老年代。</p>
+<p><strong>FULL GC</strong>：是清理整个堆空间—包括年轻代和老年代。</p>
+<p>GC的时候，会暂停全世界(<code>stop-the-world</code>)，意思是停止所有的应用线程，所以要避免不必要的GC已提高性能。</p>
+<h2 id="GC日志"><a href="#GC日志" class="headerlink" title="GC日志"></a>GC日志</h2><p><code>-XX:+PrintGCDetails</code>打印日志详情。</p>
+<p><code>-XX:+PrintGCTimeStamps</code>打印时间戳。</p>
+<p><code>-Xloggc</code>输出GC日志到文件。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
+    <article id="post-2017-06-15-4-Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/15/2017-06-15-4-Mybatis/">Mybatis 执行速度监听</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/15/2017-06-15-4-Mybatis/" class="archive-article-date">
+  	<time datetime="2017-06-15T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mybatis-添加执行sql时间监控"><a href="#Mybatis-添加执行sql时间监控" class="headerlink" title="Mybatis 添加执行sql时间监控"></a>Mybatis 添加执行sql时间监控</h1><p>在Mybatis配置文件中添加执行监控  </p>
+<blockquote>
+<pre><code>&lt;!-- 数据库会话工厂 --&gt;
+&lt;bean id=&quot;sqlSessionFactoryDefault&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;
+    &lt;property name=&quot;dataSource&quot; ref=&quot;dataSourceDefault&quot; /&gt;
+    &lt;property name=&quot;configLocation&quot; value=&quot;classpath:mybatis-config.xml&quot; /&gt;
+    &lt;property name=&quot;plugins&quot;&gt;
+        &lt;array&gt;
+            &lt;bean id=&quot;sqlStatementInterceptor&quot; class=&quot;com.lan.console.common.SqlStatementInterceptor&quot;/&gt;
+        &lt;/array&gt;
+    &lt;/property&gt;
+&lt;/bean&gt;
+</code></pre></blockquote>
+<p>创建监听类:&nbsp;<span style="color:red;">SqlStatementInterceptor</span></p>
+<pre><code>@Intercepts(value = { @Signature(type = Executor.class, method = &quot;update&quot;, args = { MappedStatement.class, Object.class }), 
+        @Signature(type = Executor.class, method = &quot;query&quot;, args = { MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class }),
+        @Signature(type = Executor.class, method = &quot;query&quot;, args = { MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class }) })
+public class SqlStatementInterceptor implements Interceptor {
+
+    private static Logger logger = LoggerFactory.getLogger(SqlStatementInterceptor.class);
+
+    @SuppressWarnings(&quot;unused&quot;)
+    private Properties properties;
+
+    @Override
+    public Object intercept(Invocation arg0) throws Throwable {
+        MappedStatement mappedStatement = (MappedStatement) arg0.getArgs()[0];
+        String sqlId = mappedStatement.getId();
+        Object returnValue;
+
+        long start = System.currentTimeMillis();
+        returnValue = arg0.proceed();
+        long end = System.currentTimeMillis();
+        long time = end - start;
+
+        StringBuilder str = new StringBuilder(100);
+        str.append(sqlId);
+        str.append(&quot;: &quot;);
+        str.append(&quot;cost time &quot;);
+        str.append(time);
+        str.append(&quot; ms.&quot;);
+        String sqlInfo = str.toString(); 
+        logger.debug(sqlInfo); 
+        return returnValue;
+    }
+
+    @Override
+    public Object plugin(Object arg0) {
+        return Plugin.wrap(arg0, this);
+    }
+
+    @Override
+    public void setProperties(Properties arg0) {
+        this.properties = arg0;
+    }
+
+}
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mybatis</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
+    <article id="post-2017-05-25-5-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/25/2017-05-25-5-Java/">Java 字符串操作</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/25/2017-05-25-5-Java/" class="archive-article-date">
+  	<time datetime="2017-05-25T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java-6以后就不再需要StringBuilder拼接字符串"><a href="#Java-6以后就不再需要StringBuilder拼接字符串" class="headerlink" title="Java 6以后就不再需要StringBuilder拼接字符串"></a>Java 6以后就不再需要StringBuilder拼接字符串</h1><p><table><br>    <tr><br>        <td style="color:red;">Java基础篇一</td><br>    </tr><br></table><br>在Java中，字符串对象是不可变的，意思是它一旦创建，你就无法再改变它。所以在我们拼接字符串的时候，创建了一个新的字符串，旧的被垃圾回收器所标记。<br><br>如果我们处理上百万的字符串，然后，我们就会生成百万的额外字符串被垃圾回收器处理。</p>
+<blockquote>
+<h2 id="虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点操作-dot-operator-就是String-concat-String-操作"><a href="#虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点操作-dot-operator-就是String-concat-String-操作" class="headerlink" title="虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点操作(dot operator)就是String#concat(String)操作"></a>虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点操作(dot operator)就是String#concat(String)操作</h2><p> public String concat(String str) {<br>   int otherLen = str.length();<br>   if (otherLen == 0) {<br>       return this;<br>   }<br>   int len = value.length;<br>   char buf[] = Arrays.copyOf(value, len + otherLen);<br>   str.getChars(buf, len);<br>   return new String(buf, true);<br>}<br>public static char[] copyOf(char[] original, int newLength) {<br>   char[] copy = new char[newLength];<br>   System.arraycopy(original, 0, copy, 0,<br>                    Math.min(original.length, newLength));<br>   return copy;<br>}<br>void getChars(char dst[], int dstBegin) {<br>   System.arraycopy(value, 0, dst, dstBegin, value.length);<br>} </p>
+</blockquote>
+<p><table><br>    <tr><br>        <td style="color:#F99999;">Sevlet绑定Spring bean</td><br>    </tr><br></table><br><code>SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,cfg.getServletContext());//初始化Spring</code>  </p>
+<blockquote>
+<p>public static void processInjectionBasedOnServletContext(Object target, ServletContext servletContext)<br>   {<br> Assert.notNull(target, “Target object must not be null”);<br> WebApplicationContext cc = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext);<br> AutowiredAnnotationBeanPostProcessor bpp = new AutowiredAnnotationBeanPostProcessor();<br> bpp.setBeanFactory(cc.getAutowireCapableBeanFactory());<br>bpp.processInjection(target);<br>}</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
+    <article id="post-2017-05-14-3-LiftTime" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/14/2017-05-14-3-LiftTime/">2017五一醒悟</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/14/2017-05-14-3-LiftTime/" class="archive-article-date">
+  	<time datetime="2017-05-14T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>这个五一回家休息三天，当一个人从繁忙中变得比较悠闲时，反而找不到北<br>这也许是大家都有的经历吧，从今天开始我要每天进步一点为以后的生活增添资本，当我回忆自己<br>上班已经4年余时，连我自己都不敢相信这就是事实，当我看到身边的同行的人都拥有他们自己想要的<br>生活时，我都没自信自己这几年到底是干了神马<br>也许我就是一个碌碌无为得人吧，但是在我心里面无时无刻的想要改变自己想自己变得优秀变得强大<br>我想要的生活需要自己去争取,<br></p><br>努力让每一天都有收获，为我以后幸福生活添砖加瓦,每天让自己写一篇技术博客<p></p>
+</blockquote>
+<ol>
+<li>学习基础原理，学习源码精神，找机会自己在git上开源一个项目</li>
+<li>坚持每天写一篇博客总结一天收获</li>
+<li>学习身边优秀的技能，把好的习惯养成</li>
+<li>坚持锻炼身体，有好的基础去学习，健康的资本</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2017-05-14-2-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -373,75 +699,9 @@ Executors可以用于方便的创建线程池。
 <!--多说模块--> 
 
   
-    <article id="post-2017-05-14-1-HelloWorld" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/14/2017-05-14-1-HelloWorld/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/14/2017-05-14-1-HelloWorld/" class="archive-article-date">
-  	<time datetime="2017-05-14T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
     </nav>
   
 
@@ -525,7 +785,11 @@ Executors可以用于方便的创建线程池。
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -533,15 +797,7 @@ Executors可以用于方便的创建线程池。
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -554,6 +810,14 @@ Executors可以用于方便的创建线程池。
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DailyThinking</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
             
             <div class="clearfix"></div>

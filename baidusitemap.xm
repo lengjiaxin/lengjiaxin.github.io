@@ -4,6 +4,74 @@
 
     
   <url>
+    <loc>//litten.me/2019/07/04/2019-07-02-DailyThinking/</loc>
+    <lastmod>2019-07-04T15:40:34.059Z</lastmod>
+    <data>
+        <display>
+        <title>【每日思考题1】</title>
+        <pubTime>2019-07-04T15:30:00.000Z</pubTime>
+        
+        <tag>DailyThinking</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>//litten.me/2019/07/04/2019-07-03-DailyThinking/</loc>
+    <lastmod>2019-07-04T15:37:34.171Z</lastmod>
+    <data>
+        <display>
+        <title>【每日思考题1】</title>
+        <pubTime>2019-07-04T15:30:00.000Z</pubTime>
+        
+        <tag>DailyThinking</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>//litten.me/2019/07/04/2019-07-04-DailyThinking/</loc>
+    <lastmod>2019-07-04T15:35:50.066Z</lastmod>
+    <data>
+        <display>
+        <title>【每日思考题2】</title>
+        <pubTime>2019-07-04T15:30:00.000Z</pubTime>
+        
+        <tag>DailyThinking</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>//litten.me/2019/07/04/2019-07-04-Java/</loc>
+    <lastmod>2019-07-04T15:28:06.325Z</lastmod>
+    <data>
+        <display>
+        <title>高性能分布式锁-redisson</title>
+        <pubTime>2019-07-04T15:30:00.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>//litten.me/2019/06/23/2019-06-23-Java/</loc>
     <lastmod>2019-06-23T05:26:41.530Z</lastmod>
     <data>
