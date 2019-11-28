@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>//litten.me/2019/11/28/2019-11-28-Java/</loc>
+    <lastmod>2019-11-28T16:00:25.375Z</lastmod>
+    <data>
+        <display>
+        <title>SpringBoot 动态SPI</title>
+        <pubTime>2019-11-28T15:30:00.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>//litten.me/2019/07/04/2019-07-04-DailyThinking/</loc>
     <lastmod>2019-07-04T15:58:57.382Z</lastmod>
     <data>

@@ -140,19 +140,85 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-2019-07-03-DailyThinking" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2019-11-28-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/2019-07-03-DailyThinking/">【每日思考题2】</a>
+      <a class="article-title" href="/2019/11/28/2019-11-28-Java/">SpringBoot 动态SPI</a>
     </h1>
   
 
         
-        <a href="/2019/07/04/2019-07-03-DailyThinking/" class="archive-article-date">
+        <a href="/2019/11/28/2019-11-28-Java/" class="archive-article-date">
+  	<time datetime="2019-11-28T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SpringBoot-动态SPI加载MVC-配置文件"><a href="#SpringBoot-动态SPI加载MVC-配置文件" class="headerlink" title="SpringBoot 动态SPI加载MVC 配置文件"></a>SpringBoot 动态SPI加载MVC 配置文件</h2><h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><h5 id="Java-SPI"><a href="#Java-SPI" class="headerlink" title="Java SPI:"></a>Java SPI:</h5><p>Service Provider Interface(SPI)是一个可以被第三方扩展或实现的API， 它可以用来实现框架扩展和可替换的模块。</p>
+<p>使用步骤：</p>
+<ol>
+<li>服务调用方通过ServiceLoader.load加载服务接口的实现类实例</li>
+<li>服务提供方实现服务接口后， 在自己Jar包的META-INF/services目录下新建一个接口名全名的文件， 并将具体实现类全名写入。</li>
+</ol>
+<h5 id="Spring-SPI"><a href="#Spring-SPI" class="headerlink" title="Spring SPI"></a>Spring SPI</h5><p>很多开源库中都直接或间接地使用了Java的SPI机制， 如Spring中就有类似的SPI机制， 通过SpringFactoriesLoader代替JDK中的ServiceLoader， 通过META-INF/spring.factories文件代替META-INF/service目录下的描述文件, 原理都是使用了Java的反射机制。</p>
+<p>Spring提供的SPI只需要且只有一个文件， 就是META-INF/spring.factories</p>
+<p>Spring的SPi也更加灵活， 不必要key是接口， 值是实现类， 例如Spring boot使用这种方式来处理自动配置的bean: key是注解(如org.springframework.boot.autoconfig.EnableAutoConfiguration)， 值是被标记@Configuration的类。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
+    <article id="post-2019-07-02-DailyThinking" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/04/2019-07-02-DailyThinking/">【每日思考题1】</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/04/2019-07-02-DailyThinking/" class="archive-article-date">
   	<time datetime="2019-07-04T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
 </a>
         
@@ -161,16 +227,69 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ol>
-<li><p>SQL中存储记录（行）的数据结构是什么？</p>
+<li><p>什么是复合索引？</p>
 </li>
-<li><p>SQL中存储索引（单列或者多列）的数据结构是什么？</p>
-</li>
-<li><p>以上两者是什么关系？回表是什么操作？</p>
-</li>
-<li><p>索引为什么要用这种数据结构？为什么不用红黑树？</p>
+<li><p>什么是最左匹配原则？</p>
 </li>
 </ol>
 
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DailyThinking</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
+    <article id="post-2019-07-04-DailyThinking" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/04/2019-07-04-DailyThinking/">【每日思考题3】</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/04/2019-07-04-DailyThinking/" class="archive-article-date">
+  	<time datetime="2019-07-04T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="B树和B-树的区别是什么？"><a href="#B树和B-树的区别是什么？" class="headerlink" title="B树和B+树的区别是什么？"></a>B树和B+树的区别是什么？</h2>
       
 
       
@@ -269,76 +388,19 @@ redis官方推荐使用的Redisson就提供了分布式锁和相关服务。</co
 <!--多说模块--> 
 
   
-    <article id="post-2019-07-04-DailyThinking" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2019-07-03-DailyThinking" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/2019-07-04-DailyThinking/">【每日思考题3】</a>
+      <a class="article-title" href="/2019/07/04/2019-07-03-DailyThinking/">【每日思考题2】</a>
     </h1>
   
 
         
-        <a href="/2019/07/04/2019-07-04-DailyThinking/" class="archive-article-date">
-  	<time datetime="2019-07-04T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="B树和B-树的区别是什么？"><a href="#B树和B-树的区别是什么？" class="headerlink" title="B树和B+树的区别是什么？"></a>B树和B+树的区别是什么？</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DailyThinking</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
-    <article id="post-2019-07-02-DailyThinking" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/2019-07-02-DailyThinking/">【每日思考题1】</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/04/2019-07-02-DailyThinking/" class="archive-article-date">
+        <a href="/2019/07/04/2019-07-03-DailyThinking/" class="archive-article-date">
   	<time datetime="2019-07-04T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
 </a>
         
@@ -347,9 +409,13 @@ redis官方推荐使用的Redisson就提供了分布式锁和相关服务。</co
     <div class="article-entry" itemprop="articleBody">
       
         <ol>
-<li><p>什么是复合索引？</p>
+<li><p>SQL中存储记录（行）的数据结构是什么？</p>
 </li>
-<li><p>什么是最左匹配原则？</p>
+<li><p>SQL中存储索引（单列或者多列）的数据结构是什么？</p>
+</li>
+<li><p>以上两者是什么关系？回表是什么操作？</p>
+</li>
+<li><p>索引为什么要用这种数据结构？为什么不用红黑树？</p>
 </li>
 </ol>
 
@@ -366,63 +432,6 @@ redis官方推荐使用的Redisson就提供了分布式锁和相关服务。</co
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DailyThinking</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
-    <article id="post-2019-06-23-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/23/2019-06-23-Java/">点对点营销策略</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/23/2019-06-23-Java/" class="archive-article-date">
-  	<time datetime="2019-06-23T05:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="点对点营销策略"><a href="#点对点营销策略" class="headerlink" title="点对点营销策略"></a>点对点营销策略</h5>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -536,7 +545,7 @@ redis官方推荐使用的Redisson就提供了分布式锁和相关服务。</co
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -544,11 +553,7 @@ redis官方推荐使用的Redisson就提供了分布式锁和相关服务。</co
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,6 +566,10 @@ redis官方推荐使用的Redisson就提供了分布式锁和相关服务。</co
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
