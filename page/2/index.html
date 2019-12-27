@@ -490,7 +490,7 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">spring</span>:</div><div class="line">    <span class="selector-tag">jpa</span>:</div><div class="line">        <span class="selector-tag">database-platform</span>: <span class="selector-tag">org</span><span class="selector-class">.hibernate</span><span class="selector-class">.dialect</span><span class="selector-class">.MySQL5InnoDBDialect</span> <span class="selector-id">#InnoDB</span>才能支持事务</div></pre></td></tr></table></figure>
 <ol>
 <li><p>然后在特定的方法上使用注解@Transactional<br>//注意导入的包是org.springframework.transaction.annotation.Transactional</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Transactional</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertTwo</span><span class="params">()</span></span>&#123;&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Transactional</span></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">insertTwo</span><span class="params">()</span></span>&#123;&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>查看表引擎</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MYsql  <span class="keyword">show</span> <span class="keyword">CREATE</span> <span class="keyword">table</span> <span class="keyword">name</span>;</div></pre></td></tr></table></figure></li>
@@ -634,19 +634,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
