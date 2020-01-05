@@ -402,6 +402,66 @@
 <!--多说模块--> 
 
   
+    <article id="post-2018-07-05-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/05/2018-07-05-Java/">Spring Boot 整合Druid数据源</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/05/2018-07-05-Java/" class="archive-article-date">
+  	<time datetime="2018-07-05T05:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Spring-Boot-整合Druid数据源"><a href="#Spring-Boot-整合Druid数据源" class="headerlink" title="Spring Boot 整合Druid数据源"></a>Spring Boot 整合Druid数据源</h4><figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ERROR:</span></div><div class="line">Cannot determine embedded database driver class for database type NONE</div></pre></td></tr></table></figure>
+<p>1.原因是：springboot启动时会自动注入数据源和配置jpa</p>
+<p>2.解决：在@SpringBootApplication中排除其注入</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">SpringBootApplication</span>(<span class="keyword">exclude</span>=&#123;<span class="selector-tag">DataSourceAutoConfiguration</span><span class="selector-class">.class</span>,<span class="selector-tag">HibernateJpaAutoConfiguration</span><span class="selector-class">.class</span>&#125;)</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2018-07-04-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -472,66 +532,6 @@
 <!--多说模块--> 
 
   
-    <article id="post-2018-07-05-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/05/2018-07-05-Java/">Spring Boot 整合Druid数据源</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/05/2018-07-05-Java/" class="archive-article-date">
-  	<time datetime="2018-07-05T05:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Spring-Boot-整合Druid数据源"><a href="#Spring-Boot-整合Druid数据源" class="headerlink" title="Spring Boot 整合Druid数据源"></a>Spring Boot 整合Druid数据源</h4><figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ERROR:</span></div><div class="line">Cannot determine embedded database driver class for database type NONE</div></pre></td></tr></table></figure>
-<p>1.原因是：springboot启动时会自动注入数据源和配置jpa</p>
-<p>2.解决：在@SpringBootApplication中排除其注入</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">SpringBootApplication</span>(<span class="keyword">exclude</span>=&#123;<span class="selector-tag">DataSourceAutoConfiguration</span><span class="selector-class">.class</span>,<span class="selector-tag">HibernateJpaAutoConfiguration</span><span class="selector-class">.class</span>&#125;)</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -546,7 +546,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Coolcat
+    		&copy; 2020 Coolcat
     	</div>
       	<div class="footer-right"> 
 	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1262541419'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1262541419%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
@@ -626,11 +626,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -638,11 +638,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
