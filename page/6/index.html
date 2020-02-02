@@ -140,6 +140,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2017-06-27-8-Javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/27/2017-06-27-8-Javascript/">Javascript 页面飘窗</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/27/2017-06-27-8-Javascript/" class="archive-article-date">
+  	<time datetime="2017-06-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Javascript设置相对屏幕左右距离"><a href="#Javascript设置相对屏幕左右距离" class="headerlink" title="Javascript设置相对屏幕左右距离"></a>Javascript设置相对屏幕左右距离</h2><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+var obj;
+var x = 50,y = 60;
+var xin = true, yin = true;
+var step = 1;
+var delay = 30; 
+function floatAD() {  
+    var L=T=0;
+    var R= (document.documentElement.clientWidth || document.body.clientWidth)-obj.offsetWidth;
+    var B = (document.documentElement.clientHeight || document.body.clientHeight)-obj.offsetHeight;
+    obj.style.left = x + (document.documentElement.scrollLeft || document.body.scrollLeft) + &apos;px&apos;;
+    obj.style.top = y + (document.documentElement.scrollTop || document.body.scrollTop) + &apos;px&apos;;
+    x = x + step*(xin?1:-1);
+    if (x &lt; L) { xin = true; x = L}
+    if (x &gt; R){ xin = false; x = R}
+    y = y + step*(yin?1:-1);
+    if (y &lt; T) { yin = true; y = T }
+    if (y &gt; B) { yin = false; y = B } 
+}
+    function loadTest(){  
+    obj = document.getElementById(&quot;pc&quot;); 
+    if(obj!=null){ 
+        var itl= setInterval(&quot;floatAD()&quot;, delay);
+        obj.onmouseover=function(){clearInterval(itl)};
+        obj.onmouseout=function(){itl=setInterval(&quot;floatAD()&quot;, delay)};
+    } 
+    }
+&lt;/script&gt;
+</code></pre><h2 id="HTML设置加载"><a href="#HTML设置加载" class="headerlink" title="HTML设置加载"></a>HTML设置加载</h2><pre><code>onload=&quot;loadTest();&quot;//页面初始化加载
+
+&lt;div id=&quot;pc&quot; style=&quot;Z-INDEX: 1000; POSITION: absolute&quot;&gt;&lt;A href=&quot;www.baidu.com&quot; target=&quot;_blank&quot;&gt;&lt;IMG src=&quot;images/cypc.png&quot; border=0 width=&quot;280&quot;/&gt;&lt;/A&gt;&lt;/div&gt;
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2017-06-25-6-Blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -461,72 +549,6 @@ public class SqlStatementInterceptor implements Interceptor {
 <!--多说模块--> 
 
   
-    <article id="post-2017-05-14-1-HelloWorld" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/14/2017-05-14-1-HelloWorld/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/14/2017-05-14-1-HelloWorld/" class="archive-article-date">
-  	<time datetime="2017-05-14T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-<h3 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h3><h6 id="1-hexo-new-“title”-新建文章-md文件-，title为文章的标题"><a href="#1-hexo-new-“title”-新建文章-md文件-，title为文章的标题" class="headerlink" title="1. hexo new “title” 新建文章(md文件)，title为文章的标题"></a>1. hexo new “title” 新建文章(md文件)，title为文章的标题</h6><h6 id="2-hexo-new-page-“pagename”-新建网页，pagename为网页的名称"><a href="#2-hexo-new-page-“pagename”-新建网页，pagename为网页的名称" class="headerlink" title="2. hexo new page “pagename” 新建网页，pagename为网页的名称"></a>2. hexo new page “pagename” 新建网页，pagename为网页的名称</h6><h6 id="3-hexo-clean-清除部署的緩存"><a href="#3-hexo-clean-清除部署的緩存" class="headerlink" title="3. hexo clean 清除部署的緩存"></a>3. hexo clean 清除部署的緩存</h6><h6 id="4-hexo-n-hexo-new-新建一篇文章"><a href="#4-hexo-n-hexo-new-新建一篇文章" class="headerlink" title="4. hexo n == hexo new 新建一篇文章"></a>4. hexo n == hexo new 新建一篇文章</h6><h6 id="5-hexo-g-hexo-generate-生成静态页面"><a href="#5-hexo-g-hexo-generate-生成静态页面" class="headerlink" title="5. hexo g == hexo generate 生成静态页面"></a>5. hexo g == hexo generate 生成静态页面</h6><h6 id="6-hexo-s-hexo-server"><a href="#6-hexo-s-hexo-server" class="headerlink" title="6. hexo s == hexo server"></a>6. hexo s == hexo server</h6><h6 id="7-hexo-d-hexo-deploy-将网站部署到GitHub"><a href="#7-hexo-d-hexo-deploy-将网站部署到GitHub" class="headerlink" title="7. hexo d == hexo deploy 将网站部署到GitHub"></a>7. hexo d == hexo deploy 将网站部署到GitHub</h6><h6 id="8-hexo-g-d-生成页面并部署到GitHub"><a href="#8-hexo-g-d-生成页面并部署到GitHub" class="headerlink" title="8. hexo g -d 生成页面并部署到GitHub"></a>8. hexo g -d 生成页面并部署到GitHub</h6><h6 id="9-hexo-g-s-生成页面并本地部署进行预览"><a href="#9-hexo-g-s-生成页面并本地部署进行预览" class="headerlink" title="9. hexo g -s 生成页面并本地部署进行预览"></a>9. hexo g -s 生成页面并本地部署进行预览</h6>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -617,15 +639,11 @@ public class SqlStatementInterceptor implements Interceptor {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,11 +651,15 @@ public class SqlStatementInterceptor implements Interceptor {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -646,6 +668,10 @@ public class SqlStatementInterceptor implements Interceptor {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DailyThinking</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
             
             <div class="clearfix"></div>

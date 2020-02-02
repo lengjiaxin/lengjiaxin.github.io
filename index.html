@@ -140,6 +140,113 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2020-02-02-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/02/2020-02-02-Java/">Linux 常用命令记录备用</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/02/2020-02-02-Java/" class="archive-article-date">
+  	<time datetime="2020-02-02T09:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Linux常见命令解析"><a href="#Linux常见命令解析" class="headerlink" title="Linux常见命令解析"></a>Linux常见命令解析</h2><h3 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h3><ol>
+<li>lsof -i:端口号</li>
+</ol>
+<h3 id="查看端口和进程运行情况"><a href="#查看端口和进程运行情况" class="headerlink" title="查看端口和进程运行情况"></a>查看端口和进程运行情况</h3><ol>
+<li>netstat -tunlp</li>
+</ol>
+<h3 id="查看指定端口号运行情况"><a href="#查看指定端口号运行情况" class="headerlink" title="查看指定端口号运行情况"></a>查看指定端口号运行情况</h3><ol>
+<li>netstat -tunlp|grep 端口号</li>
+</ol>
+<h3 id="杀死进程"><a href="#杀死进程" class="headerlink" title="杀死进程"></a>杀死进程</h3><ol>
+<li>kill -s 9 进程号</li>
+</ol>
+<h3 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h3><ol>
+<li>mkdir  coolcat</li>
+</ol>
+<h3 id="将目录A重命名为B"><a href="#将目录A重命名为B" class="headerlink" title="将目录A重命名为B"></a>将目录A重命名为B</h3><ol>
+<li>mv A B</li>
+</ol>
+<h3 id="将-a目录移动到-b下，并重命名为c"><a href="#将-a目录移动到-b下，并重命名为c" class="headerlink" title="将/a目录移动到/b下，并重命名为c"></a>将/a目录移动到/b下，并重命名为c</h3><ol>
+<li>mv /a /b/c</li>
+</ol>
+<h3 id="安装上传工具"><a href="#安装上传工具" class="headerlink" title="安装上传工具"></a>安装上传工具</h3><ol>
+<li>yum install -y lrzsz</li>
+</ol>
+<h3 id="执行上传窗口打开命令"><a href="#执行上传窗口打开命令" class="headerlink" title="执行上传窗口打开命令"></a>执行上传窗口打开命令</h3><ol>
+<li>rz</li>
+</ol>
+<h3 id="安装解压文件工具"><a href="#安装解压文件工具" class="headerlink" title="安装解压文件工具"></a>安装解压文件工具</h3><ol>
+<li>yum -y install zip gzip</li>
+</ol>
+<h3 id="tar-gz-文件解压"><a href="#tar-gz-文件解压" class="headerlink" title=".tar.gz 文件解压"></a>.tar.gz 文件解压</h3><ol>
+<li>tar -zxvf 压缩文件名.tar.gz</li>
+</ol>
+<h3 id="复制拿到链接，下载nodejs"><a href="#复制拿到链接，下载nodejs" class="headerlink" title="复制拿到链接，下载nodejs"></a>复制拿到链接，下载nodejs</h3><p>1.wget <a href="https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz" target="_blank" rel="external">https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz</a></p>
+<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><p>1.tar -xvf node-v10.15.3-linux-x64.tar.xz</p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><pre><code>vim /etc/profile
+# 往 /etc/profile 新增环境变量
+export NODE_HOME=/node-v10.15.3-linux-x64
+export PATH=$PATH:$NODE_HOME/bin 
+export NODE_PATH=$NODE_HOME/lib/node_modules
+</code></pre><h3 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h3><ol>
+<li>:wq</li>
+</ol>
+<h3 id="提交刷新控制台"><a href="#提交刷新控制台" class="headerlink" title="提交刷新控制台"></a>提交刷新控制台</h3><ol>
+<li>source /etc/profile </li>
+</ol>
+<h3 id="检查是否安装成功"><a href="#检查是否安装成功" class="headerlink" title="检查是否安装成功"></a>检查是否安装成功</h3><ol>
+<li>node -v </li>
+<li>npn -v</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2019-11-28-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -183,6 +290,69 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
+    <article id="post-2019-07-02-DailyThinking" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/04/2019-07-02-DailyThinking/">【每日思考题1】</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/04/2019-07-02-DailyThinking/" class="archive-article-date">
+  	<time datetime="2019-07-04T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>什么是复合索引？</p>
+</li>
+<li><p>什么是最左匹配原则？</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DailyThinking</a>
         		</li>
       		
 		</ul>
@@ -273,69 +443,6 @@
 <!--多说模块--> 
 
   
-    <article id="post-2019-07-02-DailyThinking" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/2019-07-02-DailyThinking/">【每日思考题1】</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/04/2019-07-02-DailyThinking/" class="archive-article-date">
-  	<time datetime="2019-07-04T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>什么是复合索引？</p>
-</li>
-<li><p>什么是最左匹配原则？</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DailyThinking</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
     <article id="post-2019-07-04-DailyThinking" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -370,68 +477,6 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DailyThinking</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
-    <article id="post-2019-07-04-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/2019-07-04-Java/">高性能分布式锁-redisson</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/04/2019-07-04-Java/" class="archive-article-date">
-  	<time datetime="2019-07-04T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="高性能分布式锁-redisson的使用"><a href="#高性能分布式锁-redisson的使用" class="headerlink" title="高性能分布式锁-redisson的使用"></a>高性能分布式锁-redisson的使用</h2><h3 id="业务场景："><a href="#业务场景：" class="headerlink" title="业务场景："></a>业务场景：</h3><p><code>比如秒杀，抢票，抢购这些场景，都存在对核心资源，商品库存的争夺，控制不好，
-库存数量可能被减少到负数，出现超卖的情况，或者 产生唯一的一个递增ID，由于web应用部署在多个机器上，
-简单的同步加锁是无法实现的，给数据库加锁的话，对于高并发，1000/s的并发，数据库可能由行锁变成表锁，
-性能下降会厉害。那相对而言，redis的分布式锁，相对而言，是个很好的选择，
-redis官方推荐使用的Redisson就提供了分布式锁和相关服务。</code> </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -545,15 +590,11 @@ redis官方推荐使用的Redisson就提供了分布式锁和相关服务。</co
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -561,11 +602,15 @@ redis官方推荐使用的Redisson就提供了分布式锁和相关服务。</co
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -574,6 +619,10 @@ redis官方推荐使用的Redisson就提供了分布式锁和相关服务。</co
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DailyThinking</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
             
             <div class="clearfix"></div>

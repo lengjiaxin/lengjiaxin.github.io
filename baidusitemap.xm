@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>//litten.me/2020/02/02/2020-02-02-Java/</loc>
+    <lastmod>2020-02-02T09:33:50.100Z</lastmod>
+    <data>
+        <display>
+        <title>Linux 常用命令记录备用</title>
+        <pubTime>2020-02-02T09:30:00.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>//litten.me/2017/05/14/2017-05-14-1-HelloWorld/</loc>
     <lastmod>2019-12-27T16:36:00.217Z</lastmod>
     <data>
