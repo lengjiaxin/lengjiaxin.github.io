@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>Archives: 2018/4 | Coolcat的博客</title>
+  <title>Linux 常用命令记录备用 | Coolcat的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="重庆科技学院12级，就职于二流科技公司。擅长各项计算机技能，深入研究JAVA后端技术。此为博客一枚。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Coolcat的博客">
-<meta property="og:url" content="//litten.me/archives/2018/04/index.html">
+  <meta name="description" content="Linux常见命令解析查看端口占用 lsof -i:端口号  查看端口和进程运行情况 netstat -tunlp  查看指定端口号运行情况 netstat -tunlp|grep 端口号  杀死进程 kill -s 9 进程号  创建文件夹 mkdir  coolcat  将目录A重命名为B mv A B  将/a目录移动到/b下，并重命名为c mv /a /b/c  安装上传工具 yum in">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 常用命令记录备用">
+<meta property="og:url" content="//litten.me/2020/02/02/2020-02-02-Linux/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
-<meta property="og:description" content="重庆科技学院12级，就职于二流科技公司。擅长各项计算机技能，深入研究JAVA后端技术。此为博客一枚。">
+<meta property="og:description" content="Linux常见命令解析查看端口占用 lsof -i:端口号  查看端口和进程运行情况 netstat -tunlp  查看指定端口号运行情况 netstat -tunlp|grep 端口号  杀死进程 kill -s 9 进程号  创建文件夹 mkdir  coolcat  将目录A重命名为B mv A B  将/a目录移动到/b下，并重命名为c mv /a /b/c  安装上传工具 yum in">
+<meta property="og:updated_time" content="2020-02-06T07:26:32.378Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Coolcat的博客">
-<meta name="twitter:description" content="重庆科技学院12级，就职于二流科技公司。擅长各项计算机技能，深入研究JAVA后端技术。此为博客一枚。">
+<meta name="twitter:title" content="Linux 常用命令记录备用">
+<meta name="twitter:description" content="Linux常见命令解析查看端口占用 lsof -i:端口号  查看端口和进程运行情况 netstat -tunlp  查看指定端口号运行情况 netstat -tunlp|grep 端口号  杀死进程 kill -s 9 进程号  创建文件夹 mkdir  coolcat  将目录A重命名为B mv A B  将/a目录移动到/b下，并重命名为c mv /a /b/c  安装上传工具 yum in">
   
     <link rel="alternative" href="/atom.xml" title="Coolcat的博客" type="application/atom+xml">
   
@@ -138,62 +140,205 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2020-02-02-Linux" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/14/2018-04-14-linux/" class="archive-article-date">
-  	<time datetime="2018-04-14T11:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/14/2018-04-14-linux/">linux环境搭建</a>
+    <h1 class="article-title" itemprop="name">
+      Linux 常用命令记录备用
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/02/02/2020-02-02-Linux/" class="archive-article-date">
+  	<time datetime="2020-02-02T09:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Linux常见命令解析"><a href="#Linux常见命令解析" class="headerlink" title="Linux常见命令解析"></a>Linux常见命令解析</h2><h3 id="查看端口占用"><a href="#查看端口占用" class="headerlink" title="查看端口占用"></a>查看端口占用</h3><ol>
+<li>lsof -i:端口号</li>
+</ol>
+<h3 id="查看端口和进程运行情况"><a href="#查看端口和进程运行情况" class="headerlink" title="查看端口和进程运行情况"></a>查看端口和进程运行情况</h3><ol>
+<li>netstat -tunlp</li>
+</ol>
+<h3 id="查看指定端口号运行情况"><a href="#查看指定端口号运行情况" class="headerlink" title="查看指定端口号运行情况"></a>查看指定端口号运行情况</h3><ol>
+<li>netstat -tunlp|grep 端口号</li>
+</ol>
+<h3 id="杀死进程"><a href="#杀死进程" class="headerlink" title="杀死进程"></a>杀死进程</h3><ol>
+<li>kill -s 9 进程号</li>
+</ol>
+<h3 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h3><ol>
+<li>mkdir  coolcat</li>
+</ol>
+<h3 id="将目录A重命名为B"><a href="#将目录A重命名为B" class="headerlink" title="将目录A重命名为B"></a>将目录A重命名为B</h3><ol>
+<li>mv A B</li>
+</ol>
+<h3 id="将-a目录移动到-b下，并重命名为c"><a href="#将-a目录移动到-b下，并重命名为c" class="headerlink" title="将/a目录移动到/b下，并重命名为c"></a>将/a目录移动到/b下，并重命名为c</h3><ol>
+<li>mv /a /b/c</li>
+</ol>
+<h3 id="安装上传工具"><a href="#安装上传工具" class="headerlink" title="安装上传工具"></a>安装上传工具</h3><ol>
+<li>yum install -y lrzsz</li>
+</ol>
+<h3 id="执行上传窗口打开命令"><a href="#执行上传窗口打开命令" class="headerlink" title="执行上传窗口打开命令"></a>执行上传窗口打开命令</h3><ol>
+<li>rz</li>
+</ol>
+<h3 id="执行下载命令"><a href="#执行下载命令" class="headerlink" title="执行下载命令"></a>执行下载命令</h3><ol>
+<li>sz</li>
+</ol>
+<h3 id="安装解压文件工具"><a href="#安装解压文件工具" class="headerlink" title="安装解压文件工具"></a>安装解压文件工具</h3><ol>
+<li>yum -y install zip gzip</li>
+</ol>
+<h3 id="tar-gz-文件解压"><a href="#tar-gz-文件解压" class="headerlink" title=".tar.gz 文件解压"></a>.tar.gz 文件解压</h3><ol>
+<li>tar -zxvf 压缩文件名.tar.gz</li>
+</ol>
+<h3 id="复制拿到链接，下载nodejs"><a href="#复制拿到链接，下载nodejs" class="headerlink" title="复制拿到链接，下载nodejs"></a>复制拿到链接，下载nodejs</h3><p>1.wget <a href="https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz" target="_blank" rel="external">https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz</a></p>
+<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><p>1.tar -xvf node-v10.15.3-linux-x64.tar.xz</p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><pre><code>vim /etc/profile
+# 往 /etc/profile 新增环境变量
+export NODE_HOME=/node-v10.15.3-linux-x64
+export PATH=$PATH:$NODE_HOME/bin 
+export NODE_PATH=$NODE_HOME/lib/node_modules
+</code></pre><h3 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h3><ol>
+<li>:wq</li>
+</ol>
+<h3 id="提交刷新控制台"><a href="#提交刷新控制台" class="headerlink" title="提交刷新控制台"></a>提交刷新控制台</h3><ol>
+<li>source /etc/profile </li>
+</ol>
+<h3 id="检查是否安装成功"><a href="#检查是否安装成功" class="headerlink" title="检查是否安装成功"></a>检查是否安装成功</h3><ol>
+<li>node -v </li>
+<li>npn -v</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2020/02/02/2020-02-02-Linux/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/11/28/2019-11-28-Java/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SpringBoot 动态SPI
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
 
+<!--多说模块--> 
 
+  <section id="comments">
+<!--高速版，加载速度快，使用前需测试页面的兼容性--> 
+<div id="SOHUCS" sid="Linux 常用命令记录备用" style="padding: 0px 30px 0px 46px;"></div> 
+<script>
+  (function(){
+    var appid = 'cyt5seecS',
+    conf = '7e84b5efec98eb14e1f59fbf01c725d1';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+  })()
+</script>
+  </section>
+  
           </div>
         </div>
       </div>
@@ -215,8 +360,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -4,8 +4,8 @@
 
     
   <url>
-    <loc>//litten.me/2020/02/02/2020-02-02-Java/</loc>
-    <lastmod>2020-02-02T09:33:50.100Z</lastmod>
+    <loc>//litten.me/2020/02/02/2020-02-02-Linux/</loc>
+    <lastmod>2020-02-06T07:26:32.378Z</lastmod>
     <data>
         <display>
         <title>Linux 常用命令记录备用</title>
