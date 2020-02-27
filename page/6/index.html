@@ -287,6 +287,94 @@
 <!--多说模块--> 
 
   
+    <article id="post-2017-06-27-8-Javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/27/2017-06-27-8-Javascript/">Javascript 页面飘窗</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/27/2017-06-27-8-Javascript/" class="archive-article-date">
+  	<time datetime="2017-06-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Javascript设置相对屏幕左右距离"><a href="#Javascript设置相对屏幕左右距离" class="headerlink" title="Javascript设置相对屏幕左右距离"></a>Javascript设置相对屏幕左右距离</h2><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+var obj;
+var x = 50,y = 60;
+var xin = true, yin = true;
+var step = 1;
+var delay = 30; 
+function floatAD() {  
+    var L=T=0;
+    var R= (document.documentElement.clientWidth || document.body.clientWidth)-obj.offsetWidth;
+    var B = (document.documentElement.clientHeight || document.body.clientHeight)-obj.offsetHeight;
+    obj.style.left = x + (document.documentElement.scrollLeft || document.body.scrollLeft) + &apos;px&apos;;
+    obj.style.top = y + (document.documentElement.scrollTop || document.body.scrollTop) + &apos;px&apos;;
+    x = x + step*(xin?1:-1);
+    if (x &lt; L) { xin = true; x = L}
+    if (x &gt; R){ xin = false; x = R}
+    y = y + step*(yin?1:-1);
+    if (y &lt; T) { yin = true; y = T }
+    if (y &gt; B) { yin = false; y = B } 
+}
+    function loadTest(){  
+    obj = document.getElementById(&quot;pc&quot;); 
+    if(obj!=null){ 
+        var itl= setInterval(&quot;floatAD()&quot;, delay);
+        obj.onmouseover=function(){clearInterval(itl)};
+        obj.onmouseout=function(){itl=setInterval(&quot;floatAD()&quot;, delay)};
+    } 
+    }
+&lt;/script&gt;
+</code></pre><h2 id="HTML设置加载"><a href="#HTML设置加载" class="headerlink" title="HTML设置加载"></a>HTML设置加载</h2><pre><code>onload=&quot;loadTest();&quot;//页面初始化加载
+
+&lt;div id=&quot;pc&quot; style=&quot;Z-INDEX: 1000; POSITION: absolute&quot;&gt;&lt;A href=&quot;www.baidu.com&quot; target=&quot;_blank&quot;&gt;&lt;IMG src=&quot;images/cypc.png&quot; border=0 width=&quot;280&quot;/&gt;&lt;/A&gt;&lt;/div&gt;
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2017-06-25-6-Blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -543,71 +631,6 @@ public class SqlStatementInterceptor implements Interceptor {
 <!--多说模块--> 
 
   
-    <article id="post-2017-05-25-5-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/25/2017-05-25-5-Java/">Java 字符串操作</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/25/2017-05-25-5-Java/" class="archive-article-date">
-  	<time datetime="2017-05-25T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Java-6以后就不再需要StringBuilder拼接字符串"><a href="#Java-6以后就不再需要StringBuilder拼接字符串" class="headerlink" title="Java 6以后就不再需要StringBuilder拼接字符串"></a>Java 6以后就不再需要StringBuilder拼接字符串</h1><p><table><br>    <tr><br>        <td style="color:red;">Java基础篇一</td><br>    </tr><br></table><br>在Java中，字符串对象是不可变的，意思是它一旦创建，你就无法再改变它。所以在我们拼接字符串的时候，创建了一个新的字符串，旧的被垃圾回收器所标记。<br><br>如果我们处理上百万的字符串，然后，我们就会生成百万的额外字符串被垃圾回收器处理。</p>
-<blockquote>
-<h2 id="虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点操作-dot-operator-就是String-concat-String-操作"><a href="#虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点操作-dot-operator-就是String-concat-String-操作" class="headerlink" title="虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点操作(dot operator)就是String#concat(String)操作"></a>虚拟机底层在拼接字符串时执行了众多操作。拼接字符串最直接的点操作(dot operator)就是String#concat(String)操作</h2><p> public String concat(String str) {<br>   int otherLen = str.length();<br>   if (otherLen == 0) {<br>       return this;<br>   }<br>   int len = value.length;<br>   char buf[] = Arrays.copyOf(value, len + otherLen);<br>   str.getChars(buf, len);<br>   return new String(buf, true);<br>}<br>public static char[] copyOf(char[] original, int newLength) {<br>   char[] copy = new char[newLength];<br>   System.arraycopy(original, 0, copy, 0,<br>                    Math.min(original.length, newLength));<br>   return copy;<br>}<br>void getChars(char dst[], int dstBegin) {<br>   System.arraycopy(value, 0, dst, dstBegin, value.length);<br>} </p>
-</blockquote>
-<p><table><br>    <tr><br>        <td style="color:#F99999;">Sevlet绑定Spring bean</td><br>    </tr><br></table><br><code>SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,cfg.getServletContext());//初始化Spring</code>  </p>
-<blockquote>
-<p>public static void processInjectionBasedOnServletContext(Object target, ServletContext servletContext)<br>   {<br> Assert.notNull(target, “Target object must not be null”);<br> WebApplicationContext cc = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext);<br> AutowiredAnnotationBeanPostProcessor bpp = new AutowiredAnnotationBeanPostProcessor();<br> bpp.setBeanFactory(cc.getAutowireCapableBeanFactory());<br>bpp.processInjection(target);<br>}</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -694,6 +717,14 @@ public class SqlStatementInterceptor implements Interceptor {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
@@ -702,19 +733,7 @@ public class SqlStatementInterceptor implements Interceptor {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -726,7 +745,15 @@ public class SqlStatementInterceptor implements Interceptor {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DailyThinking</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
              
               <li class="article-tag-list-item">

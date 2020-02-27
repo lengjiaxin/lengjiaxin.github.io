@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>//litten.me/2020/02/27/2020-02-02-Idea-crackl/</loc>
+    <lastmod>2020-02-27T15:57:27.544Z</lastmod>
+    <data>
+        <display>
+        <title>IDEA 破解方式记录备用</title>
+        <pubTime>2020-02-27T15:30:00.000Z</pubTime>
+        
+        <tag>IDEA</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>//litten.me/2020/02/02/2020-02-02-Linux/</loc>
     <lastmod>2020-02-06T07:26:32.378Z</lastmod>
     <data>

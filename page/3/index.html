@@ -140,6 +140,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2018-07-04-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/05/2018-07-04-Java/">SpringBoot连接mySQL事务失效</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/05/2018-07-04-Java/" class="archive-article-date">
+  	<time datetime="2018-07-05T05:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="SpringBoot中JPA事务失效的问题"><a href="#SpringBoot中JPA事务失效的问题" class="headerlink" title="SpringBoot中JPA事务失效的问题"></a>SpringBoot中JPA事务失效的问题</h3><ol>
+<li>在SpringBoot中使用jpa，表是通过对应的实体直接建立，默认情况下，表的引擎engine=MyISAM性能更好,但不提供事务支持，如果需要使用事务,需要将JPA建表的默认引擎修改为：InNoDB，直接修改配置文件，如下：</li>
+</ol>
+<p>application.xml<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">spring<span class="selector-class">.jpa</span><span class="selector-class">.database-platform</span>=org<span class="selector-class">.hibernate</span><span class="selector-class">.dialect</span><span class="selector-class">.MySQL5InnoDBDialect</span></div></pre></td></tr></table></figure></p>
+<p>或者 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">spring</span>:</div><div class="line">    <span class="selector-tag">jpa</span>:</div><div class="line">        <span class="selector-tag">database-platform</span>: <span class="selector-tag">org</span><span class="selector-class">.hibernate</span><span class="selector-class">.dialect</span><span class="selector-class">.MySQL5InnoDBDialect</span> <span class="selector-id">#InnoDB</span>才能支持事务</div></pre></td></tr></table></figure>
+<ol>
+<li><p>然后在特定的方法上使用注解@Transactional<br>//注意导入的包是org.springframework.transaction.annotation.Transactional</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Transactional</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertTwo</span><span class="params">()</span></span>&#123;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看表引擎</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">MYsql  <span class="keyword">show</span> <span class="keyword">CREATE</span> <span class="keyword">table</span> <span class="keyword">name</span>;</div></pre></td></tr></table></figure></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2018-07-05-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -415,98 +485,6 @@
 <!--多说模块--> 
 
   
-    <article id="post-2018-03-25-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/25/2018-03-25-Java/">【Java】过滤器、拦截器</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/25/2018-03-25-Java/" class="archive-article-date">
-  	<time datetime="2018-03-25T11:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><h3 id="Filter（过滤器）与Interceptor（拦截器）和Spring-AOP的区别？"><a href="#Filter（过滤器）与Interceptor（拦截器）和Spring-AOP的区别？" class="headerlink" title="Filter（过滤器）与Interceptor（拦截器）和Spring AOP的区别？"></a>Filter（过滤器）与Interceptor（拦截器）和Spring AOP的区别？</h3><ul>
-<li><p>Filter过滤器：拦截web访问url地址。</p>
-</li>
-<li><p>Interceptor拦截器：拦截以 .action结尾的url，拦截Action的访问。</p>
-</li>
-<li><p>Spring AOP拦截器：只能拦截Spring管理Bean的访问（业务层Service） </p>
-</li>
-</ul>
-</li>
-<li><p>①拦截器是基于java的反射机制的，而过滤器是基于函数回调。</p>
-</li>
-<li><p>②拦截器不依赖与servlet容器，过滤器依赖与servlet容器。</p>
-</li>
-<li><p>③拦截器只能对action请求起作用，而过滤器则可以对几乎所有的请求起作用。</p>
-</li>
-<li><p>④拦截器可以访问action上下文、值栈里的对象，而过滤器不能访问。</p>
-</li>
-<li><p>⑤在action的生命周期中，拦截器可以多次被调用，而过滤器只能在容器初始化时被调用一次。 </p>
-</li>
-<li><p>⑥拦截器可以获取IOC容器中的各个bean，而过滤器就不行，这点很重要，在拦截器里注入一个service，可以调用业务逻辑。</p>
-</li>
-<li><h3 id="触发时机"><a href="#触发时机" class="headerlink" title="触发时机"></a>触发时机</h3></li>
-<li><p>过滤器和拦截器触发时机不一样:</p>
-<ul>
-<li>过滤器是在请求进入容器后，但请求进入servlet之前进行预处理的。请求结束返回也是，是在servlet处理完后，返回给前端之前。</li>
-<li>总结：过滤器包裹住servlet，servlet包裹住拦截器。</li>
-</ul>
-</li>
-<li>SpringMVC的机制是由同一个Servlet来分发请求给不同的Controller，其实这一步是在Servlet的service()方法中执行的。<br>  所以过滤器、拦截器、service()方法，dispatc()方法的执行顺序应该是这样的 </li>
-<li><p>SpringMVC的机制是由同一个Servlet来分发请求给不同的Controller，其实这一步是在Servlet的service()方法中执行的。</p>
-</li>
-<li><p>拦截器是spring容器的，是spring支持的，</p>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -593,6 +571,14 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
@@ -601,19 +587,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -625,7 +599,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DailyThinking</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
              
               <li class="article-tag-list-item">
