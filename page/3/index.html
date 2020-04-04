@@ -140,6 +140,71 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2018-08-27-Zookeeper" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/27/2018-08-27-Zookeeper/">Zookeeper</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/27/2018-08-27-Zookeeper/" class="archive-article-date">
+  	<time datetime="2018-08-27T14:58:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="zookeeper可以用于搭建高可用服务框架，主要先看以下几个应用场景："><a href="#zookeeper可以用于搭建高可用服务框架，主要先看以下几个应用场景：" class="headerlink" title="zookeeper可以用于搭建高可用服务框架，主要先看以下几个应用场景："></a>zookeeper可以用于搭建高可用服务框架，主要先看以下几个应用场景：</h2><ul>
+<li><h3 id="1、master的选举基本思路和编码实现"><a href="#1、master的选举基本思路和编码实现" class="headerlink" title="1、master的选举基本思路和编码实现"></a>1、master的选举基本思路和编码实现</h3></li>
+<li><h3 id="2、数据的发布和订阅"><a href="#2、数据的发布和订阅" class="headerlink" title="2、数据的发布和订阅"></a>2、数据的发布和订阅</h3></li>
+<li><h3 id="3、软负载均衡"><a href="#3、软负载均衡" class="headerlink" title="3、软负载均衡"></a>3、软负载均衡</h3></li>
+<li><h3 id="4、分布式队列"><a href="#4、分布式队列" class="headerlink" title="4、分布式队列"></a>4、分布式队列</h3></li>
+<li><h3 id="5、分布式锁"><a href="#5、分布式锁" class="headerlink" title="5、分布式锁"></a>5、分布式锁</h3></li>
+<li><h3 id="6、命名服务"><a href="#6、命名服务" class="headerlink" title="6、命名服务"></a>6、命名服务</h3></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2018-07-04-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -234,63 +299,6 @@
 <p>1.原因是：springboot启动时会自动注入数据源和配置jpa</p>
 <p>2.解决：在@SpringBootApplication中排除其注入</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">SpringBootApplication</span>(<span class="keyword">exclude</span>=&#123;<span class="selector-tag">DataSourceAutoConfiguration</span><span class="selector-class">.class</span>,<span class="selector-tag">HibernateJpaAutoConfiguration</span><span class="selector-class">.class</span>&#125;)</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
-    <article id="post-2020-04-04-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/05/2020-04-04-Java/">程序员珍藏五款 Chrome 浏览器插件</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/05/2020-04-04-Java/" class="archive-article-date">
-  	<time datetime="2018-07-05T05:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-「Octotree」树形展示-Github-项目代码："><a href="#1-「Octotree」树形展示-Github-项目代码：" class="headerlink" title="1.「Octotree」树形展示 Github 项目代码："></a>1.「Octotree」树形展示 Github 项目代码：</h3><h5 id="很多程序员都会用到GitHub，这是一款基于Git的代码管理和协同的优秀工具，然而作为代码浏览和搜索工具，就和IDE差的很远了。今天看看GitHub网页连个侧栏的文件树没有，查看很累，现在有很多开发者还是需要git-clone下载到本地在把代码装到你的IDE里才能愉快的阅读代码，有没有不用下载代码就能像IDE那样在GitHub网页上浏览代码？x小编这就介绍一款Chrome浏览器插件Octotree，让你能像在GitHub上像你的IDE里一样浏览和搜索代码，让你的Github就像穿上了钢铁侠的战衣。"><a href="#很多程序员都会用到GitHub，这是一款基于Git的代码管理和协同的优秀工具，然而作为代码浏览和搜索工具，就和IDE差的很远了。今天看看GitHub网页连个侧栏的文件树没有，查看很累，现在有很多开发者还是需要git-clone下载到本地在把代码装到你的IDE里才能愉快的阅读代码，有没有不用下载代码就能像IDE那样在GitHub网页上浏览代码？x小编这就介绍一款Chrome浏览器插件Octotree，让你能像在GitHub上像你的IDE里一样浏览和搜索代码，让你的Github就像穿上了钢铁侠的战衣。" class="headerlink" title="很多程序员都会用到GitHub，这是一款基于Git的代码管理和协同的优秀工具，然而作为代码浏览和搜索工具，就和IDE差的很远了。今天看看GitHub网页连个侧栏的文件树没有，查看很累，现在有很多开发者还是需要git clone下载到本地在把代码装到你的IDE里才能愉快的阅读代码，有没有不用下载代码就能像IDE那样在GitHub网页上浏览代码？x小编这就介绍一款Chrome浏览器插件Octotree，让你能像在GitHub上像你的IDE里一样浏览和搜索代码，让你的Github就像穿上了钢铁侠的战衣。"></a>很多程序员都会用到GitHub，这是一款基于Git的代码管理和协同的优秀工具，然而作为代码浏览和搜索工具，就和IDE差的很远了。今天看看GitHub网页连个侧栏的文件树没有，查看很累，现在有很多开发者还是需要git clone下载到本地在把代码装到你的IDE里才能愉快的阅读代码，有没有不用下载代码就能像IDE那样在GitHub网页上浏览代码？x小编这就介绍一款Chrome浏览器插件Octotree，让你能像在GitHub上像你的IDE里一样浏览和搜索代码，让你的Github就像穿上了钢铁侠的战衣。</h5><h3 id="2-「Sourcegraph」轻松浏览和搜索Github上的代码"><a href="#2-「Sourcegraph」轻松浏览和搜索Github上的代码" class="headerlink" title="2. 「Sourcegraph」轻松浏览和搜索Github上的代码"></a>2. 「Sourcegraph」轻松浏览和搜索Github上的代码</h3><h5 id="Sourcegraph已经支持-GitHub、GitLab-等优质社区。比如当鼠标停留在某个方法上面时，可以快速查看该方法的定义以及引用，还可以全文搜索等等，就好像你在使用-IDE-开发代码一样。"><a href="#Sourcegraph已经支持-GitHub、GitLab-等优质社区。比如当鼠标停留在某个方法上面时，可以快速查看该方法的定义以及引用，还可以全文搜索等等，就好像你在使用-IDE-开发代码一样。" class="headerlink" title="Sourcegraph已经支持 GitHub、GitLab 等优质社区。比如当鼠标停留在某个方法上面时，可以快速查看该方法的定义以及引用，还可以全文搜索等等，就好像你在使用 IDE 开发代码一样。"></a>Sourcegraph已经支持 GitHub、GitLab 等优质社区。比如当鼠标停留在某个方法上面时，可以快速查看该方法的定义以及引用，还可以全文搜索等等，就好像你在使用 IDE 开发代码一样。</h5><h3 id="3-「SimilarSites」发现相关网站"><a href="#3-「SimilarSites」发现相关网站" class="headerlink" title="3. 「SimilarSites」发现相关网站"></a>3. 「SimilarSites」发现相关网站</h3><h5 id="当你浏览一个很棒的站点的时候-或许你会想到-和它”差不多”的站点有哪些-尤其是针对一些资源站点-这个站点没有-而它同类的站点”往往有”-之前我们推荐一个很有意思的chrome的插件SimilarSites-它的作用只有一个-发现同类站点。"><a href="#当你浏览一个很棒的站点的时候-或许你会想到-和它”差不多”的站点有哪些-尤其是针对一些资源站点-这个站点没有-而它同类的站点”往往有”-之前我们推荐一个很有意思的chrome的插件SimilarSites-它的作用只有一个-发现同类站点。" class="headerlink" title="当你浏览一个很棒的站点的时候, 或许你会想到, 和它”差不多”的站点有哪些, 尤其是针对一些资源站点, 这个站点没有, 而它同类的站点”往往有”!之前我们推荐一个很有意思的chrome的插件SimilarSites, 它的作用只有一个, 发现同类站点。"></a>当你浏览一个很棒的站点的时候, 或许你会想到, 和它”差不多”的站点有哪些, 尤其是针对一些资源站点, 这个站点没有, 而它同类的站点”往往有”!之前我们推荐一个很有意思的chrome的插件SimilarSites, 它的作用只有一个, 发现同类站点。</h5><h3 id="4-「PostMan-」接口调试工具"><a href="#4-「PostMan-」接口调试工具" class="headerlink" title="4. 「PostMan 」接口调试工具"></a>4. 「PostMan 」接口调试工具</h3><h5 id="PostMan-是用于-API-开发的协作平台，是一款功能强大的网页调试与发送网页HTTP请求的Chrome插件。Postman-的特性简化了构建-API-的每个步骤，并简化了协作，这样就可以更快地创建更好的-API。"><a href="#PostMan-是用于-API-开发的协作平台，是一款功能强大的网页调试与发送网页HTTP请求的Chrome插件。Postman-的特性简化了构建-API-的每个步骤，并简化了协作，这样就可以更快地创建更好的-API。" class="headerlink" title="PostMan 是用于 API 开发的协作平台，是一款功能强大的网页调试与发送网页HTTP请求的Chrome插件。Postman 的特性简化了构建 API 的每个步骤，并简化了协作，这样就可以更快地创建更好的 API。"></a>PostMan 是用于 API 开发的协作平台，是一款功能强大的网页调试与发送网页HTTP请求的Chrome插件。Postman 的特性简化了构建 API 的每个步骤，并简化了协作，这样就可以更快地创建更好的 API。</h5><h3 id="5-「FeHelper」WEB前端助手"><a href="#5-「FeHelper」WEB前端助手" class="headerlink" title="5. 「FeHelper」WEB前端助手"></a>5. 「FeHelper」WEB前端助手</h3><h5 id="FeHelper内部工具集持续增加，目前包括-JSON自动-手动格式化、JSON内容比对、代码美化与压缩、信息编解码转换、二维码生成与解码、图片Base64编解码转换、Markdown、-网页油猴、网页取色器、脑图-Xmind-等贴心工具，甚至在目前新版本的FeHelper中，还集成了FH开发者工具，-如果你也想自己搞一个工具集成到FeHelper中，那这一定能满足到你。"><a href="#FeHelper内部工具集持续增加，目前包括-JSON自动-手动格式化、JSON内容比对、代码美化与压缩、信息编解码转换、二维码生成与解码、图片Base64编解码转换、Markdown、-网页油猴、网页取色器、脑图-Xmind-等贴心工具，甚至在目前新版本的FeHelper中，还集成了FH开发者工具，-如果你也想自己搞一个工具集成到FeHelper中，那这一定能满足到你。" class="headerlink" title="FeHelper内部工具集持续增加，目前包括 JSON自动/手动格式化、JSON内容比对、代码美化与压缩、信息编解码转换、二维码生成与解码、图片Base64编解码转换、Markdown、 网页油猴、网页取色器、脑图(Xmind)等贴心工具，甚至在目前新版本的FeHelper中，还集成了FH开发者工具， 如果你也想自己搞一个工具集成到FeHelper中，那这一定能满足到你。"></a>FeHelper内部工具集持续增加，目前包括 JSON自动/手动格式化、JSON内容比对、代码美化与压缩、信息编解码转换、二维码生成与解码、图片Base64编解码转换、Markdown、 网页油猴、网页取色器、脑图(Xmind)等贴心工具，甚至在目前新版本的FeHelper中，还集成了FH开发者工具， 如果你也想自己搞一个工具集成到FeHelper中，那这一定能满足到你。</h5>
       
 
       
@@ -568,6 +576,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
@@ -597,10 +609,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
             
             <div class="clearfix"></div>
