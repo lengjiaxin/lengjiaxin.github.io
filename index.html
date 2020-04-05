@@ -140,6 +140,75 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2020-04-05-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/06/2020-04-05-Java/">Spring Boot Linxu 读取项目Excle静态文件</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/06/2020-04-05-Java/" class="archive-article-date">
+  	<time datetime="2020-04-06T14:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Linux-下获取项目根目录失败"><a href="#Linux-下获取项目根目录失败" class="headerlink" title="Linux 下获取项目根目录失败"></a>Linux 下获取项目根目录失败</h3><ol>
+<li><p>System.getProperty(“user.dir”)   Linux下无法获取项目根目录，</p>
+</li>
+<li><p>替换为ResourceUtils.getFile(“\static\excletemplate\”)  如果是以《JAR》包运行无法读取JAR包里面文件</p>
+</li>
+<li><p>最后替换为： ClassPathResource resource = new ClassPathResource(“\static\excletemplate\“ + fileName );</p>
+</li>
+</ol>
+<h5 id="Spring-Boot读取Resource文件夹下Excel-文件，提示文件头损坏"><a href="#Spring-Boot读取Resource文件夹下Excel-文件，提示文件头损坏" class="headerlink" title="Spring Boot读取Resource文件夹下Excel 文件，提示文件头损坏"></a>Spring Boot读取Resource文件夹下Excel 文件，提示文件头损坏</h5><ol>
+<li>原因: Maven打包，可以根据不同的环境（测试、预发、线上等环境）来过滤项目中的属性资源配置；文件格式别替换损坏</li>
+</ol>
+<p>解决办法：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;plugin&gt;</div><div class="line"> &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;maven-resources-plugin&lt;/artifactId&gt;</div><div class="line">        &lt;configuration&gt;</div><div class="line">           &lt;encoding&gt;UTF-8&lt;/encoding&gt;</div><div class="line">            &lt;nonFilteredFileExtensions&gt;</div><div class="line">              &lt;nonFilteredFileExtension&gt;xlsx&lt;/nonFilteredFileExtension&gt;</div><div class="line">              &lt;nonFilteredFileExtension&gt;xls&lt;/nonFilteredFileExtension&gt;</div><div class="line">          &lt;/nonFilteredFileExtensions&gt;</div><div class="line">        &lt;/configuration&gt;</div><div class="line">&lt;/plugin&gt;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2020-04-04-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -445,72 +514,9 @@ export NODE_PATH=$NODE_HOME/lib/node_modules
 <!--多说模块--> 
 
   
-    <article id="post-2019-07-02-DailyThinking" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/04/2019-07-02-DailyThinking/">【每日思考题1】</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/04/2019-07-02-DailyThinking/" class="archive-article-date">
-  	<time datetime="2019-07-04T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>什么是复合索引？</p>
-</li>
-<li><p>什么是最左匹配原则？</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DailyThinking</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 

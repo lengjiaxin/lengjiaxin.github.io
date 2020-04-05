@@ -140,6 +140,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2017-06-25-7-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/25/2017-06-25-7-Java/">JAVA GC 简单总结</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/25/2017-06-25-7-Java/" class="archive-article-date">
+  	<time datetime="2017-06-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="GC分代"><a href="#GC分代" class="headerlink" title="GC分代"></a>GC分代</h2><p>GC的英文全拼是Garbage Collection，意思是垃圾收集。</p>
+<p>Java 将堆内存分为三代来管理：</p>
+<ul>
+<li>年轻代 (<code>Young Generation</code>)</li>
+<li>年老代 (<code>Old Generation</code>)</li>
+<li>永久代 (<code>Perm Generation</code>)</li>
+</ul>
+<p><strong>年轻代</strong>：又分为<code>Eden</code>、<code>From</code>和<code>To</code>，其中<code>From</code>和<code>To</code>又统称为<code>Survivor Spaces</code>（幸存区）。年轻代大小可以由<code>-Xmn</code>来控制，也可以用<code>-XX:SurvivorRatio</code>来控制<code>Eden</code>和<code>Survivor</code>的比例，使用<code>–XX:NewRatio</code>来指定新生代和年老代的大小比例。</p>
+<p><strong>年老代</strong>：用来存放多次垃圾回收依然存活的对象。</p>
+<p><strong>永久代</strong>：来存放方法区。可通过<code>-XX:PermSize</code>和<code>-XX:MaxPermSize</code>来指定最小值和最大值。</p>
+<p>正常情况下，一个对象从创建到销毁，应该是从<code>Eden</code>，然后到<code>Survivor Spaces</code>（幸存区），再到<code>Old Generation</code>（年老代），最后在某次GC下消失。也可能一个对象直接在<code>Eden</code>里死掉，也可能一直在<code>Old Generation</code>（年老代）存活。</p>
+<h2 id="GC种类"><a href="#GC种类" class="headerlink" title="GC种类"></a>GC种类</h2><p>Java GC分为两类：</p>
+<ul>
+<li><code>Minar GC</code></li>
+<li><code>FULL GC</code></li>
+<li><code>Major GC</code></li>
+</ul>
+<p><strong>Minar GC</strong>：从年轻代空间（包括 <code>Eden</code> 和 <code>Survivor</code> 区域）回收内存被称为 Minor GC。</p>
+<p><strong>Major GC</strong>：是清理老年代。</p>
+<p><strong>FULL GC</strong>：是清理整个堆空间—包括年轻代和老年代。</p>
+<p>GC的时候，会暂停全世界(<code>stop-the-world</code>)，意思是停止所有的应用线程，所以要避免不必要的GC已提高性能。</p>
+<h2 id="GC日志"><a href="#GC日志" class="headerlink" title="GC日志"></a>GC日志</h2><p><code>-XX:+PrintGCDetails</code>打印日志详情。</p>
+<p><code>-XX:+PrintGCTimeStamps</code>打印时间戳。</p>
+<p><code>-Xloggc</code>输出GC日志到文件。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2017-06-15-4-Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -618,75 +699,9 @@ Executors可以用于方便的创建线程池。
 <!--多说模块--> 
 
   
-    <article id="post-2017-05-14-3-LiftTime" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/14/2017-05-14-3-LiftTime/">2017五一醒悟</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/14/2017-05-14-3-LiftTime/" class="archive-article-date">
-  	<time datetime="2017-05-14T15:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>这个五一回家休息三天，当一个人从繁忙中变得比较悠闲时，反而找不到北<br>这也许是大家都有的经历吧，从今天开始我要每天进步一点为以后的生活增添资本，当我回忆自己<br>上班已经4年余时，连我自己都不敢相信这就是事实，当我看到身边的同行的人都拥有他们自己想要的<br>生活时，我都没自信自己这几年到底是干了神马<br>也许我就是一个碌碌无为得人吧，但是在我心里面无时无刻的想要改变自己想自己变得优秀变得强大<br>我想要的生活需要自己去争取,<br></p><br>努力让每一天都有收获，为我以后幸福生活添砖加瓦,每天让自己写一篇技术博客<p></p>
-</blockquote>
-<ol>
-<li>学习基础原理，学习源码精神，找机会自己在git上开源一个项目</li>
-<li>坚持每天写一篇博客总结一天收获</li>
-<li>学习身边优秀的技能，把好的习惯养成</li>
-<li>坚持锻炼身体，有好的基础去学习，健康的资本</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
     </nav>
   
 

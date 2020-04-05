@@ -140,6 +140,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2018-04-14-linux" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/14/2018-04-14-linux/">linux环境搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/14/2018-04-14-linux/" class="archive-article-date">
+  	<time datetime="2018-04-14T11:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="云主机基础环境搭建"><a href="#云主机基础环境搭建" class="headerlink" title="云主机基础环境搭建"></a>云主机基础环境搭建</h2><p>TOMCAT JDK </p>
+<h2 id="vim编辑文件基本命令"><a href="#vim编辑文件基本命令" class="headerlink" title="vim编辑文件基本命令"></a>vim编辑文件基本命令</h2><ul>
+<li>i → Insert 模式，按 ESC 回到 Normal 模式.</li>
+<li>x → 删当前光标所在的一个字符。</li>
+<li>p → 粘贴剪贴板</li>
+<li>dd → 删除当前行，并把删除的行存到剪贴板里</li>
+<li>:wq → 存盘 + 退出 (:w 存盘, :q 退出)   （注：:w 后可以跟文件名）</li>
+</ul>
+<h2 id="JDK运行环境搭建"><a href="#JDK运行环境搭建" class="headerlink" title="JDK运行环境搭建"></a>JDK运行环境搭建</h2><ul>
+<li>在Oracle官网下载jdk压缩包。通过WinScp上传到服务器</li>
+<li>通过PuTTY命令（tar -zxvf xxx.tar.gz）解压</li>
+<li>vim /etc/profile 打开配置文件开启编辑</li>
+<li>在最前面添加：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> JAVA_HOME=<span class="regexp">/usr/</span>lib/jvm/jdk1<span class="number">.8</span><span class="number">.0</span>_131  </div><div class="line"><span class="keyword">export</span> JRE_HOME=$&#123;JAVA_HOME&#125;/jre  </div><div class="line"><span class="keyword">export</span> CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib  </div><div class="line"><span class="keyword">export</span> PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</div></pre></td></tr></table></figure>
+<ul>
+<li>执行立即生效：source /etc/profile</li>
+<li>检查新安装的jdk：java -version</li>
+</ul>
+<h2 id="TOMCAT运行环境搭建"><a href="#TOMCAT运行环境搭建" class="headerlink" title="TOMCAT运行环境搭建"></a>TOMCAT运行环境搭建</h2><ul>
+<li>在Oracle官网下载tomcat压缩包。通过WinScp上传到服务器</li>
+<li>通过PuTTY命令（tar -zxvf xxx.tar.gz）解压</li>
+<li>进入tomcat的bin目录: cd /mydata/apache-tomcat-7.0.85/bin</li>
+<li>查看tomcat是否关闭(无信息证明关闭): ps -ef|grep java</li>
+<li>查看进程号：ps -ef |grep tomcat</li>
+<li>kill -9 进程号  //关闭进程 </li>
+<li>启动tomcat： ./startup.sh  </li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2018-03-27-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -483,70 +568,9 @@
 <!--多说模块--> 
 
   
-    <article id="post-2018-01-27-LiftTime" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/27/2018-01-27-LiftTime/">【2018】不断总结规律得旅途</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/27/2018-01-27-LiftTime/" class="archive-article-date">
-  	<time datetime="2018-01-27T11:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>  见贤思齐焉，见不贤而内自省也，2018 加油</p>
-</blockquote>
-<p>1.除了备考使用错题本，在编程过程中，同样可以采用错题本的思想。<br>2.记录在编码过程中常犯的错误，这样可以让自己有的放矢，<br>3.而且举一反三，从而让自己的思维变的更严谨。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 

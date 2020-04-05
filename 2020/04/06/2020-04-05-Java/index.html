@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//litten.me">
-  <title>【每日思考题2】 | Coolcat的博客</title>
+  <title>Spring Boot Linxu 读取项目Excle静态文件 | Coolcat的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SQL中存储记录（行）的数据结构是什么？  SQL中存储索引（单列或者多列）的数据结构是什么？  以上两者是什么关系？回表是什么操作？  索引为什么要用这种数据结构？为什么不用红黑树？">
-<meta name="keywords" content="DailyThinking">
+  <meta name="description" content="Linux 下获取项目根目录失败 System.getProperty(“user.dir”)   Linux下无法获取项目根目录，  替换为ResourceUtils.getFile(“\static\excletemplate\”)  如果是以《JAR》包运行无法读取JAR包里面文件  最后替换为： ClassPathResource resource = new ClassPathResou">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【每日思考题2】">
-<meta property="og:url" content="//litten.me/2019/07/04/2019-07-03-DailyThinking/index.html">
+<meta property="og:title" content="Spring Boot Linxu 读取项目Excle静态文件">
+<meta property="og:url" content="//litten.me/2020/04/06/2020-04-05-Java/index.html">
 <meta property="og:site_name" content="Coolcat的博客">
-<meta property="og:description" content="SQL中存储记录（行）的数据结构是什么？  SQL中存储索引（单列或者多列）的数据结构是什么？  以上两者是什么关系？回表是什么操作？  索引为什么要用这种数据结构？为什么不用红黑树？">
-<meta property="og:updated_time" content="2019-07-04T15:58:55.602Z">
+<meta property="og:description" content="Linux 下获取项目根目录失败 System.getProperty(“user.dir”)   Linux下无法获取项目根目录，  替换为ResourceUtils.getFile(“\static\excletemplate\”)  如果是以《JAR》包运行无法读取JAR包里面文件  最后替换为： ClassPathResource resource = new ClassPathResou">
+<meta property="og:updated_time" content="2020-04-05T16:30:28.953Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【每日思考题2】">
-<meta name="twitter:description" content="SQL中存储记录（行）的数据结构是什么？  SQL中存储索引（单列或者多列）的数据结构是什么？  以上两者是什么关系？回表是什么操作？  索引为什么要用这种数据结构？为什么不用红黑树？">
+<meta name="twitter:title" content="Spring Boot Linxu 读取项目Excle静态文件">
+<meta name="twitter:description" content="Linux 下获取项目根目录失败 System.getProperty(“user.dir”)   Linux下无法获取项目根目录，  替换为ResourceUtils.getFile(“\static\excletemplate\”)  如果是以《JAR》包运行无法读取JAR包里面文件  最后替换为： ClassPathResource resource = new ClassPathResou">
   
     <link rel="alternative" href="/atom.xml" title="Coolcat的博客" type="application/atom+xml">
   
@@ -140,36 +140,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2019-07-03-DailyThinking" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2020-04-05-Java" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      【每日思考题2】
+      Spring Boot Linxu 读取项目Excle静态文件
     </h1>
   
 
         
-        <a href="/2019/07/04/2019-07-03-DailyThinking/" class="archive-article-date">
-  	<time datetime="2019-07-04T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
+        <a href="/2020/04/06/2020-04-05-Java/" class="archive-article-date">
+  	<time datetime="2020-04-06T14:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li><p>SQL中存储记录（行）的数据结构是什么？</p>
+        <h3 id="Linux-下获取项目根目录失败"><a href="#Linux-下获取项目根目录失败" class="headerlink" title="Linux 下获取项目根目录失败"></a>Linux 下获取项目根目录失败</h3><ol>
+<li><p>System.getProperty(“user.dir”)   Linux下无法获取项目根目录，</p>
 </li>
-<li><p>SQL中存储索引（单列或者多列）的数据结构是什么？</p>
+<li><p>替换为ResourceUtils.getFile(“\static\excletemplate\”)  如果是以《JAR》包运行无法读取JAR包里面文件</p>
 </li>
-<li><p>以上两者是什么关系？回表是什么操作？</p>
-</li>
-<li><p>索引为什么要用这种数据结构？为什么不用红黑树？</p>
+<li><p>最后替换为： ClassPathResource resource = new ClassPathResource(“\static\excletemplate\“ + fileName );</p>
 </li>
 </ol>
+<h5 id="Spring-Boot读取Resource文件夹下Excel-文件，提示文件头损坏"><a href="#Spring-Boot读取Resource文件夹下Excel-文件，提示文件头损坏" class="headerlink" title="Spring Boot读取Resource文件夹下Excel 文件，提示文件头损坏"></a>Spring Boot读取Resource文件夹下Excel 文件，提示文件头损坏</h5><ol>
+<li>原因: Maven打包，可以根据不同的环境（测试、预发、线上等环境）来过滤项目中的属性资源配置；文件格式别替换损坏</li>
+</ol>
+<p>解决办法：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;plugin&gt;</div><div class="line"> &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</div><div class="line">    &lt;artifactId&gt;maven-resources-plugin&lt;/artifactId&gt;</div><div class="line">        &lt;configuration&gt;</div><div class="line">           &lt;encoding&gt;UTF-8&lt;/encoding&gt;</div><div class="line">            &lt;nonFilteredFileExtensions&gt;</div><div class="line">              &lt;nonFilteredFileExtension&gt;xlsx&lt;/nonFilteredFileExtension&gt;</div><div class="line">              &lt;nonFilteredFileExtension&gt;xls&lt;/nonFilteredFileExtension&gt;</div><div class="line">          &lt;/nonFilteredFileExtensions&gt;</div><div class="line">        &lt;/configuration&gt;</div><div class="line">&lt;/plugin&gt;</div></pre></td></tr></table></figure></p>
 
       
 
@@ -183,7 +185,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DailyThinking</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -239,7 +241,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2019/07/04/2019-07-03-DailyThinking/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://litten.me/2020/04/06/2020-04-05-Java/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -253,20 +255,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/07/04/2019-07-04-DailyThinking/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/04/2020-04-04-Java/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          【每日思考题3】
+          程序员珍藏五款 Chrome 浏览器插件
         
       </div>
     </a>
   
-  
-    <a href="/2019/07/04/2019-07-04-Java/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">高性能分布式锁-redisson</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
@@ -284,7 +281,7 @@
 
   <section id="comments">
 <!--高速版，加载速度快，使用前需测试页面的兼容性--> 
-<div id="SOHUCS" sid="【每日思考题2】" style="padding: 0px 30px 0px 46px;"></div> 
+<div id="SOHUCS" sid="Spring Boot Linxu 读取项目Excle静态文件" style="padding: 0px 30px 0px 46px;"></div> 
 <script>
   (function(){
     var appid = 'cyt5seecS',

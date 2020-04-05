@@ -140,6 +140,146 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2018-08-30-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/30/2018-08-30-Java/">Java知识归纳</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/30/2018-08-30-Java/" class="archive-article-date">
+  	<time datetime="2018-08-30T10:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="Spring-MVC-与-SpringBoot-区别"><a href="#Spring-MVC-与-SpringBoot-区别" class="headerlink" title="Spring MVC 与 SpringBoot 区别"></a>Spring MVC 与 SpringBoot 区别</h5><ul>
+<li><p>Spring mvc 基于 Servlet 的一个 MVC 框架,Spring MVC提供了一种轻度耦合的方式来开发web应用。Spring MVC是Spring的一个模块，式一个web框架。通过Dispatcher Servlet, ModelAndView 和 View Resolver，开发web应用变得很容易。解决的问题领域是网站应用程序或者服务开发——URL路由、Session、模板引擎、静态Web资源等等</p>
+</li>
+<li><p>Spring Boot 是基于Spring4的条件注册的一套快速开发整合包。</p>
+</li>
+</ul>
+<h5 id="JDK8新特性"><a href="#JDK8新特性" class="headerlink" title="JDK8新特性"></a>JDK8新特性</h5><ul>
+<li><p>Lambda表达式</p>
+</li>
+<li><p>Stream函数式操作流元素集合</p>
+</li>
+<li><p>接口新增：默认方法与静态方法</p>
+</li>
+<li><p>方法引用,与Lambda表达式联合使用</p>
+</li>
+<li><p>引入重复注解</p>
+</li>
+<li><p>类型注解</p>
+</li>
+<li><p>最新的Date/Time API (JSR 310)</p>
+</li>
+<li><p>新增base64加解密API</p>
+</li>
+<li><p>数组并行（parallel）操作</p>
+</li>
+<li><p>JVM的PermGen空间被移除：取代它的是Metaspace（JEP 122）元空间</p>
+</li>
+</ul>
+<h5 id="JDK8-interface-default-方法作用"><a href="#JDK8-interface-default-方法作用" class="headerlink" title="JDK8 interface default 方法作用"></a>JDK8 interface default 方法作用</h5><ul>
+<li>在接口中，增加default方法， 是为了既有的成千上万的Java类库的类增加新的功能， 且不必对这些类重新进行设计。</li>
+<li>需要注意一点就是如果实现多个接口时，每个接口都有相同的default方法需要重写该方法。</li>
+</ul>
+<h5 id="Spring-中-抽象类-与-接口区别，使用场景"><a href="#Spring-中-抽象类-与-接口区别，使用场景" class="headerlink" title="Spring 中 抽象类 与 接口区别，使用场景"></a>Spring 中 抽象类 与 接口区别，使用场景</h5><ul>
+<li><p>接口能够多实现，而抽象类只能单独被继承，其本质就是，一个类能继承多个接口，而只能继承一个抽象类。</p>
+</li>
+<li><p>方法上，抽象类的方法可以用abstract 和public或者protect修饰。而接口默认为public abttact 修饰。</p>
+</li>
+<li><p>抽象类的方法可以有需要子类实现的抽象方法，也可以有具体的方法。而接口在老版本的jdk中，只能有抽象方法，但是Java8版本的接口中，接口可以带有默认方法。</p>
+</li>
+<li><p>属性上，抽象类可以用各种各样的修饰符修饰。而接口的属性是默认的public static final</p>
+</li>
+<li><p>抽象类中可以含有静态代码块和静态方法，而接口不能含有静态方法和静态代码块。</p>
+</li>
+<li><p>抽象类可以含有构造方法，接口不能含有构造方法。</p>
+</li>
+<li><p>设计层面上，抽象类表示的是子类“是不是”属于某一类的子类，接口则表示“有没有”特性“能不能”做这种事。如飞机和鸟都能飞，但是他们在设计上实现一个Fly接口，实现fly()方法。远比两个类继承飞行物抽象类好得多。因为，飞机和鸟有太多的属性不一样。</p>
+</li>
+<li><p>设计层面上，另外一点，抽象类可以是一个模板，因为可以自己带集体方法，所以要加一个实现类都能有的方法，直接在抽象类中写出并实现就好，接口在以前的版本则不行。新版本Java8才有默认方法。</p>
+</li>
+<li><p>既然说到Java 8 那么就来说明，Java8中的接口中的默认方法是可以被多重继承的。而抽象类不行。</p>
+</li>
+<li><p>另外，接口只能继承接口。而抽象类可以继承普通的类，也能继承接口和抽象类。</p>
+</li>
+</ul>
+<h5 id="Spring-两大特性实现原理。IOC-AOP-原理"><a href="#Spring-两大特性实现原理。IOC-AOP-原理" class="headerlink" title="Spring 两大特性实现原理。IOC AOP 原理"></a>Spring 两大特性实现原理。IOC AOP 原理</h5><h6 id="IOC"><a href="#IOC" class="headerlink" title="IOC"></a>IOC</h6><ul>
+<li>IOC 另外一种说法叫DI（Dependency Injection），即依赖注入。它并不是一种技术实现，而是一种设计思想。</li>
+<li>1）接口注入；2）Construct注入；3）Setter注入  技术：（dom4j解析xml配置文件，工厂设计模式（解耦合），反射）</li>
+</ul>
+<h5 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h5><ul>
+<li>默认有实现类就是使用jdk代理(InvocationHandler是一个接口，可以通过实现该接口定义横切逻辑，并通过反射机制调用目标类的代码)，否则就使用cglib动态调用( 通过字节码技术动态创建子类实例)</li>
+</ul>
+<h5 id="Java-JMM-内存模型（可见性，有序性，一致性）"><a href="#Java-JMM-内存模型（可见性，有序性，一致性）" class="headerlink" title="Java JMM 内存模型（可见性，有序性，一致性）"></a>Java JMM 内存模型（可见性，有序性，一致性）</h5><ul>
+<li>synchronized实现底层缓存一直协议，有序性，一致性</li>
+<li>volatile 数据可见性   （synchronizd,volatile都能禁用JDK指令重排—》（JVM可以对它们在不改变数据依赖关系的情况下进行任意排序以提高程序性能））</li>
+</ul>
+<h5 id="Mysql-聚合索引匹配规则"><a href="#Mysql-聚合索引匹配规则" class="headerlink" title="Mysql 聚合索引匹配规则"></a>Mysql 聚合索引匹配规则</h5><ul>
+<li>最左匹配原则并不是where后第一个条件一定是索引的第一列 只要where后用到了索引第一列就会用到索引</li>
+<li>EXPLAIN SELECT * FROM student WHERE   cid=1 AND NAME=’小冷’  –分析执行计划;</li>
+</ul>
+<h5 id="Mysql-like-查询是否使用索引"><a href="#Mysql-like-查询是否使用索引" class="headerlink" title="Mysql like 查询是否使用索引"></a>Mysql like 查询是否使用索引</h5><ul>
+<li>mysql在使用like查询的时候只有不以%开头的时候，才会使用到索引。</li>
+</ul>
+<h5 id="Redis-五种数据类型"><a href="#Redis-五种数据类型" class="headerlink" title="Redis 五种数据类型"></a>Redis 五种数据类型</h5><ul>
+<li>字符串类型string</li>
+<li>散列类型hash</li>
+<li>列表类型（list）</li>
+<li>集合类型（set）</li>
+<li>有序集合类型</li>
+</ul>
+<h5 id="拓展思维"><a href="#拓展思维" class="headerlink" title="拓展思维"></a>拓展思维</h5><ul>
+<li>基于spring Boot 实现可插拔式系统搭建，示例（针对不同客户需求，不改动代码实现功能开闭。）</li>
+<li>基于maven 区分功能模块开发，基于注解实现功能模块注册</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2018-08-27-Zookeeper" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -397,94 +537,9 @@
 <!--多说模块--> 
 
   
-    <article id="post-2018-04-14-linux" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/14/2018-04-14-linux/">linux环境搭建</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/14/2018-04-14-linux/" class="archive-article-date">
-  	<time datetime="2018-04-14T11:45:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="云主机基础环境搭建"><a href="#云主机基础环境搭建" class="headerlink" title="云主机基础环境搭建"></a>云主机基础环境搭建</h2><p>TOMCAT JDK </p>
-<h2 id="vim编辑文件基本命令"><a href="#vim编辑文件基本命令" class="headerlink" title="vim编辑文件基本命令"></a>vim编辑文件基本命令</h2><ul>
-<li>i → Insert 模式，按 ESC 回到 Normal 模式.</li>
-<li>x → 删当前光标所在的一个字符。</li>
-<li>p → 粘贴剪贴板</li>
-<li>dd → 删除当前行，并把删除的行存到剪贴板里</li>
-<li>:wq → 存盘 + 退出 (:w 存盘, :q 退出)   （注：:w 后可以跟文件名）</li>
-</ul>
-<h2 id="JDK运行环境搭建"><a href="#JDK运行环境搭建" class="headerlink" title="JDK运行环境搭建"></a>JDK运行环境搭建</h2><ul>
-<li>在Oracle官网下载jdk压缩包。通过WinScp上传到服务器</li>
-<li>通过PuTTY命令（tar -zxvf xxx.tar.gz）解压</li>
-<li>vim /etc/profile 打开配置文件开启编辑</li>
-<li>在最前面添加：</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> JAVA_HOME=<span class="regexp">/usr/</span>lib/jvm/jdk1<span class="number">.8</span><span class="number">.0</span>_131  </div><div class="line"><span class="keyword">export</span> JRE_HOME=$&#123;JAVA_HOME&#125;/jre  </div><div class="line"><span class="keyword">export</span> CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib  </div><div class="line"><span class="keyword">export</span> PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</div></pre></td></tr></table></figure>
-<ul>
-<li>执行立即生效：source /etc/profile</li>
-<li>检查新安装的jdk：java -version</li>
-</ul>
-<h2 id="TOMCAT运行环境搭建"><a href="#TOMCAT运行环境搭建" class="headerlink" title="TOMCAT运行环境搭建"></a>TOMCAT运行环境搭建</h2><ul>
-<li>在Oracle官网下载tomcat压缩包。通过WinScp上传到服务器</li>
-<li>通过PuTTY命令（tar -zxvf xxx.tar.gz）解压</li>
-<li>进入tomcat的bin目录: cd /mydata/apache-tomcat-7.0.85/bin</li>
-<li>查看tomcat是否关闭(无信息证明关闭): ps -ef|grep java</li>
-<li>查看进程号：ps -ef |grep tomcat</li>
-<li>kill -9 进程号  //关闭进程 </li>
-<li>启动tomcat： ./startup.sh  </li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
