@@ -140,6 +140,278 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2017-07-18-cache" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/18/2017-07-18-cache/">Java ConcurrentHashMap 缓存</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/18/2017-07-18-cache/" class="archive-article-date">
+  	<time datetime="2017-07-18T08:20:04.988Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ConcurrentHashMap-缓存"><a href="#ConcurrentHashMap-缓存" class="headerlink" title="ConcurrentHashMap 缓存"></a>ConcurrentHashMap 缓存</h2><p>在项目实际开发中有时候固定不变的数据，大量请求数据库增加IO。我们就可以考虑缓存到内存中定时更新维护就行<br>建议先看看：<br><a href="https://www.ibm.com/developerworks/cn/java/java-lo-concurrenthashmap/" title="ConcurrentHashMap" target="_blank" rel="external">ConcurrentHashMap</a></p>
+<p><img src="http://lengjiaxin.github.io/images/cache/001.png" alt=""></p>
+<h6 id="基础类MonitorCache"><a href="#基础类MonitorCache" class="headerlink" title="基础类MonitorCache"></a>基础类MonitorCache</h6><pre><code>/**
+ * Title: MonitorCache.java&lt;br /&gt;
+ * Description: 实时监控缓存类&lt;br /&gt;
+ * Copyright: Copyright (c) 2017&lt;br /&gt; 
+ */
+public final class MonitorCache&lt;K, V&gt; {
+    // 缓存Map
+    private ConcurrentHashMap&lt;K, V&gt; cache;
+    // 缓存计数器（用于判断缓存是否被占用）
+    private int cacheCounter;
+    // 更新时间（用于判断缓存中的数据是否更新）
+    private Date updateDate;
+
+    public MonitorCache() {
+        this.cache = new ConcurrentHashMap&lt;K, V&gt;();
+        this.cacheCounter = 0;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    /**
+     * 开启缓存（计数器加1）
+     */
+    public synchronized void open() {
+        this.cacheCounter++;
+    }
+
+    /**
+     * 关闭缓存（计数器减1）
+     */
+    public synchronized void close() {
+        this.cacheCounter = (this.cacheCounter - 1 &lt; 0) ? 0 : (this.cacheCounter - 1);
+    }
+
+    /**
+     * 缓存当前是否空闲（未被占用）
+     * 
+     * @return
+     */
+    public boolean isFree() {
+        return (this.cacheCounter == 0);
+    }
+
+    // 缓存访问校验
+    private void validate() {
+        if (this.cacheCounter == 0) {
+            throw new RuntimeException(&quot;缓存未打开时禁止访问&quot;);
+        }
+    }
+
+    /**
+     * 写入缓存数据
+     * 
+     * @param k
+     * @param v
+     */
+    public void put(K k, V v) {
+        validate();
+        this.cache.put(k, v);
+    }
+
+    /**
+     * 读取缓存数据
+     * 
+     * @param k
+     * @return
+     */
+    public V get(K k) {
+        validate();
+        V v = this.cache.get(k);
+        return v;
+    }
+
+    /**
+     * 是否包含键值
+     * 
+     * @param key
+     * @return
+     */
+    public boolean containsKey(Object key) {
+        validate();
+        return this.cache.containsKey(key);
+    }
+
+    /**
+     * 读取所有键值
+     * 
+     * @return
+     */
+    public Set&lt;K&gt; getAllKeys() {
+        validate();
+        return this.cache.keySet();
+    }
+
+    /**
+     * 清空缓存
+     */
+    public void clearCache() {
+        validate();
+        if (this.cache != null &amp;&amp; !this.cache.isEmpty()) {
+            this.cache.clear();
+        }
+    }
+
+    /**
+     * 缓存中存放的数据量
+     * 
+     * @return
+     */
+    public int size() {
+        validate();
+        return this.cache.size();
+    }
+}
+</code></pre><h6 id="分组类-MonitorCacheGroup"><a href="#分组类-MonitorCacheGroup" class="headerlink" title="分组类 MonitorCacheGroup"></a>分组类 MonitorCacheGroup</h6><pre><code>/**
+ * Title: MonitorCacheGroup.java&lt;br /&gt;
+ * Description: 实时监控缓存集合类&lt;br /&gt;
+ * Copyright: Copyright (c) 2017&lt;br /&gt; 
+ */
+public final class MonitorCacheGroup&lt;K, V&gt; {
+
+    private static final LogWrapper log = new LogWrapper(MonitorCacheGroup.class);
+
+    // 缓存集合总量
+    private final static int CACHECOUNT = 5;
+
+    // 缓存集合
+    private final List&lt;MonitorCache&lt;K, V&gt;&gt; cacheList;
+
+    public MonitorCacheGroup() {
+        cacheList = new ArrayList&lt;MonitorCache&lt;K, V&gt;&gt;(CACHECOUNT);
+
+        MonitorCache&lt;K, V&gt; cache = null;
+        for (int i = 0; i &lt; CACHECOUNT; i++) {
+            cache = new MonitorCache&lt;K, V&gt;();
+            cacheList.add(cache);
+        }
+    }
+
+    /**
+     * 更新缓存
+     * 
+     * @param updatedCache
+     */
+    public void updateCache(MonitorCache&lt;K, V&gt; updatedCache) {
+        for (int i = 0; i &lt; CACHECOUNT; i++) {
+            if (cacheList.get(i).isFree()) {
+                updatedCache.setUpdateDate(new Date());
+                if (cacheList.get(i).isFree()) {
+                    cacheList.remove(i);
+                    cacheList.add(i, updatedCache);
+                    log.debug(&quot;当前更新缓存序号:&quot; + i);
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * 获取缓存（默认打开缓存）
+     * 
+     * @return
+     */
+    public MonitorCache&lt;K, V&gt; getCache() {
+        int index = 0;
+
+        // 要返回最近更新过的那份缓存
+        Date maxDate = cacheList.get(0).getUpdateDate();
+        for (int i = 1; i &lt; CACHECOUNT; i++) {
+
+            MonitorCache&lt;K, V&gt; cache = cacheList.get(i);
+            if (!ValidationUtil.isNullOrEmpty(cache) &amp;&amp; !ValidationUtil.isNullOrEmpty(cache.getUpdateDate())) {
+
+                // 缓存没有数据
+                if (cache.getUpdateDate().compareTo(maxDate) &gt; 0) {
+                    maxDate = cacheList.get(i).getUpdateDate();
+                    index = i;
+                }
+
+            }
+        }
+
+        log.debug(&quot;当前获取缓存序号:&quot; + index);
+        cacheList.get(index).open();
+        return cacheList.get(index);
+    }
+
+    /**
+     * 关闭缓存
+     * 
+     * @param cache
+     */
+    public void closeCache(MonitorCache&lt;K, V&gt; cache) {
+        if (cache != null) {
+            cache.close();
+        }
+    }
+}
+</code></pre><h6 id="使用缓存示例"><a href="#使用缓存示例" class="headerlink" title="使用缓存示例"></a>使用缓存示例</h6><pre><code>// 缓存容器
+private volatile MonitorCacheGroup&lt;String, List&lt;Integer&gt;&gt; vehicleCacheGroup = new MonitorCacheGroup&lt;String, List&lt;Integer&gt;&gt;();
+MonitorCache&lt;String, List&lt;Integer&gt;&gt; vCache = new MonitorCache&lt;String, List&lt;Integer&gt;&gt;();
+//打开
+vCache.open();
+//更新
+vehicleCacheGroup.updateCache(vCache);
+//获取
+vCache.get(key);
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2017-06-29-2-yilia" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -310,94 +582,6 @@
 <!--多说模块--> 
 
   
-    <article id="post-2017-06-27-8-Javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/27/2017-06-27-8-Javascript/">Javascript 页面飘窗</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/27/2017-06-27-8-Javascript/" class="archive-article-date">
-  	<time datetime="2017-06-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Javascript设置相对屏幕左右距离"><a href="#Javascript设置相对屏幕左右距离" class="headerlink" title="Javascript设置相对屏幕左右距离"></a>Javascript设置相对屏幕左右距离</h2><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-var obj;
-var x = 50,y = 60;
-var xin = true, yin = true;
-var step = 1;
-var delay = 30; 
-function floatAD() {  
-    var L=T=0;
-    var R= (document.documentElement.clientWidth || document.body.clientWidth)-obj.offsetWidth;
-    var B = (document.documentElement.clientHeight || document.body.clientHeight)-obj.offsetHeight;
-    obj.style.left = x + (document.documentElement.scrollLeft || document.body.scrollLeft) + &apos;px&apos;;
-    obj.style.top = y + (document.documentElement.scrollTop || document.body.scrollTop) + &apos;px&apos;;
-    x = x + step*(xin?1:-1);
-    if (x &lt; L) { xin = true; x = L}
-    if (x &gt; R){ xin = false; x = R}
-    y = y + step*(yin?1:-1);
-    if (y &lt; T) { yin = true; y = T }
-    if (y &gt; B) { yin = false; y = B } 
-}
-    function loadTest(){  
-    obj = document.getElementById(&quot;pc&quot;); 
-    if(obj!=null){ 
-        var itl= setInterval(&quot;floatAD()&quot;, delay);
-        obj.onmouseover=function(){clearInterval(itl)};
-        obj.onmouseout=function(){itl=setInterval(&quot;floatAD()&quot;, delay)};
-    } 
-    }
-&lt;/script&gt;
-</code></pre><h2 id="HTML设置加载"><a href="#HTML设置加载" class="headerlink" title="HTML设置加载"></a>HTML设置加载</h2><pre><code>onload=&quot;loadTest();&quot;//页面初始化加载
-
-&lt;div id=&quot;pc&quot; style=&quot;Z-INDEX: 1000; POSITION: absolute&quot;&gt;&lt;A href=&quot;www.baidu.com&quot; target=&quot;_blank&quot;&gt;&lt;IMG src=&quot;images/cypc.png&quot; border=0 width=&quot;280&quot;/&gt;&lt;/A&gt;&lt;/div&gt;
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
     <article id="post-2017-06-27-9-Mybatis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -545,31 +729,58 @@ function floatAD() {
 <!--多说模块--> 
 
   
-    <article id="post-2017-06-25-6-Blog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2017-06-27-8-Javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/25/2017-06-25-6-Blog/">GitHubBlog绑定域名</a>
+      <a class="article-title" href="/2017/06/27/2017-06-27-8-Javascript/">Javascript 页面飘窗</a>
     </h1>
   
 
         
-        <a href="/2017/06/25/2017-06-25-6-Blog/" class="archive-article-date">
-  	<time datetime="2017-06-25T15:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
+        <a href="/2017/06/27/2017-06-27-8-Javascript/" class="archive-article-date">
+  	<time datetime="2017-06-26T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="GitHub-Blog-绑定域名"><a href="#GitHub-Blog-绑定域名" class="headerlink" title="GitHub Blog 绑定域名"></a>GitHub Blog 绑定域名</h1><h2 id="1、ping你的http-github-io域名，得到一个IP；"><a href="#1、ping你的http-github-io域名，得到一个IP；" class="headerlink" title="1、ping你的http://github.io域名，得到一个IP；"></a>1、ping你的<a href="http://github.io域名，得到一个IP；" target="_blank" rel="external">http://github.io域名，得到一个IP；</a></h2><p><img src="http://lengjiaxin.github.io/images/github/blog_001.jpg" alt=""></p>
-<h2 id="2、修改你的域名解析记录，添加一个A记录，用得到的IP；"><a href="#2、修改你的域名解析记录，添加一个A记录，用得到的IP；" class="headerlink" title="2、修改你的域名解析记录，添加一个A记录，用得到的IP；"></a>2、修改你的域名解析记录，添加一个A记录，用得到的IP；</h2><p><img src="http://lengjiaxin.github.io/images/github/blog_002.jpg" alt=""></p>
-<h2 id="3、登录http-github-com-gt-进入项目-gt-Settings-gt-Custom-domain-gt-输入你的域名-gt-Save；"><a href="#3、登录http-github-com-gt-进入项目-gt-Settings-gt-Custom-domain-gt-输入你的域名-gt-Save；" class="headerlink" title="3、登录http://github.com&gt;进入项目&gt;Settings&gt;Custom domain&gt;输入你的域名&gt;Save；"></a>3、登录<a href="http://github.com&gt;进入项目&gt;Settings&gt;Custom" target="_blank" rel="external">http://github.com&gt;进入项目&gt;Settings&gt;Custom</a> domain&gt;输入你的域名&gt;Save；</h2><p><img src="http://lengjiaxin.github.io/images/github/blog_003.jpg" alt=""></p>
-<h2 id="4、在博客source文件夹下新建CNAME文件，填入域名；"><a href="#4、在博客source文件夹下新建CNAME文件，填入域名；" class="headerlink" title="4、在博客source文件夹下新建CNAME文件，填入域名；"></a>4、在博客source文件夹下新建CNAME文件，填入域名；</h2><p><img src="http://lengjiaxin.github.io/images/github/blog_004.jpg" alt=""></p>
+        <h2 id="Javascript设置相对屏幕左右距离"><a href="#Javascript设置相对屏幕左右距离" class="headerlink" title="Javascript设置相对屏幕左右距离"></a>Javascript设置相对屏幕左右距离</h2><pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+var obj;
+var x = 50,y = 60;
+var xin = true, yin = true;
+var step = 1;
+var delay = 30; 
+function floatAD() {  
+    var L=T=0;
+    var R= (document.documentElement.clientWidth || document.body.clientWidth)-obj.offsetWidth;
+    var B = (document.documentElement.clientHeight || document.body.clientHeight)-obj.offsetHeight;
+    obj.style.left = x + (document.documentElement.scrollLeft || document.body.scrollLeft) + &apos;px&apos;;
+    obj.style.top = y + (document.documentElement.scrollTop || document.body.scrollTop) + &apos;px&apos;;
+    x = x + step*(xin?1:-1);
+    if (x &lt; L) { xin = true; x = L}
+    if (x &gt; R){ xin = false; x = R}
+    y = y + step*(yin?1:-1);
+    if (y &lt; T) { yin = true; y = T }
+    if (y &gt; B) { yin = false; y = B } 
+}
+    function loadTest(){  
+    obj = document.getElementById(&quot;pc&quot;); 
+    if(obj!=null){ 
+        var itl= setInterval(&quot;floatAD()&quot;, delay);
+        obj.onmouseover=function(){clearInterval(itl)};
+        obj.onmouseout=function(){itl=setInterval(&quot;floatAD()&quot;, delay)};
+    } 
+    }
+&lt;/script&gt;
+</code></pre><h2 id="HTML设置加载"><a href="#HTML设置加载" class="headerlink" title="HTML设置加载"></a>HTML设置加载</h2><pre><code>onload=&quot;loadTest();&quot;//页面初始化加载
 
+&lt;div id=&quot;pc&quot; style=&quot;Z-INDEX: 1000; POSITION: absolute&quot;&gt;&lt;A href=&quot;www.baidu.com&quot; target=&quot;_blank&quot;&gt;&lt;IMG src=&quot;images/cypc.png&quot; border=0 width=&quot;280&quot;/&gt;&lt;/A&gt;&lt;/div&gt;
+</code></pre>
       
 
       
@@ -582,7 +793,7 @@ function floatAD() {
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Javascript</a>
         		</li>
       		
 		</ul>
@@ -704,19 +915,11 @@ function floatAD() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -724,15 +927,23 @@ function floatAD() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DailyThinking</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
             
             <div class="clearfix"></div>

@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>//litten.me/2020/05/06/2020-05-06-Java/</loc>
+    <lastmod>2020-05-06T14:28:18.855Z</lastmod>
+    <data>
+        <display>
+        <title>List使用注意事项</title>
+        <pubTime>2020-05-06T14:33:00.000Z</pubTime>
+        
+        <tag>Java</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>//litten.me/2020/04/06/2020-04-05-Java/</loc>
     <lastmod>2020-04-05T16:35:18.867Z</lastmod>
     <data>

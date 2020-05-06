@@ -140,6 +140,64 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2020-05-06-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/06/2020-05-06-Java/">List使用注意事项</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/06/2020-05-06-Java/" class="archive-article-date">
+  	<time datetime="2020-05-06T14:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="List集合使用注意事项"><a href="#List集合使用注意事项" class="headerlink" title="List集合使用注意事项"></a>List集合使用注意事项</h3><p><img src="https://lengjiaxin.github.io/images/java/list/list.jpg" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+<!--多说模块--> 
+
+  
     <article id="post-2020-04-05-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -448,72 +506,6 @@ export NODE_PATH=$NODE_HOME/lib/node_modules
 <!--多说模块--> 
 
   
-    <article id="post-2019-11-28-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/28/2019-11-28-Java/">SpringBoot 动态SPI</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/28/2019-11-28-Java/" class="archive-article-date">
-  	<time datetime="2019-11-28T15:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="SpringBoot-动态SPI加载MVC-配置文件"><a href="#SpringBoot-动态SPI加载MVC-配置文件" class="headerlink" title="SpringBoot 动态SPI加载MVC 配置文件"></a>SpringBoot 动态SPI加载MVC 配置文件</h2><h3 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h3><h5 id="Java-SPI"><a href="#Java-SPI" class="headerlink" title="Java SPI:"></a>Java SPI:</h5><p>Service Provider Interface(SPI)是一个可以被第三方扩展或实现的API， 它可以用来实现框架扩展和可替换的模块。</p>
-<p>使用步骤：</p>
-<ol>
-<li>服务调用方通过ServiceLoader.load加载服务接口的实现类实例</li>
-<li>服务提供方实现服务接口后， 在自己Jar包的META-INF/services目录下新建一个接口名全名的文件， 并将具体实现类全名写入。</li>
-</ol>
-<h5 id="Spring-SPI"><a href="#Spring-SPI" class="headerlink" title="Spring SPI"></a>Spring SPI</h5><p>很多开源库中都直接或间接地使用了Java的SPI机制， 如Spring中就有类似的SPI机制， 通过SpringFactoriesLoader代替JDK中的ServiceLoader， 通过META-INF/spring.factories文件代替META-INF/service目录下的描述文件, 原理都是使用了Java的反射机制。</p>
-<p>Spring提供的SPI只需要且只有一个文件， 就是META-INF/spring.factories</p>
-<p>Spring的SPi也更加灵活， 不必要key是接口， 值是实现类， 例如Spring boot使用这种方式来处理自动配置的bean: key是注解(如org.springframework.boot.autoconfig.EnableAutoConfiguration)， 值是被标记@Configuration的类。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-<!--多说模块--> 
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -612,19 +604,11 @@ export NODE_PATH=$NODE_HOME/lib/node_modules
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,15 +616,23 @@ export NODE_PATH=$NODE_HOME/lib/node_modules
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DailyThinking</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
             
             <div class="clearfix"></div>
